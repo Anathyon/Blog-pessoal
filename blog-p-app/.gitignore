@@ -1,0 +1,51 @@
+# ----------------------------------------
+# 🔧 Ambiente e Dependências
+# ----------------------------------------
+node_modules
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+.env
+.env.*.local
+*.local
+
+# ----------------------------------------
+# 🛠️ Build & Artefatos
+# ----------------------------------------
+dist
+dist-ssr
+*.tsbuildinfo
+
+# ----------------------------------------
+# 📦 Log e Debug
+# ----------------------------------------
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ----------------------------------------
+# 🖥️ Configurações de Editor
+# ----------------------------------------
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ----------------------------------------
+# 📁 Outras pastas auxiliares (se usar)
+# ----------------------------------------
+coverage
+.cache
+.next
+out
+temp
+tmp
