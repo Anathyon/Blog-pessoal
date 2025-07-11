@@ -6,12 +6,14 @@ import Contato from "./components/Contato"
 
 export default function App() {
   return (
-    <section>
-        <Barra_navegacao/>
+    <div className="bg-[#0f172a] text-white min-h-screen">
+      <Barra_navegacao/>
+      <main className="space-y-24">
         <Inicio/>
         <Skills/>
         <Projetos/>
         <Contato/>
-    </section>
+      </main>
+    </div>
   )
 }

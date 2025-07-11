@@ -1,21 +1,35 @@
-export default function skills (){
-    return (
-    <>
-        <section className="bg-[#111827] py-12 text-center" id="habilidades">
-          <h3 className="text-3xl font-semibold mb-8">Habilidades</h3>
-          <div className="flex justify-center gap-8 flex-wrap">
-            <img src="/react.svg" alt="React" className="w-12 h-12" />
-            <img src="/ts.svg" alt="TypeScript" className="w-12 h-12" />
-            <img src="/tailwind.svg" alt="TailwindCSS" className="w-12 h-12" />
-            <img src="/node.svg" alt="Node.js" className="w-12 h-12" />
-            <img src="/html.svg" alt="HTML5" className="w-12 h-12" />
-            <img src="/css.svg" alt="CSS3" className="w-12 h-12" />
-            <img src="/js.svg" alt="JavaScript" className="w-12 h-12" />
-            <img src="/vite.svg" alt="Vite" className="w-12 h-12" />
-            <img src="/git.svg" alt="Git" className="w-12 h-12" />
-            <img src="/github.svg" alt="GitHub" className="w-12 h-12" />
-          </div>
-        </section>
-    </>
-    )
+const Skills = [
+  "React",
+  "TypeScript",
+  "TailwindCSS",
+  "Node.js",
+  "HTML5",
+  "CSS3",
+  "JavaScript",
+  "Git",
+  "GitHub",
+  "Vite",
+];
+
+export default function skills() {
+  return (
+    <section id="habilidades" className="py-20 px-6 bg-[#0f172a] text-white">
+      <div className="max-w-5xl mx-auto text-center">
+        <h3 className="text-3xl font-bold mb-10 border-b border-blue-500 inline-block pb-2">
+          Habilidades
+        </h3>
+
+        <ul className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 justify-center items-center">
+          {Skills.map((Skill) => (
+            <li
+              key={Skill}
+              className="bg-[#1f2937] py-4 px-6 rounded-lg shadow-md shadow-blue-500/10 hover:scale-105 transition"
+            >
+              {Skill}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
 }
