@@ -54,8 +54,8 @@ export default function Header() {
                                     key={item.name}
                                     href={item.href}
                                     onClick={(e) => handleNavClick(e, item.href)}
-                                    className="header-link text-gray-300 hover:text-white font-medium transition-colors"
-                                    style={{ fontSize: '1rem', padding: '0.7rem 0.5rem' }}
+                                    className="header-link font-medium transition-colors text-white hover: cursor-pointer hover:text-[#a020f0]"
+                                    style={{ fontSize: '1rem', padding: '0.7rem 0.5rem', }}
                                 >
                                     {item.name}
                                 </a>
