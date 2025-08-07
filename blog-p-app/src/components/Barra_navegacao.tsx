@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaBars, FaTimes, FaHome, FaLaptopCode, FaBriefcase, FaUser, FaEnvelope } from 'react-icons/fa';
+import { FaBars, FaTimes, FaHome, FaLaptopCode, FaBriefcase, FaEnvelope } from 'react-icons/fa';
 
 export default function Header() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -26,7 +26,6 @@ export default function Header() {
         { name: "Início", href: "#home", icon: <FaHome /> },
         { name: "Habilidades", href: "#habilidades", icon: <FaLaptopCode /> },
         { name: "Projetos", href: "#projetos", icon: <FaBriefcase /> },
-        { name: "Sobre", href: "#sobre", icon: <FaUser /> },
         { name: "Contato", href: "#contato", icon: <FaEnvelope /> },
     ];
 
@@ -37,7 +36,7 @@ export default function Header() {
                 <div className="header-container flex justify-between items-center w-full mx-auto" style={{ maxWidth: '75rem', padding: '0 5%' }}>
                     {/* Logo */}
                     <div className="header-logo flex items-center gap-3 text-white">
-                        <div className="header-logo-img flex items-center justify-center rounded-[0.75rem] bg-[#5a3a7f] shadow-lg" style={{ width: '2.8rem', height: '2.8rem', color: '#fff', fontSize: '1.3rem', boxShadow: '0 0.25rem 0.94rem rgba(90, 58, 127, 0.3)', padding: '0.3rem', overflow: 'hidden' }}>
+                        <div className="header-logo-img flex items-center justify-center rounded-[0.75rem] bg-[#0a5ad3b0] shadow-lg" style={{ width: '2.8rem', height: '2.8rem', color: '#fff', fontSize: '1.3rem', boxShadow: '0 0.25rem 0.94rem #0a5ad3b0', padding: '0.3rem', overflow: 'hidden' }}>
                             ⚡
                         </div>
                         <div className="logo-text">
@@ -54,8 +53,8 @@ export default function Header() {
                                     key={item.name}
                                     href={item.href}
                                     onClick={(e) => handleNavClick(e, item.href)}
-                                    className="header-link font-medium transition-colors text-white hover: cursor-pointer hover:text-[#a020f0]"
-                                    style={{ fontSize: '1rem', padding: '0.7rem 0.5rem', }}
+                                    className="header-link font-medium transition-colors"
+                                    style={{ fontSize: '1rem', padding: '0.7rem 0.5rem'}}
                                 >
                                     {item.name}
                                 </a>
@@ -65,7 +64,7 @@ export default function Header() {
                             href="#contato"
                             onClick={(e) => handleNavClick(e, "#contato")}
                             className="header-btn flex items-center gap-2 rounded-full text-white font-semibold transition-all text-base"
-                            style={{ background: 'linear-gradient(135deg, #7e22ce, #a020f0)', boxShadow: '0 0.25rem 0.94rem rgba(126, 34, 206, 0.3)', padding: '0.5rem 1.25rem' }}
+                            style={{ background: 'linear-gradient(135deg, #7e22ce, #a020f0)', boxShadow: '0 0.25rem 0.94rem #0a5ad3b0', padding: '0.5rem 1.25rem' }}
                         >
                             Começar Projeto
                         </a>
@@ -85,7 +84,7 @@ export default function Header() {
                 <div className="sidebar-content flex flex-col h-full">
                     <div className="sidebar-header flex items-center justify-between px-6 py-4 border-b border-white/20" style={{ padding: '2%' }}>
                         <div className="sidebar-logo flex items-center gap-2 font-extrabold text-white text-xl">
-                            <div className="logo-icon w-8 h-8 flex items-center justify-center rounded-lg bg-[#5a3a7f] text-white">⚡</div>
+                            <div className="logo-icon w-8 h-8 flex items-center justify-center rounded-lg bg-[#0a5ad3b0] text-white">⚡</div>
                             Portfolio
                         </div>
                         <button className="sidebar-close text-white text-2xl z-[999999]" onClick={() => setSidebarOpen(false)} aria-label="Fechar menu">
@@ -100,21 +99,22 @@ export default function Header() {
                                 href={item.href}
                                 onClick={e => handleNavClick(e, item.href)}
                                 className="sidebar-link text-gray-300 font-semibold text-lg py-2 rounded-lg hover:bg-white/10 transition z-[999999] flex items-center gap-4"
+                                style={{color: "#fff"}}
                             >
-                                <div className="icon text-[#a020f0]">{item.icon}</div>
+                                <div className="icon text-[#0a5ad3]" style={{padding: "2%"}}>{item.icon}</div>
                                 {item.name}
                             </a>
                         ))}
                     </nav>
 
-                    <div className="sidebar-cta mt-auto p-4 rounded-lg text-center" style={{ background: '#1e1e2d', margin: '1rem', boxShadow: '0 0.25rem 0.94rem rgba(0,0,0,0.3)' }}>
-                        <h3 className="text-white text-lg font-bold mb-2">Pronto para começar?</h3>
-                        <p className="text-gray-400 text-sm mb-4">Vamos transformar sua ideia em realidade.</p>
+                    <div className="sidebar-cta mt-auto p-4 rounded-lg text-center" style={{ background: '#1e1e2d', margin: '1rem', boxShadow: '0 0.25rem 0.94rem rgba(0,0,0,0.3)', borderRadius:"1rem", padding:"1%" }}>
+                        <h3 className="text-white text-lg font-bold mb-2" style={{color: "#fff"}}>Pronto para começar?</h3>
+                        <p className="text-gray-400 text-sm mb-4" style={{color: "#fff"}}>Vamos transformar sua ideia em realidade.</p>
                         <a
                             href="#contato"
                             onClick={e => handleNavClick(e, "#contato")}
                             className="cta-button w-full inline-block rounded-full px-6 py-3 text-white font-semibold transition-all"
-                            style={{ background: 'linear-gradient(135deg, #7e22ce, #a020f0)', boxShadow: '0 0.25rem 0.94rem rgba(126, 34, 206, 0.3)' }}
+                            style={{ background: 'linear-gradient(135deg, #7e22ce, #0a5ad3b0)', boxShadow: '0 0.25rem 0.94rem #0a5ad3b0', padding: "2%", color: "#fff" }}
                         >
                             Iniciar Projeto
                         </a>
@@ -204,6 +204,7 @@ export default function Header() {
                     }
                     .logo-text h1 {
                         font-size: 1.3rem !important;
+                        color: #fff !important;
                     }
                     .logo-text p {
                         display: none;
@@ -213,7 +214,10 @@ export default function Header() {
                         gap: 2.5vw !important;
                     }
                     .header-links {
-                        gap: 2vw !important;
+                        gap: 2dvw !important;
+                        position: relative !important;
+                        right: 5% !important;
+                        color: #fff !important;
                     }
                     .header-link {
                         font-size: 1rem !important;
@@ -222,6 +226,8 @@ export default function Header() {
                     .header-btn {
                         font-size: 1rem !important;
                         padding: 0.6rem 1.1rem !important;
+                        color: #fff !important;
+                        background: #0a5ad3 !important;
                     }
                     .header-menu-toggle {
                         display: none !important;
@@ -247,13 +253,16 @@ export default function Header() {
                         width: 2.8rem !important;
                         height: 2.8rem !important;
                         padding: 0.3rem !important;
+                        background: #0a5ad3 !important;
                     }
                     .logo-text h1 {
                         font-size: 1.6rem !important;
+                        color: #fff !important;
                     }
                     .logo-text p {
                         font-size: 0.875rem !important; /* text-sm in tailwind */
                         display: block !important;
+                        color: #fff !important;
                     }
                     .header-nav {
                         display: flex !important;
@@ -265,10 +274,17 @@ export default function Header() {
                     .header-link {
                         font-size: 1.1rem !important;
                         padding: 0.8rem 0.7rem !important;
+                        color: #fff !important;
+                    }
+                    .header-link:hover {
+                        cursor: pointer;
+                        color: #0a5ad3 !important;
                     }
                     .header-btn {
                         font-size: 1.05rem !important;
                         padding: 0.7rem 1.3rem !important;
+                        background: #0a5ad3 !important;
+                        color: #fff !important;
                     }
                     .header-menu-toggle {
                         display: none !important;
