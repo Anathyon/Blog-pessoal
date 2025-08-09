@@ -77,11 +77,7 @@ export default function Hero() {
               {/* Estatísticas */}
               <div className="hero-stats mb-8 flex w-full flex-wrap justify-center gap-8 lg:justify-start">
                 <div className="hero-stat flex flex-col items-center lg:items-start">
-                  <span className="text-3xl font-bold text-white">50+</span>
-                  <span className="text-zinc-400">Projetos</span>
-                </div>
-                <div className="hero-stat flex flex-col items-center lg:items-start">
-                  <span className="text-3xl font-bold text-white">3+</span>
+                  <span className="text-3xl font-bold text-white">2+</span>
                   <span className="text-zinc-400">Anos Exp.</span>
                 </div>
                 <div className="hero-stat flex flex-col items-center lg:items-start">
@@ -97,7 +93,7 @@ export default function Hero() {
                   className="hero-btn hero-btn-primary"
                 >
                   Vamos Conversar
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="ic-bt-vams-conv" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14" />
                     <path d="m12 5 7 7-7 7" />
                   </svg>
@@ -106,7 +102,7 @@ export default function Hero() {
                   href="/projects"
                   className="hero-btn hero-btn-secondary"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="ic-bt-ver-projs" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm5 10-5 5-5-5" />
                     <path d="M12 7v5h5" />
                   </svg>
@@ -114,25 +110,22 @@ export default function Hero() {
                 </a>
               </div>
               
-              {/* Link para Download de CV */}
               <a
                 href="/Currículo.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero-cv-link mt-6 inline-flex items-center gap-2 text-sm font-medium text-zinc-400 transition-all duration-300 hover:text-white hover:underline"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" className="ic-bt-curric" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm5 10-5 5-5-5" />
                   <path d="M12 7v5h5" />
                 </svg>
-                Download CV
+                Download Currículo
               </a>
             </div>
-            {/* Lado Direito (Imagem do Perfil) */}
             
           </div>
         </div>
-        {/* Background animado e escuro */}
         <div className="hero-bg-container absolute inset-0 -z-0">
           <div className="hero-bg-overlay absolute inset-0"></div>
           <div className="hero-bg-grid absolute inset-0"></div>
@@ -261,11 +254,37 @@ export default function Hero() {
           .hero-stats {
             justify-content: center;
             gap: 2rem;
+            padding-top: 5%;
           }
+          .hero-btn-primary {
+            font-size: 1.5rem;
+          }  
+          .ic-bt-vams-conv {
+            width: 2rem;
+            height: 2rem;
+          }
+          .hero-btn-secondary {
+            font-size: 1.5rem;
+          }  
+          .ic-bt-ver-projs {
+            width: 2rem;
+            height: 2rem;
+          }
+          .hero-cv-link {
+            padding-bottom: 2%;
+            padding-top: 3%;
+            margin-left: 4% !important;
+          }
+          .ic-bt-curric {
+            width: 2.2rem;
+            height: 2.2rem;
+            padding-right: 2%;
+          }    
           .hero-buttons {
             flex-direction: column;
             align-items: center;
             gap: 1rem;
+            padding-top: 9%;
           }
           .hero-btn {
             width: 100%;
@@ -298,7 +317,6 @@ export default function Hero() {
         /* TABLET */
         @media (min-width: 768px) and (max-width: 1023px) {
           .hero-article {
-            padding-top: 4rem;
             padding-bottom: 4rem;
           }
           .hero-text {
@@ -307,21 +325,53 @@ export default function Hero() {
           }
           .hero-grid {
             gap: 3rem;
-          }
+          }  
           .hero-title {
             font-size: 3.5rem;
           }
           .hero-subtitle {
             font-size: 1.25rem;
+            margin-left: 7%;
           }
+          .hero-subtitle-icon {
+            width: 2rem !important;
+            height: 2rem !important;
+          }  
           .hero-desc {
             font-size: 1.125rem;
             max-width: 80%;
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
           }
           .hero-stats {
             justify-content: center;
             gap: 3rem;
+            padding-bottom: 2.5rem;
           }
+          .hero-btn-primary {
+            font-size: 1.5rem;
+          }  
+          .ic-bt-vams-conv {
+            width: 2rem;
+            height: 2rem;
+          }
+          .hero-btn-secondary {
+            font-size: 1.5rem;
+          }  
+          .ic-bt-ver-projs {
+            width: 2rem;
+            height: 2rem;
+          }
+          .hero-cv-link {
+            padding-bottom: 2%;
+            padding-top: 3%;
+            margin-left: 4% !important;
+          }
+          .ic-bt-curric {
+            width: 2.2rem;
+            height: 2.2rem;
+            padding-right: 2%;
+          }  
           .hero-buttons {
             gap: 1rem;
           }
@@ -376,14 +426,39 @@ export default function Hero() {
             padding-right: 1%;          
           }  
           .hero-desc {
-            font-size: 1.125rem;
-            max-width: 30%;
+            font-size: 1.5rem;
+            max-width: 90%;
             margin-left: 18% !important;
             padding-bottom: 2%;
           }
           .hero-stats {
-            justify-content: flex-start;
+            font-size: 1.2rem;
             gap: 3rem;
+            padding-bottom: 2%;
+          }
+          .hero-btn-primary {
+            font-size: 1.5rem;
+          }  
+          .ic-bt-vams-conv {
+            width: 2rem;
+            height: 2rem;
+          }
+          .hero-btn-secondary {
+            font-size: 1.5rem;
+          }  
+          .ic-bt-ver-projs {
+            width: 2rem;
+            height: 2rem;
+          }
+          .hero-cv-link {
+            padding-bottom: 2%;
+            padding-top: 3%;
+            margin-left: 45% !important;
+          }
+          .ic-bt-curric {
+            width: 2.2rem;
+            height: 2.2rem;
+            padding-right: 2%;
           }
           .hero-buttons {
             gap: 1rem;
