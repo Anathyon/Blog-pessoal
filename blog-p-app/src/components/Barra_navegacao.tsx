@@ -131,168 +131,140 @@ export default function Header() {
             )}
 
             <style>{`
-                /* MOBILE */
-                @media (max-width: 480px) {
-                    .header-main {
-                        padding: 0.7rem 0 !important;
-                    }
-                    .header-container {
-                        padding: 0 2vw !important;
-                        max-width: 100vw !important;
-                    }
-                    .header-logo {
-                        font-size: 1.1rem !important;
-                        gap: 0.7rem !important;
-                    }
-                    .header-logo-img {
-                        width: 2.1rem !important;
-                        height: 2.1rem !important;
-                        padding: 0.15rem !important;
-                        background: "linear-gradient(135deg, #7e22ce, #0a5ad3b0)"
-                    }
+                .header-main {
+                    padding: clamp(0.7rem, 2vw, 1.1rem) 0;
+                }
+                
+                .header-container {
+                    padding: 0 clamp(2vw, 4vw, 5vw);
+                    max-width: clamp(100vw, 90vw, 75rem);
+                }
+                
+                .header-logo {
+                    font-size: clamp(1.1rem, 3vw, 1.6rem);
+                    gap: clamp(0.7rem, 2vw, 1.2rem);
+                }
+                
+                .header-logo-img {
+                    width: clamp(2.1rem, 5vw, 2.8rem);
+                    height: clamp(2.1rem, 5vw, 2.8rem);
+                    padding: clamp(0.15rem, 0.5vw, 0.3rem);
+                    font-size: clamp(1rem, 2.5vw, 1.3rem);
+                }
+                
+                .logo-text h1 {
+                    font-size: clamp(1.1rem, 3vw, 1.6rem);
+                    color: #fff;
+                }
+                
+                .logo-text p {
+                    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+                    color: #9ca3af;
+                }
+                
+                .header-menu-toggle {
+                    width: clamp(2.2rem, 5vw, 2.5rem);
+                    height: clamp(2.2rem, 5vw, 2.5rem);
+                }
+                
+                .header-link {
+                    font-size: clamp(0.9rem, 2vw, 1.1rem);
+                    padding: clamp(0.5rem, 1.5vw, 0.8rem) clamp(0.3rem, 1vw, 0.7rem);
+                    color: #fff;
+                    transition: color 0.3s ease;
+                }
+                
+                .header-link:hover {
+                    color: #0a5ad3;
+                }
+                
+                .header-btn {
+                    font-size: clamp(0.9rem, 2vw, 1.05rem);
+                    padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1rem, 2.5vw, 1.3rem);
+                    color: #fff;
+                }
+                
+                .header-links {
+                    gap: clamp(1rem, 3vw, 2rem);
+                }
+                
+                .header-nav {
+                    gap: clamp(1.5rem, 4vw, 3rem);
+                }
+                
+                .sidebar-header {
+                    padding: clamp(1rem, 3vw, 2rem) clamp(1.2rem, 4vw, 1.5rem);
+                }
+                
+                .sidebar-logo {
+                    font-size: clamp(1.1rem, 3vw, 1.3rem);
+                    gap: clamp(0.5rem, 1.5vw, 0.8rem);
+                }
+                
+                .sidebar-links {
+                    padding: clamp(1.2rem, 4vw, 1.5rem);
+                    gap: clamp(0.5rem, 1.5vw, 0.8rem);
+                }
+                
+                .sidebar-link {
+                    font-size: clamp(1rem, 2.5vw, 1.1rem);
+                    padding: clamp(0.7rem, 2vw, 0.8rem) clamp(0.5rem, 1.5vw, 0.7rem);
+                }
+                
+                .sidebar-cta {
+                    margin: clamp(0.8rem, 2vw, 1rem);
+                    padding: clamp(1rem, 3vw, 1.5rem);
+                }
+                
+                .sidebar-cta h3 {
+                    font-size: clamp(1rem, 2.5vw, 1.125rem);
+                }
+                
+                .sidebar-cta p {
+                    font-size: clamp(0.8rem, 2vw, 0.875rem);
+                }
+                
+                .cta-button {
+                    font-size: clamp(0.9rem, 2vw, 1rem);
+                    padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem);
+                }
+                
+                /* Mobile specific adjustments */
+                @media (max-width: 640px) {
                     .logo-text {
                         display: none;
                     }
+                    
                     .header-nav {
-                        display: none !important;
-                    }
-                    .header-menu-toggle {
-                        margin-left: 0 !important;
-                        width: 2.2rem !important;
-                        height: 2.2rem !important;
-                    }
-                    .sidebar-mobile {
-                        display: block !important;
-                        width: 100vw !important;
-                        max-width: 100vw !important;
-                        border-radius: 0 !important;
-                        padding: 0 !important;
-                        z-index: 2000 !important;
-                    }
-                    .sidebar-header {
-                        padding: 1rem 1.2rem !important;
-                    }
-                    .sidebar-logo {
-                        font-size: 1.1rem !important;
-                        gap: 0.5rem !important;
-                    }
-                    .sidebar-links {
-                        padding: 1.2rem 1.2rem !important;
-                        gap: 0.5rem !important;
-                    }
-                    .sidebar-link {
-                        font-size: 1rem !important;
-                        padding: 0.7rem 0.5rem !important;
-                    }
-                }
-                /* TABLET */
-                @media (min-width: 481px) and (max-width: 1024px) {
-                    .header-main {
-                        padding: 0.9rem 0 !important;
-                    }
-                    .header-container {
-                        padding: 0 3vw !important;
-                        max-width: 98vw !important;
-                    }
-                    .header-logo {
-                        font-size: 1.3rem !important;
-                        gap: 1rem !important;
-                    }
-                    .header-logo-img {
-                        width: 2.3rem !important;
-                        height: 2.3rem !important;
-                        padding: 0.2rem !important;
-                        background: "linear-gradient(135deg, #7e22ce, #0a5ad3b0)"
-                    }
-                    .logo-text h1 {
-                        font-size: 1.3rem !important;
-                        color: #fff !important;
-                    }
-                    .logo-text p {
                         display: none;
                     }
-                    .header-nav {
-                        display: flex !important;
-                        gap: 2.5vw !important;
-                    }
-                    .header-links {
-                        gap: 2dvw !important;
-                        position: relative !important;
-                        right: 5% !important;
-                        color: #fff !important;
-                    }
-                    .header-link {
-                        font-size: 1rem !important;
-                        padding: 0.7rem 0.5rem !important;
-                    }
-                    .header-btn {
-                        font-size: 1rem !important;
-                        padding: 0.6rem 1.1rem !important;
-                        color: #fff !important;
-                        background: "linear-gradient(135deg, #7e22ce, #0a5ad3b0)" !important;
-                    }
-                    .header-menu-toggle {
-                        display: none !important;
-                    }
+                    
                     .sidebar-mobile {
-                        display: none !important;
+                        width: 100vw;
+                        max-width: 100vw;
+                        border-radius: 0;
                     }
                 }
-                /* DESKTOP */
-                @media (min-width: 1025px) {
-                    .header-main {
-                        padding: 1.1rem 0 !important;
-                    }
-                    .header-container {
-                        padding: 0 5vw !important;
-                        max-width: 75rem !important;
-                    }
-                    .header-logo {
-                        font-size: 1.6rem !important;
-                        gap: 1.2rem !important;
-                    }
-                    .header-logo-img {
-                        width: 2.8rem !important;
-                        height: 2.8rem !important;
-                        padding: 0.3rem !important;
-                        background: "linear-gradient(135deg, #7e22ce, #0a5ad3b0)" !important;
-                    }
-                    .logo-text h1 {
-                        font-size: 1.6rem !important;
-                        color: #fff !important;
-                    }
-                    .logo-text p {
-                        font-size: 0.875rem !important; /* text-sm in tailwind */
-                        display: block !important;
-                        color: #fff !important;
-                    }
-                    .header-nav {
-                        display: flex !important;
-                        gap: 3vw !important;
-                    }
-                    .header-links {
-                        gap: 2vw !important;
-                    }
-                    .header-link {
-                        font-size: 1.1rem !important;
-                        padding: 0.8rem 0.7rem !important;
-                        color: #fff !important;
-                    }
-                    .header-link:hover {
-                        cursor: pointer;
-                        color: #0a5ad3 !important;
-                    }
-                    .header-btn {
-                        font-size: 1.05rem !important;
-                        padding: 0.7rem 1.3rem !important;
-                        background: "linear-gradient(135deg, #7e22ce, #0a5ad3b0)" !important;
-                        color: #fff !important;
-                    }
+                
+                /* Tablet and desktop */
+                @media (min-width: 641px) {
                     .header-menu-toggle {
-                        display: none !important;
+                        display: none;
                     }
+                    
                     .sidebar-mobile {
-                        display: none !important;
+                        display: none;
+                    }
+                    
+                    .header-nav {
+                        display: flex;
+                    }
+                }
+                
+                /* Large screens */
+                @media (min-width: 1024px) {
+                    .logo-text p {
+                        display: block;
                     }
                 }
             `}</style>

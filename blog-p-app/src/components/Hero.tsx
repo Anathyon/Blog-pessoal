@@ -1,8 +1,5 @@
-import { Fragment } from 'react';
-
 export default function Hero() {
   return (
-    <Fragment>
       <article id="home" className="hero-article relative flex min-h-screen items-center justify-center overflow-hidden py-12 md:py-24">
         <div className="hero-container relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="hero-grid grid-cols-1 items-center gap-12 lg:grid lg:grid-cols-2">
@@ -24,7 +21,7 @@ export default function Hero() {
                   <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm5 10-5 5-5-5" />
                   <path d="M12 7v5h5" />
                 </svg>
-                <p className="inline-block"> Disponível para novos projetos </p>
+                <p className="inline-block whitespace-nowrap"> Disponível para novos projetos </p>
               </div>
 
           <section className='hero-info w-full flex flex-row'>
@@ -130,12 +127,13 @@ export default function Hero() {
           <div className="hero-bg-overlay absolute inset-0"></div>
           <div className="hero-bg-grid absolute inset-0"></div>
         </div>
-      </article>
+      
 
       <style>{`
         .hero-article {
           background-color: #0d0d1a;
           color: #f0f0f0;
+          padding-top: 120px;
         }
 
         .hero-title {
@@ -193,6 +191,8 @@ export default function Hero() {
         .hero-image-container {
           width: 24rem;
           height: 24rem;
+          margin-left: -2rem;
+          margin-right: 2rem;
         }
 
         .hero-image-blur {
@@ -220,11 +220,92 @@ export default function Hero() {
           opacity: 0.1;
         }
         
-        /* MOBILE */
-        @media (max-width: 767px) {
+        /* Extra Small Devices (<576px) */
+        @media (max-width: 575.98px) {
           .hero-article {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
+            padding: 2rem 0;
+          }
+          .hero-text {
+            align-items: center;
+            text-align: center;
+          }
+          .hero-grid {
+            gap: 1.5rem;
+          }
+          .hero-title {
+            font-size: 2.5rem;
+            line-height: 1.1;
+            margin: 0 auto 1.5rem;
+          }
+          .hero-subtitle {
+            font-size: 1.1rem;
+            margin: 0 auto 1rem;
+            justify-content: center;
+          }
+          .hero-subtitle-icon {
+            width: 1.2rem;
+            height: 1.2rem;
+          }
+          .hero-desc {
+            font-size: 1rem;
+            max-width: 95%;
+            margin: 0 auto 1.5rem;
+          }
+          .hero-stats {
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+          }
+          .hero-buttons {
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+          }
+          .hero-btn {
+            width: 100%;
+            max-width: 280px;
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+          }
+          .hero-image-container {
+            width: 14rem;
+            height: 14rem;
+            margin: 0 auto 1.5rem;
+          }
+          .hero-badge {
+            margin: 4.85rem auto 1.5rem;
+            width: 95%;
+            max-width: 300px;
+            font-size: 0.9rem;
+            padding: 0.6rem 1.2rem;
+          }
+          .hero-badge-icon {
+            width: 1.2rem;
+            height: 1.2rem;
+          }
+          .hero-info {
+            flex-direction: column;
+            align-items: center;
+          }
+          .hero-cv-link {
+            margin: 1rem auto 0;
+            font-size: 0.9rem;
+          }
+          .ic-bt-vams-conv, .ic-bt-ver-projs {
+            width: 1.2rem;
+            height: 1.2rem;
+          }
+          .ic-bt-curric {
+            width: 1.2rem;
+            height: 1.2rem;
+          }
+        }
+
+        /* Small Devices (≥576px) */
+        @media (min-width: 576px) and (max-width: 767.98px) {
+          .hero-article {
+            padding: 2.5rem 0;
           }
           .hero-text {
             align-items: center;
@@ -234,90 +315,163 @@ export default function Hero() {
             gap: 2rem;
           }
           .hero-title {
-            font-size: 4rem;
-            line-height: 1.2;
-            padding-bottom: 2rem;
+            font-size: 3rem;
+            line-height: 1.1;
+            margin: 0 auto 1.5rem;
           }
           .hero-subtitle {
-            font-size: 1.5rem;
-            margin-left: 10%;
-            padding-bottom: 4%;
+            font-size: 1.25rem;
+            margin: 0 auto 1.25rem;
+            justify-content: center;
           }
           .hero-subtitle-icon {
-            height: 1.4rem;
             width: 1.4rem;
-          }  
+            height: 1.4rem;
+          }
           .hero-desc {
-            font-size: 1rem;
+            font-size: 1.1rem;
             max-width: 90%;
+            margin: 0 auto 2rem;
           }
           .hero-stats {
             justify-content: center;
             gap: 2rem;
-            padding-top: 5%;
+            margin: 2rem 0;
           }
-          .hero-btn-primary {
-            font-size: 1.5rem;
-          }  
-          .ic-bt-vams-conv {
-            width: 2rem;
-            height: 2rem;
-          }
-          .hero-btn-secondary {
-            font-size: 1.5rem;
-          }  
-          .ic-bt-ver-projs {
-            width: 2rem;
-            height: 2rem;
-          }
-          .hero-cv-link {
-            padding-bottom: 2%;
-            padding-top: 3%;
-            margin-left: 4% !important;
-          }
-          .ic-bt-curric {
-            width: 2.2rem;
-            height: 2.2rem;
-            padding-right: 2%;
-          }    
           .hero-buttons {
             flex-direction: column;
             align-items: center;
             gap: 1rem;
-            padding-top: 9%;
+            margin: 2rem 0;
           }
           .hero-btn {
             width: 100%;
-            max-width: 300px;
+            max-width: 320px;
+            font-size: 1.1rem;
+          }
+          .hero-image-container {
+            width: 16rem;
+            height: 16rem;
+            margin: 0 auto 2rem;
+          }
+          .hero-badge {
+            margin: 7.27rem auto;
+            width: 80%;
+            max-width: 350px;
+            font-size: 1rem;
+          }
+          .hero-badge-icon {
+            width: 1.4rem;
+            height: 1.4rem;
+          }
+          .hero-info {
+            flex-direction: column;
+            align-items: center;
+          }
+          .hero-cv-link {
+            margin: 1.5rem auto 0;
+          }
+          .ic-bt-vams-conv, .ic-bt-ver-projs {
+            width: 1.4rem;
+            height: 1.4rem;
+          }
+          .ic-bt-curric {
+            width: 1.4rem;
+            height: 1.4rem;
+          }
+        }
+
+        /* Medium Devices (≥768px) */
+        @media (min-width: 768px) {
+          .hero-article {
+            padding: 4rem 0;
+          }
+          .hero-text {
+            align-items: center;
+            text-align: center;
+          }
+          .hero-grid {
+            gap: 1rem;
+          }
+          .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin: 0 auto 0.5rem;
+          }
+          .hero-subtitle {
+            font-size: 1.3rem;
+            margin: 0 auto 0.8rem;
+            justify-content: center;
+          }
+          .hero-subtitle-icon {
+            width: 1.6rem;
+            height: 1.6rem;
+          }
+          .hero-desc {
+            font-size: 1.2rem;
+            max-width: 80%;
+            margin: 0 auto 1rem;
+          }
+          .hero-stats {
+            justify-content: center;
+            gap: 2.5rem;
+            margin: 1rem 0;
+          }
+          .hero-buttons {
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+          }
+          .hero-btn {
+            font-size: 1.2rem;
+            padding: 0.8rem 2rem;
           }
           .hero-image-container {
             width: 18rem;
             height: 18rem;
+            margin: 0 auto;
+            margin-left: -2rem;
+            margin-right: 2rem;
           }
           .hero-badge {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            width: 90% !important;
-            justify-content: center !important;
-            margin-bottom: 2em !important;
-            margin-top: 2em !important;
+            margin: 0.5rem auto;
+            width: auto;
+            max-width: 400px;
+            font-size: 1.1rem;
           }
           .hero-badge-icon {
-            width: 2rem !important;
-            height: 2rem !important;
+            width: 1.6rem;
+            height: 1.6rem;
           }
-          .hero-info{
-            flex-direction: column;
+          .hero-info {
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: flex-start;
           }
-          .hero-image-container{
-            margin-bottom: 2rem;
-          }    
+          .hero-info > div:first-child {
+            flex: 1;
+          }
+          .hero-visual {
+            flex-shrink: 0;
+          }
+          .hero-cv-link {
+            margin: 0.8rem auto 0;
+          }
+          .ic-bt-vams-conv, .ic-bt-ver-projs {
+            width: 1.6rem;
+            height: 1.6rem;
+          }
+          .ic-bt-curric {
+            width: 1.6rem;
+            height: 1.6rem;
+          }
         }
 
-        /* TABLET */
-        @media (min-width: 768px) and (max-width: 1023px) {
+        /* Large Desktop (≥1024px) */
+        @media (min-width: 1024px) {
           .hero-article {
-            padding-bottom: 4rem;
+            padding: 5rem 0;
           }
           .hero-text {
             align-items: center;
@@ -325,169 +479,208 @@ export default function Hero() {
           }
           .hero-grid {
             gap: 3rem;
-          }  
+            align-items: center;
+          }
           .hero-title {
-            font-size: 3.5rem;
+            font-size: 4rem;
+            margin: 0 auto 1rem auto;
           }
           .hero-subtitle {
-            font-size: 1.25rem;
-            margin-left: 7%;
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem auto;
+            justify-content: center;
           }
           .hero-subtitle-icon {
-            width: 2rem !important;
-            height: 2rem !important;
-          }  
+            width: 1.8rem;
+            height: 1.8rem;
+          }
           .hero-desc {
-            font-size: 1.125rem;
+            font-size: 1.3rem;
             max-width: 80%;
-            padding-top: 2.5rem;
-            padding-bottom: 2.5rem;
+            margin: 2.2rem auto 2rem auto;
           }
           .hero-stats {
             justify-content: center;
             gap: 3rem;
-            padding-bottom: 2.5rem;
+            margin: 2rem 0;
           }
-          .hero-btn-primary {
-            font-size: 1.5rem;
-          }  
-          .ic-bt-vams-conv {
-            width: 2rem;
-            height: 2rem;
-          }
-          .hero-btn-secondary {
-            font-size: 1.5rem;
-          }  
-          .ic-bt-ver-projs {
-            width: 2rem;
-            height: 2rem;
-          }
-          .hero-cv-link {
-            padding-bottom: 2%;
-            padding-top: 3%;
-            margin-left: 4% !important;
-          }
-          .ic-bt-curric {
-            width: 2.2rem;
-            height: 2.2rem;
-            padding-right: 2%;
-          }  
           .hero-buttons {
-            gap: 1rem;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+          }
+          .hero-btn {
+            font-size: 1.3rem;
+            padding: 1rem 2.5rem;
           }
           .hero-image-container {
             width: 20rem;
             height: 20rem;
+            margin: 0 auto;
+            position: relative;
+            right: 9.79rem;
           }
           .hero-badge {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            width: 60% !important;
-            justify-content: center !important;
-            margin-bottom: 1.7em !important;
-            margin-top: 1em !important;
+            margin: 2.58rem auto 2rem auto;
+            max-width: 350px;
+            font-size: 1.2rem;
           }
           .hero-badge-icon {
-            width: 2rem !important;
-            height: 2rem !important;
+            width: 1.8rem;
+            height: 1.8rem;
           }
-           .hero-info{
-            justify-content: space-around;
-            margin-left: 3% !important;
-            margin-top: 3% !important;
-          }  
+          .hero-info {
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+          }
+          .hero-visual {
+            justify-content: center;
+          }
+          .hero-cv-link {
+            margin: 1rem auto 0 auto;
+          }
+          .ic-bt-vams-conv, .ic-bt-ver-projs {
+            width: 1.8rem;
+            height: 1.8rem;
+          }
+          .ic-bt-curric {
+            width: 1.8rem;
+            height: 1.8rem;
+          }
         }
-        
 
-        /* DESKTOP */
-        @media (min-width: 1024px) {
+        /* Extra Large Desktop (≥1280px) */
+        @media (min-width: 1280px) {
           .hero-article {
-            padding-top: 6rem;
-            padding-bottom: 6rem;
-          }
-          .hero-text {
-            align-items: flex-start;
-            text-align: left;
+            padding: 6rem 0;
           }
           .hero-grid {
             gap: 4rem;
           }
           .hero-title {
-            font-size: 5rem;
-            margin-left: 10% !important;
+            font-size: 4.5rem;
+            margin: 0 auto 1.5rem auto;
           }
           .hero-subtitle {
-            font-size: 1.8rem;
-            padding-left: 10%;
+            font-size: 1.6rem;
+            margin: 0 auto 2rem auto;
           }
-          .hero-subtitle-icon{
-            width: 2.5rem !important;
-            height: 2.5rem !important;  
-            padding-right: 1%;          
-          }  
-          .hero-desc {
-            font-size: 1.5rem;
-            max-width: 90%;
-            margin-left: 18% !important;
-            padding-bottom: 2%;
-          }
-          .hero-stats {
-            font-size: 1.2rem;
-            gap: 3rem;
-            padding-bottom: 2%;
-          }
-          .hero-btn-primary {
-            font-size: 1.5rem;
-          }  
-          .ic-bt-vams-conv {
+          .hero-subtitle-icon {
             width: 2rem;
             height: 2rem;
           }
-          .hero-btn-secondary {
-            font-size: 1.5rem;
-          }  
-          .ic-bt-ver-projs {
+          .hero-desc {
+            font-size: 1.4rem;
+            margin: 2.75rem auto 2.5rem auto;
+          }
+          .hero-stats {
+            gap: 4rem;
+            margin: 2.5rem 0;
+          }
+          .hero-buttons {
+            gap: 2rem;
+            margin: 2.5rem 0;
+          }
+          .hero-btn {
+            font-size: 1.4rem;
+            padding: 1.2rem 3rem;
+          }
+          .hero-image-container {
+            width: 22rem;
+            height: 22rem;
+            position: relative;
+            right: 14.69rem;
+          }
+          .hero-badge {
+            margin: 2.82rem auto 2.5rem auto;
+            font-size: 1.3rem;
+          }
+          .hero-badge-icon {
             width: 2rem;
             height: 2rem;
           }
           .hero-cv-link {
-            padding-bottom: 2%;
-            padding-top: 3%;
-            margin-left: 45% !important;
+            margin: 1.5rem auto 0 auto;
+          }
+          .ic-bt-vams-conv, .ic-bt-ver-projs {
+            width: 2rem;
+            height: 2rem;
           }
           .ic-bt-curric {
+            width: 2rem;
+            height: 2rem;
+          }
+        }
+
+        /* Ultra Wide Screens (≥1536px) */
+        @media (min-width: 1536px) {
+          .hero-article {
+            padding: 8rem 0;
+          }
+          .hero-grid {
+            gap: 5rem;
+          }
+          .hero-title {
+            font-size: 5rem;
+            margin: 0 auto 2rem auto;
+          }
+          .hero-subtitle {
+            font-size: 1.8rem;
+            margin: 0 auto 2.5rem auto;
+          }
+          .hero-subtitle-icon {
             width: 2.2rem;
             height: 2.2rem;
-            padding-right: 2%;
+          }
+          .hero-desc {
+            font-size: 1.5rem;
+            margin: 3.3rem auto 3rem auto;
+          }
+          .hero-stats {
+            gap: 5rem;
+            margin: 3rem 0;
           }
           .hero-buttons {
-            gap: 1rem;
+            gap: 2.5rem;
+            margin: 3rem 0;
+          }
+          .hero-btn {
+            font-size: 1.5rem;
+            padding: 1.4rem 3.5rem;
           }
           .hero-image-container {
             width: 24rem;
             height: 24rem;
+            position: relative;
+            right: 19.58rem;
           }
           .hero-badge {
-            margin-left: 18% !important;
-            margin-top: 5% !important;
-            width: auto !important;
-            justify-content: flex-start !important;
-            margin-bottom: 1em !important;
-            font-size: 1.4rem !important;
-          } 
+            margin: 3.00rem auto 3rem auto;
+            font-size: 1.4rem;
+          }
           .hero-badge-icon {
-            width: 2rem !important;
-            height: 2rem !important;
+            width: 2.2rem;
+            height: 2.2rem;
           }
-          .hero-visual {   
-            margin-left: 10% !important;
+          .hero-cv-link {
+            margin: 2rem auto 0 auto;
           }
-          .hero-info {
-            margin-left: 15% !important;
-            padding-bottom: 1% !important;
-          }    
+          .ic-bt-vams-conv, .ic-bt-ver-projs {
+            width: 2.2rem;
+            height: 2.2rem;
+          }
+          .ic-bt-curric {
+            width: 2.2rem;
+            height: 2.2rem;
+          }
         }
+
+
       `}</style>
-    </Fragment>
+    </article>
   );
 }
+
+ 
