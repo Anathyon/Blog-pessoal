@@ -431,7 +431,7 @@ export default function Hero() {
             height: 18rem;
             margin: 0 auto;
             margin-left: -2rem;
-            margin-right: 2rem;
+            margin-right: 3rem;
           }
           .hero-badge {
             margin: 0.5rem auto;
