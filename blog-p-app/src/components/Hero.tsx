@@ -53,7 +53,7 @@ export default function Hero() {
                 {/* Imagem do perfil */}
                 <div className="hero-image-wrapper relative z-10">
                   <img
-                    src="/perfil.jpg"
+                    src="profile_pic/perfil.jpg"
                     alt="Foto de perfil do desenvolvedor"
                     className="h-full w-full rounded-full object-cover"
                   />
@@ -108,7 +108,7 @@ export default function Hero() {
               </div>
               
               <a
-                href="/Currículo.pdf"
+                href="pdf-cv/Currículo.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero-cv-link mt-6 inline-flex items-center gap-2 text-sm font-medium text-zinc-400 transition-all duration-300 hover:text-white hover:underline"
