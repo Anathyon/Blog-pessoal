@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 const skillCategories = [
   {
     title: "Linguagens",
-    icon: "icons/code.svg",
+    icon: "icons/code.png",
     skills: [
       { name: "HTML5", icon: "icons/html5.svg" },
       { name: "CSS3", icon: "icons/css3.svg" },
@@ -13,7 +13,7 @@ const skillCategories = [
   },
   {
     title: "Frameworks & Bibliotecas",
-    icon: "icons/tools.svg",
+    icon: "icons/framework.png",
     skills: [
       { name: "React", icon: "icons/react.svg" },
       { name: "Next.js", icon: "icons/nextjs.svg" },
@@ -24,7 +24,7 @@ const skillCategories = [
   },
   {
     title: "Ferramentas & Plataformas",
-    icon: "icons/platform.svg",
+    icon: "icons/programming.png",
     skills: [
       { name: "Node.js", icon: "icons/nodejs.svg" },
       { name: "Git", icon: "icons/git.svg" },
@@ -89,6 +89,7 @@ export default function Skills() {
                   borderRadius: "9999px",
                   border: "1px solid rgba(34, 197, 94, 0.2)",
                   boxShadow: "0 0.25em 0.9em #0a5ad3b0",
+                  fontSize:"1.1em"
                 }}
               >
               <svg xmlns="http://www.w3.org/2000/svg" className="hero-badge-icon text-emerald-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -98,10 +99,10 @@ export default function Skills() {
               </svg>
               Stack Tecnológico
             </div>
-            <h2 className="text-4xl font-extrabold leading-tight mt-6 mb-4 md:text-5xl">
+            <h2 className="text-4xl font-extrabold leading-tight mt-6 mb-4 md:text-5xl" style={{color:"#fff", fontSize:"1.7em", paddingTop:"3dvh"}}>
               Tecnologias que <span className="skills-highlight">Domino</span>
             </h2>
-            <p className="text-zinc-400 text-lg md:text-xl">
+            <p className="text-zinc-400 text-lg md:text-xl" style={{color:"#fff", fontSize:"1.1em", paddingBottom:"3dvh", paddingTop:"2dvh"}}>
               Sempre atualizado com as mais modernas tecnologias do mercado para entregar
               <strong className="text-white"> soluções de alta qualidade</strong>.
             </p>
@@ -217,10 +218,10 @@ export default function Skills() {
         }
 
         .category-pill.active {
-          background-color: #8b5cf6;
+          background-color: #6631dba6;
           color: white;
           font-weight: 700;
-          box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.3);
+          box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.226);
         }
 
         .pill-icon {
@@ -345,7 +346,7 @@ export default function Skills() {
         }
 
         .indicator.active {
-          background-color: #8b5cf6;
+          background-color: #6631dba6;
           transform: scale(1.2);
         }
 
