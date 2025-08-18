@@ -628,6 +628,7 @@ export default function Skills() {
           .skills-badge {
             font-size: 14px;
             padding: 0.75em 1.4em !important;
+            max-width: 40%;
           }
         }
 

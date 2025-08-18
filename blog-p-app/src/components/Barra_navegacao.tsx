@@ -247,7 +247,7 @@ export default function Header() {
                     .header-btn{
                         font-size: 0.5rem;
                         text-align: center;
-                    }    
+                    }     
                 }
                 
                 /* Tablet and desktop */
@@ -263,6 +263,10 @@ export default function Header() {
                     .header-nav {
                         display: flex;
                     }
+                        
+                    .header-links{
+                        padding-left: 1.2rem;
+                    }       
                 }
                 
                 /* Large screens */
