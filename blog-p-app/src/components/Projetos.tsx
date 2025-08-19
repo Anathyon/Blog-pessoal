@@ -39,11 +39,11 @@ const HeaderContainer = styled.div`
 `;
 
 const Tag = styled.span`
-  background: linear-gradient(90deg, #53389e, #6f42c1);
+  background: linear-gradient(135deg, #7e22ce, #0a5ad3b0);
   color: #fff;
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
-  font-size: 0.875rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 `;
 
@@ -207,7 +207,7 @@ const StyledButton = styled.button`
 `;
 
 const DemoButton = styled(StyledButton)`
-  background: linear-gradient(90deg, #6f42c1, #53389e);
+  background: linear-gradient(135deg, #7e22ce, #0a5ad3b0);
   color: #fff;
 `;
 
@@ -215,7 +215,6 @@ const CodeButton = styled(StyledButton)`
   background: transparent;
   color: #6f42c1;
   border: 2px solid #6f42c1;
-  
   &:hover {
     background-color: #6f42c1;
     color: #fff;
@@ -300,7 +299,7 @@ export default function Projetos() {
       <HeaderContainer>
         <Tag>Projetos em Destaque</Tag>
         <MainTitle>
-          Transformando <span style={{ color: '#6f42c1' }}>Ideias</span> em Realidade
+          Transformando <span className='skills-highlight'>Ideias</span> em Realidade
         </MainTitle>
         <Subtitle>
           Cada projeto é uma oportunidade de criar soluções inovadoras que geram resultados reais para nossos clientes.
@@ -443,7 +442,7 @@ const ModalDescription = styled.p`
 
 const ModalLink = styled.a`
   display: inline-block;
-  background: linear-gradient(90deg, #6f42c1, #53389e);
+  background: linear-gradient(135deg, #7e22ce, #0a5ad3b0);
   color: #fff;
   padding: 0.75rem 2rem;
   border-radius: 8px;

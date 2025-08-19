@@ -46,18 +46,28 @@ const MainContent = styled.div`
   border: 1px solid rgba(111, 66, 193, 0.2);
   border-radius: 12px;
   padding: 2.5rem;
-  text-align: left;
-  
+
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
     padding: 1.5rem;
+    
+    // Garantir que os cards internos e o formulário também sejam centralizados
+    text-align: center;
   }
+  @media (max-width: 360px) {
+    padding-right: 19.8rem;
+  } 
 `;
 
 const ContactInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  
+  @media (max-width: 1024px) {
+    align-items: center;
+  }
 `;
 
 const InfoCard = styled.div`
@@ -66,12 +76,21 @@ const InfoCard = styled.div`
   border: 1px solid rgba(111, 66, 193, 0.2);
   border-radius: 12px;
   padding: 1.5rem;
+  
+  @media (max-width: 1024px) {
+    width: 100%; // Ocupa a largura total para centralizar melhor
+    max-width: 400px;
+  }
 `;
 
 const InfoTitle = styled.h4`
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
+  
+  @media (max-width: 1024px) {
+    text-align: center;
+  }
 `;
 
 const ContactItem = styled.div`
@@ -81,6 +100,11 @@ const ContactItem = styled.div`
   
   &:last-child {
     margin-bottom: 0;
+  }
+  
+  @media (max-width: 1024px) {
+    justify-content: center;
+    text-align: left;
   }
 `;
 
@@ -144,6 +168,11 @@ const SocialButton = styled.a`
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
+  
+  @media (max-width: 1024px) {
+    align-items: center;
+    text-align: center; // Centraliza os títulos do formulário
+  }
 `;
 
 const FormTitle = styled.h4`
@@ -160,12 +189,17 @@ const FormRow = styled.div`
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    width: 100%;
   }
 `;
 
 const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const FormLabel = styled.label`
@@ -181,6 +215,7 @@ const FormInput = styled.input`
   padding: 0.75rem;
   border-radius: 8px;
   font-size: 1rem;
+  width: 100%;
   
   &:focus {
     outline: none;
@@ -198,6 +233,7 @@ const FormTextarea = styled.textarea`
   font-size: 1rem;
   min-height: 150px;
   resize: vertical;
+  width: 100%;
   
   &:focus {
     outline: none;
@@ -258,7 +294,7 @@ export default function Contato() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
-    // Aqui você pode adicionar a lógica para enviar o formulário (e.g., para uma API, e-mail, etc.)
+    // Lógica para enviar o formulário
   };
 
   return (

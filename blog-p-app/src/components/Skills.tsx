@@ -231,7 +231,7 @@ export default function Skills() {
 
         .skills-carousel {
           position: relative;
-          background-color: #18181b;
+          background-color: rgba(43, 28, 70, 0.5);
           border: 1px solid #3f3f46;
           border-radius: 24px;
           padding: 40px;
@@ -355,7 +355,7 @@ export default function Skills() {
         }
 
         .learning-section {
-          background-color: #18181b;
+          background-color: rgba(30, 20, 48, 0.5);
           border: 1px solid #3f3f46;
           border-radius: 16px;
           padding: 32px;
