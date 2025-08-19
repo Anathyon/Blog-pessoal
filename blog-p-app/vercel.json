@@ -3,12 +3,9 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {}
+      "use": "@vercel/static-build"
     }
   ],
-  "scripts": {
-    "build": "tsc -b && vite build"
-  },
+  "buildCommand": "npm run build",
   "outputDirectory": "dist"
 }
