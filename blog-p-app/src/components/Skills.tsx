@@ -75,7 +75,7 @@ export default function Skills() {
   };
 
   return (
-    <>
+    <section className="pb-[5%]">
       <section id="habilidades" className="py-16 px-6 bg-[#0d0d1a] text-white">
         <div className="max-w-6xl mx-auto text-center">
           {/* Header */}
@@ -714,6 +714,6 @@ export default function Skills() {
           }
         }
       `}</style>
-    </>
+    </section>
   );
 }

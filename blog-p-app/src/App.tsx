@@ -3,6 +3,7 @@ import Skills from "./components/Skills"
 import Projetos from "./components/Projetos"
 import Contato from "./components/Contato"
 import Hero from "./components/Hero"
+import Footer from "./components/Footer"
 
 export default function App() {
   return (
@@ -12,7 +13,7 @@ export default function App() {
       <Skills/>
       <Projetos/>
       <Contato/>
-      
+      <Footer/>
     </>
   )
 }
