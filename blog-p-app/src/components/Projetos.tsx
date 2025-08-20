@@ -214,10 +214,11 @@ const DemoButton = styled(StyledButton)`
 const CodeButton = styled(StyledButton)`
   background: transparent;
   color: #6f42c1;
-  border: 2px solid #6f42c1;
+  border: 2px solid #7e22ce;
   &:hover {
-    background-color: #6f42c1;
+    background-color: #0a5ad3b0;
     color: #fff;
+    border: 2px solid #022074;
   }
 `;
 

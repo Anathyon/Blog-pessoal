@@ -47,7 +47,7 @@ const Logo = styled.div`
 `;
 
 const LogoIcon = styled.div`
-  background: linear-gradient(45deg, #6f42c1, #53389e);
+  background: linear-gradient(135deg, #7e22ce, #0a5ad3b0);
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -102,7 +102,7 @@ const SocialButton = styled.a`
   transition: background-color 0.3s ease;
   
   &:hover {
-    background-color: #6f42c1;
+    background: linear-gradient(135deg, #7e22ce, #0a5ad3b0);
     color: #fff;
   }
 `;
@@ -228,7 +228,7 @@ export default function Footer() {
           Feito com <span role="img" aria-label="coração">❤️</span> e muito <span role="img" aria-label="café">☕️</span> por Desenvolvedor Web
         </CopyrightText>
         <CopyrightText>
-          © 2024 Portfólio. Todos os direitos reservados.
+          © 2025 Portfólio. Todos os direitos reservados.
         </CopyrightText>
       </CopyrightSection>
     </FooterContainer>

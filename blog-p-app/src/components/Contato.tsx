@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 
-// Estilos usando styled-components
+// Importações do Firebase
+import { initializeApp } from 'firebase/app';
+import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
+import type { User } from 'firebase/auth';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import type { Firestore } from 'firebase/firestore';
+
 const ContatoSection = styled.section`
   padding: 6rem 1.5rem;
   max-width: 1200px;
@@ -51,13 +57,8 @@ const MainContent = styled.div`
     grid-template-columns: 1fr;
     gap: 1.5rem;
     padding: 1.5rem;
-    
-    // Garantir que os cards internos e o formulário também sejam centralizados
     text-align: center;
   }
-  @media (max-width: 360px) {
-    padding-right: 19.8rem;
-  } 
 `;
 
 const ContactInfoContainer = styled.div`
@@ -78,7 +79,7 @@ const InfoCard = styled.div`
   padding: 1.5rem;
   
   @media (max-width: 1024px) {
-    width: 100%; // Ocupa a largura total para centralizar melhor
+    width: 100%;
     max-width: 400px;
   }
 `;
@@ -109,7 +110,7 @@ const ContactItem = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  background-color: #6f42c1;
+  background: linear-gradient(135deg, #7e22ce, #0a5ad3b0);
   color: #fff;
   width: 40px;
   height: 40px;
@@ -133,7 +134,7 @@ const ContactText = styled.div`
     transition: color 0.2s;
     
     &:hover {
-      color: #6f42c1;
+      color: #3120cf;
     }
   }
 `;
@@ -161,7 +162,7 @@ const SocialButton = styled.a`
   }
   
   &:hover {
-    background-color: #6f42c1;
+    background: linear-gradient(135deg, #7e22ce, #0a5ad3b0);
   }
 `;
 
@@ -171,7 +172,7 @@ const FormContainer = styled.form`
   
   @media (max-width: 1024px) {
     align-items: center;
-    text-align: center; // Centraliza os títulos do formulário
+    text-align: center;
   }
 `;
 
@@ -243,7 +244,7 @@ const FormTextarea = styled.textarea`
 `;
 
 const SubmitButton = styled.button`
-  background: linear-gradient(90deg, #6f42c1, #53389e);
+  background: linear-gradient(135deg, #7e22ce, #0a5ad3b0);
   color: #fff;
   padding: 0.75rem 2rem;
   border: none;
@@ -253,13 +254,18 @@ const SubmitButton = styled.button`
   cursor: pointer;
   transition: transform 0.2s ease;
   
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   &:hover {
     transform: translateY(-2px);
   }
 `;
 
 const FooterCTA = styled.div`
-  background: linear-gradient(90deg, #53389e, #6f42c1);
+  background: linear-gradient(135deg, #7e22ce, #0a5ad3b0);
   padding: 2.5rem;
   border-radius: 12px;
   text-align: center;
@@ -276,13 +282,65 @@ const FooterSubtitle = styled.p`
   color: #e0e0e0;
 `;
 
+const Message = styled.p`
+  margin-top: 1rem;
+  font-weight: 600;
+  color: ${props => props.color === 'success' ? '#4CAF50' : '#F44336'};
+`;
+
 export default function Contato() {
+  // Estado para os dados do formulário
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
     assunto: '',
     mensagem: '',
   });
+
+  // Estado para mensagens de feedback e carregamento
+  const [message, setMessage] = useState('');
+  const [messageColor, setMessageColor] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Estados para o Firebase e a autenticação
+  const [db, setDb] = useState<Firestore | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [isAuthReady, setIsAuthReady] = useState(false);
+
+  // Use o objeto de configuração do Firebase fornecido por você, agora memoizado
+  const firebaseConfig = useMemo(() => ({
+  apiKey: "AIzaSyA43W1PPbZm55uGyja_bnvL5BA17NWsuwk",
+  authDomain: "meuportifolio-8f34d.firebaseapp.com",
+  projectId: "meuportifolio-8f34d",
+  storageBucket: "meuportifolio-8f34d.firebasestorage.app",
+  messagingSenderId: "35673509767",
+  appId: "1:35673509767:web:7dbc4a5be662cbf3118d22",
+  measurementId: "G-17YBTMVC2E"
+  }), []);
+
+  useEffect(() => {
+    try {
+      const app = initializeApp(firebaseConfig);
+      const firestoreDb = getFirestore(app);
+      const firebaseAuth = getAuth(app);
+      
+      setDb(firestoreDb);
+
+      const unsubscribe = onAuthStateChanged(firebaseAuth, async (user: User | null) => {
+        if (user) {
+          setUserId(user.uid);
+        } else {
+          await signInAnonymously(firebaseAuth);
+        }
+        setIsAuthReady(true);
+      });
+
+      return () => unsubscribe();
+    } catch (e) {
+      console.error("Erro ao inicializar Firebase: ", e);
+      setIsAuthReady(false);
+    }
+  }, [firebaseConfig]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -291,18 +349,54 @@ export default function Contato() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
-    // Lógica para enviar o formulário
+
+    if (!isAuthReady || isLoading || !db || !userId) {
+      setMessageColor('error');
+      setMessage('Aguardando a conexão com o banco de dados. Tente novamente.');
+      console.log('Firebase não está pronto ou já está carregando. Abortando envio.');
+      return;
+    }
+    
+    setIsLoading(true);
+    setMessage('');
+    setMessageColor('');
+
+    try {
+      // Usa o projectId do firebaseConfig para o caminho da coleção
+      const contactCollection = collection(db, `artifacts/${firebaseConfig.projectId}/users/${userId}/contact_messages`);
+      
+      await addDoc(contactCollection, {
+        ...formData,
+        timestamp: new Date()
+      });
+      
+      setMessageColor('success');
+      setMessage('Mensagem enviada com sucesso!');
+      
+      setFormData({
+        nome: '',
+        email: '',
+        assunto: '',
+        mensagem: '',
+      });
+
+    } catch (error) {
+      console.error("Erro ao enviar mensagem para o Firestore:", error);
+      setMessageColor('error');
+      setMessage('Ocorreu um erro ao enviar a mensagem. Tente novamente.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <ContatoSection>
       <HeaderContainer>
-        <HeaderTitle>Pronto para <span style={{ color: '#6f42c1' }}>Começar?</span></HeaderTitle>
+        <HeaderTitle>Pronto para <span className='skills-highlight'>Começar?</span></HeaderTitle>
         <HeaderSubtitle>
-          Tem um projeto em mente? Vamos transformar sua ideia em uma <span style={{ color: '#6f42c1' }}>solução digital excepcional</span>.
+          Tem um projeto em mente? Vamos transformar sua ideia em uma <span className='skills-highlight'>solução digital excepcional</span>.
         </HeaderSubtitle>
       </HeaderContainer>
 
@@ -314,21 +408,21 @@ export default function Contato() {
               <IconWrapper><FaEnvelope /></IconWrapper>
               <ContactText>
                 <p>Email</p>
-                <a href="mailto:contato@desenvolvedor.com">contato@desenvolvedor.com</a>
+                <a href="mailto:anathyon@protonmail.com">anathyon@protonmail.com</a>
               </ContactText>
             </ContactItem>
             <ContactItem>
               <IconWrapper><FaPhone /></IconWrapper>
               <ContactText>
                 <p>Telefone</p>
-                <p>(11) 99999-9999</p>
+                <p>(88) 99414-7362</p>
               </ContactText>
             </ContactItem>
             <ContactItem>
               <IconWrapper><FaMapMarkerAlt /></IconWrapper>
               <ContactText>
                 <p>Localização</p>
-                <p>São Paulo, SP</p>
+                <p>Meruoca, CE</p>
               </ContactText>
             </ContactItem>
           </InfoCard>
@@ -363,6 +457,7 @@ export default function Contato() {
                 placeholder="Seu nome completo" 
                 required 
                 onChange={handleChange}
+                value={formData.nome}
               />
             </FormGroup>
             <FormGroup>
@@ -373,6 +468,7 @@ export default function Contato() {
                 placeholder="seu@email.com" 
                 required 
                 onChange={handleChange}
+                value={formData.email}
               />
             </FormGroup>
           </FormRow>
@@ -384,6 +480,7 @@ export default function Contato() {
               name="assunto"
               placeholder="Assunto da mensagem"
               onChange={handleChange}
+              value={formData.assunto}
             />
           </FormGroup>
           
@@ -394,12 +491,15 @@ export default function Contato() {
               placeholder="Descreva seu projeto ou como posso ajudá-lo..." 
               required
               onChange={handleChange}
+              value={formData.mensagem}
             />
           </FormGroup>
           
-          <SubmitButton type="submit">
-            Enviar Mensagem
+          <SubmitButton type="submit" disabled={isLoading}>
+            {isLoading ? 'Enviando...' : 'Enviar Mensagem'}
           </SubmitButton>
+
+          {message && <Message color={messageColor}>{message}</Message>}
         </FormContainer>
       </MainContent>
 

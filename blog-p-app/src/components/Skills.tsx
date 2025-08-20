@@ -475,6 +475,7 @@ export default function Skills() {
           .skills-badge {
             font-size: 12px;
             padding: 0.6em 1.2em !important;
+            max-width: 60%;
           }
           
           .hero-badge-icon {
