@@ -252,14 +252,14 @@ const CTAButton = styled(DemoButton)`
 export default function Projetos() {
   const projectsData: Project[] = [
     {
-      title: "E-commerce Moderno",
-      description: "Plataforma completa de vendas online com dashboard administrativo, sistema de pagamentos e gestão de estoque.",
-      image: "URL_DA_IMAGEM_ECOMMERCE", // Substitua por URLs reais
-      link: "URL_DO_PROJETO_ECOMMERCE",
-      technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
-      performance: "95%",
-      users: "10K+",
-      revenue: "+300%",
+      title: "Portal Institucional de Aplicativos",
+      description: "Interface moderna e responsiva desenvolvida para apresentar e divulgar os aplicativos da empresa, destacando funcionalidades, benefícios e links de acesso para download.",
+      image: "URL_DA_IMAGEM_PORTAL", // substitua pela URL real da imagem ou screenshot
+      link: "URL_DO_PROJETO_PORTAL", // substitua pela URL do projeto publicado
+      technologies: ["React", "TypeScript", "TailwindCSS", "Vite"],
+      performance: "98%",
+      users: "5K+ visitantes/mês",
+      revenue: "Aumento de +120% na taxa de conversão",
     },
     {
       title: "App de Delivery",
@@ -296,7 +296,7 @@ export default function Projetos() {
   };
 
   return (
-    <StyledProjetos>
+    <StyledProjetos id='projetos'>
       <HeaderContainer>
         <Tag>Projetos em Destaque</Tag>
         <MainTitle>
@@ -354,7 +354,7 @@ export default function Projetos() {
 
             <ButtonGroup>
               <DemoButton onClick={() => openModal(project)}>Ver Demo</DemoButton>
-              <CodeButton as="a" href={project.link} target="_blank">Código</CodeButton>
+              <CodeButton as="a" href={project.link} className='text-center' target="_blank">Código</CodeButton>
             </ButtonGroup>
           </ProjectCard>
         ))}

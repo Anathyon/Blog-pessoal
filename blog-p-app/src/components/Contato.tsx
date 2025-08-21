@@ -308,15 +308,15 @@ export default function Contato() {
   const [isAuthReady, setIsAuthReady] = useState(false);
 
   // Use o objeto de configuração do Firebase fornecido por você, agora memoizado
-  const firebaseConfig = useMemo(() => ({
-  apiKey: "AIzaSyA43W1PPbZm55uGyja_bnvL5BA17NWsuwk",
-  authDomain: "meuportifolio-8f34d.firebaseapp.com",
-  projectId: "meuportifolio-8f34d",
-  storageBucket: "meuportifolio-8f34d.firebasestorage.app",
-  messagingSenderId: "35673509767",
-  appId: "1:35673509767:web:7dbc4a5be662cbf3118d22",
-  measurementId: "G-17YBTMVC2E"
-  }), []);
+const firebaseConfig = useMemo(() => ({
+ apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+}), []);
 
   useEffect(() => {
     try {
@@ -392,7 +392,7 @@ export default function Contato() {
   };
 
   return (
-    <ContatoSection>
+    <ContatoSection id="contato">
       <HeaderContainer>
         <HeaderTitle>Pronto para <span className='skills-highlight'>Começar?</span></HeaderTitle>
         <HeaderSubtitle>
@@ -430,16 +430,16 @@ export default function Contato() {
           <InfoCard>
             <InfoTitle>Redes Sociais</InfoTitle>
             <SocialsGrid>
-              <SocialButton href="#" target="_blank">
+              <SocialButton href="https://github.com/Anathyon" target="_blank">
                 <FaGithub /> GitHub
               </SocialButton>
-              <SocialButton href="#" target="_blank">
+              <SocialButton href="https://www.linkedin.com/in/anathyonerysson/" target="_blank">
                 <FaLinkedin /> LinkedIn
               </SocialButton>
-              <SocialButton href="#" target="_blank">
+              <SocialButton href="https://x.com/anathyon?t=PJC7lZPV48cmzzea0FvE9Q&s=09" target="_blank">
                 <FaTwitter /> Twitter
               </SocialButton>
-              <SocialButton href="#" target="_blank">
+              <SocialButton href="https://www.instagram.com/anathyon/" target="_blank">
                 <FaInstagram /> Instagram
               </SocialButton>
             </SocialsGrid>

@@ -187,16 +187,16 @@ export default function Footer() {
             Especializado em criar experiências digitais modernas e eficientes que geram resultados reais para o seu negócio.
           </Description>
           <SocialLinks>
-            <SocialButton href="#" target="_blank">
+            <SocialButton href="https://github.com/Anathyon" target="_blank">
               <FaGithub size={20} />
             </SocialButton>
-            <SocialButton href="#" target="_blank">
+            <SocialButton href="https://www.linkedin.com/in/anathyonerysson/" target="_blank">
               <FaLinkedinIn size={20} />
             </SocialButton>
-            <SocialButton href="#" target="_blank">
+            <SocialButton href="https://x.com/anathyon?t=PJC7lZPV48cmzzea0FvE9Q&s=09" target="_blank">
               <FaTwitter size={20} />
             </SocialButton>
-            <SocialButton href="#" target="_blank">
+            <SocialButton href="mailto:anathyon@protonmail.com" target="_blank">
               <FaEnvelope size={20} />
             </SocialButton>
           </SocialLinks>
@@ -205,7 +205,7 @@ export default function Footer() {
         <LinksSection>
           <LinksTitle>Links Rápidos</LinksTitle>
           <LinkList>
-            <li><a href="#inicio">Início</a></li>
+            <li><a href="#home">Início</a></li>
             <li><a href="#habilidades">Habilidades</a></li>
             <li><a href="#projetos">Projetos</a></li>
             <li><a href="#contato">Contato</a></li>
@@ -215,10 +215,11 @@ export default function Footer() {
         <LinksSection>
           <LinksTitle>Serviços</LinksTitle>
           <LinkList>
-            <li><a href="#">Desenvolvimento Frontend</a></li>
-            <li><a href="#">Desenvolvimento Backend</a></li>
-            <li><a href="#">Consultoria Técnica</a></li>
-            <li><a href="#">Otimização de Performance</a></li>
+            <li><a href="https://wa.me/5588994147362?text=Ol%C3%A1%2C%20encontrei%20seu%20site%20e%20gostaria%20de%20solicitar%20uma%20consultoria%20t%C3%A9cnica%20na%20%C3%A1rea%20de%20desenvolvimento%20frontend.%20Tenho%20interesse%20em%20compreender%20melhor%20as%20solu%C3%A7%C3%B5es%20que%20voc%C3%AA%20pode%20oferecer%20para%20aprimorar%20a%20interface%20e%20a%20experi%C3%AAncia%20do%20usu%C3%A1rio.">Desenvolvimento Frontend</a></li>
+            {/* <li><a href="#">Desenvolvimento Backend</a></li> */}
+            <li><a href="https://wa.me/5588994147362?text=Oi%2C%20vi%20seu%20site%20e%20quero%20fazer%20uma%20consultoria%20t%C3%A9cnica.">Consultoria Técnica</a></li>
+            <li><a href="https://wa.me/5588994147362?text=Oi%2C%20vi%20seu%20site%20e%20quero%20uma%20consultoria%20t%C3%A9cnica%20voltada%20para%20otimiza%C3%A7%C3%A3o%20de%20performance.%20Pode%20me%20explicar%20como%20funciona%3F">Otimização de Performance</a></li>
+            <li><a href="https://wa.me/5588994147362?text=Ol%C3%A1%2C%20visitei%20seu%20site%20e%20gostaria%20de%20solicitar%20uma%20consultoria%20t%C3%A9cnica%20voltada%20para%20reestrutura%C3%A7%C3%A3o%20ou%20upgrade%20de%20c%C3%B3digo%20j%C3%A1%20existente.%20Tenho%20interesse%20em%20entender%20como%20podemos%20melhorar%20a%20qualidade%20e%20a%20efici%C3%AAncia%20do%20projeto%20atual.">Reestruturação ou upgrade de código já existente</a></li>
           </LinkList>
         </LinksSection>
       </FooterContent>
