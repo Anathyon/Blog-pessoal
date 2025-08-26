@@ -248,38 +248,37 @@ const CTAButton = styled(DemoButton)`
   font-size: 1rem;
 `;
 
-// 3. O componente React com a lógica e os estilos
 export default function Projetos() {
   const projectsData: Project[] = [
     {
       title: "Portal Institucional de Aplicativos",
       description: "Interface moderna e responsiva desenvolvida para apresentar e divulgar os aplicativos da empresa, destacando funcionalidades, benefícios e links de acesso para download.",
-      image: "URL_DA_IMAGEM_PORTAL", // substitua pela URL real da imagem ou screenshot
-      link: "URL_DO_PROJETO_PORTAL", // substitua pela URL do projeto publicado
+      image: "img-projetos/projeto-mao-na-roda.png", 
+      link: "https://m-o-na-roda.vercel.app/",
       technologies: ["React", "TypeScript", "TailwindCSS", "Vite"],
       performance: "98%",
-      users: "5K+ visitantes/mês",
-      revenue: "Aumento de +120% na taxa de conversão",
+      users: "5K",
+      revenue: "+120% conversão",
     },
     {
-      title: "App de Delivery",
-      description: "Aplicativo mobile para delivery de comida com rastreamento em tempo real e sistema de avaliações.",
-      image: "URL_DA_IMAGEM_DELIVERY",
-      link: "URL_DO_PROJETO_DELIVERY",
-      technologies: ["React Native", "Firebase", "Google Maps", "PayPal"],
+      title: "Informações Meteorológicas em Tempo Real",
+      description: "Aplicação web que exibe previsão do tempo atual com base na geolocalização ou pesquisa por cidade, incluindo temas dinâmicos (manhã, tarde e noite) e design totalmente responsivo.",
+      image: "img-projetos/projeto-info-meteorologico.png",
+      link: "https://informacoes-meteriologigas.vercel.app/",
+      technologies: ["HTML5", "CSS3", "TypeScript", "API Meteorológica", "Vercel"],
       performance: "98%",
-      downloads: "50K+",
-      rating: "4.8/5",
+      users: "2K",
+      loadTime: "1.9s",
     },
     {
-      title: "Dashboard Analytics",
-      description: "Painel de controle para análise de dados empresariais com visualizações interativas e relatórios automatizados.",
-      image: "URL_DA_IMAGEM_DASHBOARD",
-      link: "URL_DO_PROJETO_DASHBOARD",
-      technologies: ["Next.js", "Chart.js", "Prisma", "TypeScript"],
-      performance: "96%",
-      dataPoints: "1M+",
-      loadTime: "2.1s",
+      title: "Calculadora de IMC",
+      description: "Aplicação web que calcula o Índice de Massa Corporal (IMC) de forma prática, responsiva e com histórico de medições.",
+      image: "img-projetos/projeto-calc-imc.png", 
+      link: "https://calculadora-imc-liard-omega.vercel.app/", 
+      technologies: ["Next.js", "React", "TypeScript", "TailwindCSS", "Vercel"],
+      performance: "97%",
+      users: "1K+",
+      loadTime: "1.5s",
     },
   ];
 
@@ -375,7 +374,7 @@ export default function Projetos() {
       <BottomCTA>
         <CTATitle>Tem um projeto em mente?</CTATitle>
         <CTAParagraph>Vamos transformar suas ideias em uma solução digital que gera resultados.</CTAParagraph>
-        <CTAButton>Iniciar Projeto</CTAButton>
+        <CTAButton> <a href="#contato">Iniciar Projeto</a> </CTAButton>
       </BottomCTA>
     </StyledProjetos>
   );

@@ -88,7 +88,6 @@ export default function Skills() {
                   padding: "0.8em 1.5em",
                   borderRadius: "9999px",
                   border: "1px solid rgba(34, 197, 94, 0.2)",
-                  boxShadow: "0 0.25em 0.9em #0a5ad3b0",
                   fontSize:"1.1em"
                 }}
               >
@@ -170,7 +169,7 @@ export default function Skills() {
           </div>
 
           {/* Learning Section */}
-          <div className="learning-section">
+          <div className="learning-section shadow-lg" style={{boxShadow: '0 0.25rem 0.94rem #0a5ad3b0'}}>
             <h3 className="learning-title">Sempre Aprendendo</h3>
             <p className="learning-text">
               O mundo da tecnologia evolui rapidamente, e eu mantenho-me sempre atualizado com as
@@ -221,7 +220,7 @@ export default function Skills() {
           background-color: #6631dba6;
           color: white;
           font-weight: 700;
-          box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.226);
+          box-shadow: 0 10px 15px -3px #0a5ad3b0;
         }
 
         .pill-icon {

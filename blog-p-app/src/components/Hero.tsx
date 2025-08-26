@@ -86,7 +86,7 @@ export default function Hero() {
               {/* Botões de Ação */}
               <div className="hero-buttons flex w-full flex-wrap justify-center gap-4 lg:justify-start">
                 <a
-                  href="/contact"
+                  href="#contato"
                   className="hero-btn hero-btn-primary"
                 >
                   Vamos Conversar
@@ -96,7 +96,7 @@ export default function Hero() {
                   </svg>
                 </a>
                 <a
-                  href="/projects"
+                  href="#projetos"
                   className="hero-btn hero-btn-secondary"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="ic-bt-ver-projs" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

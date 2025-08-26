@@ -364,7 +364,6 @@ const firebaseConfig = useMemo(() => ({
     setMessageColor('');
 
     try {
-      // Usa o projectId do firebaseConfig para o caminho da coleção
       const contactCollection = collection(db, `artifacts/${firebaseConfig.projectId}/users/${userId}/contact_messages`);
       
       await addDoc(contactCollection, {
@@ -503,7 +502,7 @@ const firebaseConfig = useMemo(() => ({
         </FormContainer>
       </MainContent>
 
-      <FooterCTA>
+      <FooterCTA className="shadow-lg" style={{boxShadow: '0 0.25rem 0.94rem #0a5ad3b0'}}>
         <FooterTitle>Pronto para Decolar?</FooterTitle>
         <FooterSubtitle>
           Transforme sua ideia em realidade. Vamos criar algo incrível juntos!

@@ -177,7 +177,7 @@ export default function Footer() {
       <FooterContent>
         <BrandInfo>
           <Logo>
-            <LogoIcon>⚡️</LogoIcon>
+            <LogoIcon className="shadow-lg" style={{boxShadow: '0 0.25rem 0.94rem #0a5ad3b0'}}>⚡️</LogoIcon>
             <div>
               <LogoText>Desenvolvedor Web</LogoText>
               <Tagline>Transformando ideias em realidade</Tagline>
