@@ -81,7 +81,7 @@ const InfoCard = styled.div`
   @media (max-width: 1024px) {
     width: 100%;
     max-width: 400px;
-  }
+  }     
 `;
 
 const InfoTitle = styled.h4`
@@ -107,6 +107,9 @@ const ContactItem = styled.div`
     justify-content: center;
     text-align: left;
   }
+   @media (max-width: 800px) {
+    justify-content: flex-start;
+  }  
 `;
 
 const IconWrapper = styled.div`
@@ -126,6 +129,7 @@ const ContactText = styled.div`
     margin: 0;
     font-size: 0.9rem;
     color: #fff;
+    text-align: left;
   }
   
   a {
@@ -173,7 +177,7 @@ const FormContainer = styled.form`
   @media (max-width: 1024px) {
     align-items: center;
     text-align: center;
-  }
+  } 
 `;
 
 const FormTitle = styled.h4`
