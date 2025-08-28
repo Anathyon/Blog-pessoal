@@ -82,6 +82,10 @@ const InfoCard = styled.div`
     width: 100%;
     max-width: 400px;
   }     
+
+  @media (max-width: 380px) {
+    margin-right: 8%;
+  }
 `;
 
 const InfoTitle = styled.h4`
@@ -178,6 +182,10 @@ const FormContainer = styled.form`
     align-items: center;
     text-align: center;
   } 
+
+  @media (max-width: 380px) {
+    margin-right: 8%;
+  }
 `;
 
 const FormTitle = styled.h4`
