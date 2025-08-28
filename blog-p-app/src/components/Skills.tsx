@@ -220,7 +220,7 @@ export default function Skills() {
           background-color: #6631dba6;
           color: white;
           font-weight: 700;
-          box-shadow: 0 10px 15px -3px #0a5ad3b0;
+          box-shadow: 0 10px 15px -3px #0a5ad383;
         }
 
         .pill-icon {

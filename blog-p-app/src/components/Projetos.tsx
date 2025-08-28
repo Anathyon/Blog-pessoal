@@ -258,7 +258,7 @@ export default function Projetos() {
       technologies: ["React", "TypeScript", "TailwindCSS", "Vite"],
       performance: "98%",
       users: "5K",
-      revenue: "+120% conversão",
+      revenue: "+120%",
     },
     {
       title: "Informações Meteorológicas em Tempo Real",
