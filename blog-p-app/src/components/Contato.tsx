@@ -59,6 +59,10 @@ const MainContent = styled.div`
     padding: 1.5rem;
     text-align: center;
   }
+
+  @media (max-width: 380px) {
+    padding: 1.5rem 0.5rem;
+  }
 `;
 
 const ContactInfoContainer = styled.div`
@@ -67,6 +71,14 @@ const ContactInfoContainer = styled.div`
   gap: 2rem;
   
   @media (max-width: 1024px) {
+    align-items: stretch; /* Alterado para esticar */
+    flex-direction: row; /* Cards lado a lado */
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 767px) { /* Volta a ser coluna em mobile */
+    flex-direction: column;
     align-items: center;
   }
 `;
@@ -77,6 +89,11 @@ const InfoCard = styled.div`
   border: 1px solid rgba(111, 66, 193, 0.2);
   border-radius: 12px;
   padding: 1.5rem;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    flex: 1; /* Permite que os cards cresçam igualmente */
+    min-width: 300px; /* Largura mínima para cada card */
+  }
   
   @media (max-width: 1024px) {
     width: 100%;
@@ -84,7 +101,7 @@ const InfoCard = styled.div`
   }     
 
   @media (max-width: 380px) {
-    margin-right: 8%;
+    margin-right: 0;
   }
 `;
 
@@ -108,7 +125,7 @@ const ContactItem = styled.div`
   }
   
   @media (max-width: 1024px) {
-    justify-content: center;
+    justify-content: left;
     text-align: left;
   }
    @media (max-width: 800px) {
@@ -184,7 +201,7 @@ const FormContainer = styled.form`
   } 
 
   @media (max-width: 380px) {
-    margin-right: 8%;
+    margin-right: 0;
   }
 `;
 
@@ -199,6 +216,7 @@ const FormRow = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
+  width: 100%; /* Garante que a linha ocupe todo o espaço */
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -209,6 +227,7 @@ const FormRow = styled.div`
 const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%; /* Adicionado para garantir a largura total */
   
   @media (max-width: 768px) {
     width: 100%;
