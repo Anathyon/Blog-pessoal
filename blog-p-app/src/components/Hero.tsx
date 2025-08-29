@@ -677,10 +677,20 @@ export default function Hero() {
           }
         }
 
+        /* Specific for 2560px screens */
+        @media (min-width: 2560px) {
+          .hero-image-container {
+            right: 45rem;
+          }
+          .hero-subtitle-icon{
+            width: 4rem;
+            height: 4rem;
+          }   
+        }
+
 
       `}</style>
     </article>
   );
 }
 
- 
