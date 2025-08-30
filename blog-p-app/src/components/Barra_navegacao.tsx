@@ -40,7 +40,7 @@ export default function Header() {
                             ⚡
                         </div>
                         <div className="logo-text">
-                            <h1 className="text-xl font-bold">Portfolio</h1>
+                            <h1 className="text-xl font-bold">Portfólio</h1>
                             <p className="text-xs font-medium text-gray-400">Dev Web</p>
                         </div>
                     </div>
