@@ -37,7 +37,7 @@ export default function Header() {
                     {/* Logo */}
                     <div className="header-logo flex items-center gap-3 text-white">
                         <div className="header-logo-img flex items-center justify-center rounded-[0.75rem] shadow-lg" style={{ width: '2.8rem', height: '2.8rem', color: '#fff', fontSize: '1.3rem', boxShadow: '0 0.25rem 0.94rem #0a5ad3b0', padding: '0.3rem', overflow: 'hidden', background: "linear-gradient(135deg, #7e22ce, #0a5ad3b0)" }}>
-                            ⚡
+                            <img src="/logo/Logotipo.png" alt="Logo" className="w-full h-full object-cover" />
                         </div>
                         <div className="logo-text">
                             <h1 className="text-xl font-bold">Portfólio</h1>
