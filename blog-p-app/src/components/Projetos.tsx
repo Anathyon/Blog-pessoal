@@ -280,6 +280,37 @@ export default function Projetos() {
       users: "1K+",
       loadTime: "1.5s",
     },
+    {
+    title: "Lista de Tarefas Premium (PWA)",
+    description: "Aplicação PWA completa para gerenciamento de tarefas (To-Do List), com design Neon Glassmorphism, painel de estatísticas, edição completa e persistência de dados local.",
+    image: "assets/todo-desktop.png.png", 
+    link: "https://github.com/seu-usuario/nome-do-repositorio", // Sugestão: link para o repositório ou deploy.
+    technologies: ["TypeScript", "HTML5", "CSS3", "PWA", "localStorage", "Bootstrap Icons"],
+    // Os campos abaixo são estimativas, você deve ajustá-los com base no seu teste real:
+    performance: "95% (PWA)", 
+    users: "1+", 
+    loadTime: "0.5s (Offline/Service Worker)", 
+    },
+    {
+      title: "RecipeApp | Plataforma de Receitas Global",
+      description: "Aplicação web moderna e responsiva para busca e visualização de receitas internacionais. Inclui tradução em tempo real (instruções, ingredientes e medidas) via Google Gemini API, internacionalização (i18n) e design adaptável para todos os dispositivos.",
+      image: "img-projetos/projeto-recipe-app.png", // Imagem representativa do projeto
+      link: "https://recipe-app-global.vercel.app/", // Link de deploy placeholder
+      technologies: ["React", "TypeScript", "Tailwind CSS", "React-Intl", "TheMealDB API", "Google Gemini API"],
+      performance: "95%",
+      users: "2K+",
+      loadTime: "1.2s",
+    },
+    {  
+        title: "Webcam Creative com Galeria e Filtros",  
+        description: "Aplicação web interativa para captura de fotos da webcam em tempo real, com mais de 25 filtros dinâmicos, galeria local e troca de tema (Claro/Escuro).",  
+        image: "./assets/webcam-desktop.png", 
+        link: "https://webcam-mauve.vercel.app/",
+        technologies: ["HTML5", "CSS3", "TypeScript", "Vercel", "Bootstrap Icons"],  
+        performance: "N/A", 
+        users: "N/A", 
+        loadTime: "N/A", 
+      },
   ];
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
