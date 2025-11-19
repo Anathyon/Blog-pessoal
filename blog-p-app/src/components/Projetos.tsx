@@ -310,6 +310,26 @@ export default function Projetos() {
         users: "500+", 
         loadTime: "1.0s", 
       },
+      {
+        title: "Cine Explorer | Plataforma de Recomendações Cinematográficas",
+        description: "Aplicação web moderna e responsiva para descobrir filmes, séries e animes com recomendações personalizadas. Inclui sistema de favoritos, PWA instalável, interface responsiva e integração com APIs TMDB e Jikan para conteúdo atualizado.",
+        image: "img-projetos/projeto-reco-cine.png",
+        link: "https://reco-cine.vercel.app/",
+        technologies: ["Next.js 15", "TypeScript", "Tailwind CSS", "Zustand", "Framer Motion", "TMDB API", "Jikan API", "PWA", "Jest"],
+        performance: "98%",
+        users: "1.5K+",
+        loadTime: "0.8s"
+      },
+      {
+        title: "Gerador de Senhas | PWA Moderno",
+        description: "Aplicação web moderna e responsiva para geração de senhas seguras. Inclui controle de comprimento, opções de caracteres personalizáveis, histórico de senhas, feedback visual de força e funcionalidade PWA para instalação offline.",
+        image: "img-projetos/projeto-gerador-senhas.png",
+        link: "https://gerador-de-senha-five-psi.vercel.app/",
+        technologies: ["TypeScript", "HTML5", "CSS3/SCSS", "Service Worker", "PWA", "Vercel"],
+        performance: "98%",
+        users: "1K+",
+        loadTime: "0.8s"
+      },
   ];
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
