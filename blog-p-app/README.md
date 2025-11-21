@@ -122,9 +122,12 @@ Cada projeto demonstra diferentes aspectos das minhas habilidades técnicas e ca
 
 Estou sempre aberto a novas oportunidades e desafios. Se você está procurando um desenvolvedor front-end que combina habilidades técnicas sólidas com paixão por criar experiências digitais excepcionais, vamos conversar!
 
-**📧 Contato:** [seu-email@exemplo.com]  
-**💼 LinkedIn:** [seu-linkedin]  
-**🌐 Portfólio:** [link-do-portfolio]
+<p align="center">
+  <a href="https://www.linkedin.com/in/anathyonerysson/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+  <a href="mailto:anathyon@protonmail.com"><img src="https://img.shields.io/badge/ProtonMail-8B89CC?style=for-the-badge&logo=protonmail&logoColor=white" alt="Email"></a>
+  <a href="https://api.whatsapp.com/send/?phone=5588994147362&text&type=phone_number&app_absent=0" target="_blank"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp"></a>
+  <a href="https://blog-pessoal-ebon.vercel.app/"><img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"></a>
+</p>
 
 ---
 
