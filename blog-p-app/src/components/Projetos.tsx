@@ -336,7 +336,7 @@ export default function Projetos() {
       {
         title: "Calculadora Científica PWA | Ferramenta Matemática Completa",
         description: "Calculadora científica moderna e responsiva com funcionalidades avançadas. Inclui operações trigonométricas, logaritmos, histórico persistente (até 50 cálculos), PWA com funcionamento offline e design adaptável para todos os dispositivos.",
-        image: "assets/calc-desktop.png",
+        image: "img-projetos/projeto-calculadora-cientifica.png",
         link: "https://calculadora-six-rosy.vercel.app/",
         technologies: ["HTML5", "TypeScript", "SCSS", "Service Worker", "PWA", "LocalStorage"],
         performance: "98%",
