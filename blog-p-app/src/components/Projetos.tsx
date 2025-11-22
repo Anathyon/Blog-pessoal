@@ -270,6 +270,18 @@ export default function Projetos() {
       users: "2.5K",
       loadTime: "1.8s",
     },
+
+    {
+        title: "Cine Explorer | Plataforma de Recomendações Cinematográficas",
+        description: "Aplicação web moderna e responsiva para descobrir filmes, séries e animes com recomendações personalizadas. Inclui sistema de favoritos, PWA instalável, interface responsiva e integração com APIs TMDB e Jikan para conteúdo atualizado.",
+        image: "img-projetos/projeto-reco-cine.png",
+        link: "https://reco-cine.vercel.app/",
+        technologies: ["Next.js 15", "TypeScript", "Tailwind CSS", "Zustand", "Framer Motion", "TMDB API", "Jikan API", "PWA", "Jest"],
+        performance: "98%",
+        users: "1.5K+",
+        loadTime: "0.8s"
+    },
+    
     {
       title: "Calculadora de IMC",
       description: "Aplicação web que calcula o Índice de Massa Corporal (IMC) de forma prática, responsiva e com histórico de medições.",
@@ -310,16 +322,7 @@ export default function Projetos() {
         users: "500+", 
         loadTime: "1.0s", 
       },
-      {
-        title: "Cine Explorer | Plataforma de Recomendações Cinematográficas",
-        description: "Aplicação web moderna e responsiva para descobrir filmes, séries e animes com recomendações personalizadas. Inclui sistema de favoritos, PWA instalável, interface responsiva e integração com APIs TMDB e Jikan para conteúdo atualizado.",
-        image: "img-projetos/projeto-reco-cine.png",
-        link: "https://reco-cine.vercel.app/",
-        technologies: ["Next.js 15", "TypeScript", "Tailwind CSS", "Zustand", "Framer Motion", "TMDB API", "Jikan API", "PWA", "Jest"],
-        performance: "98%",
-        users: "1.5K+",
-        loadTime: "0.8s"
-      },
+      
       {
         title: "Gerador de Senhas | PWA Moderno",
         description: "Aplicação web moderna e responsiva para geração de senhas seguras. Inclui controle de comprimento, opções de caracteres personalizáveis, histórico de senhas, feedback visual de força e funcionalidade PWA para instalação offline.",
