@@ -7,6 +7,7 @@ const skillCategories = [
     skills: [
       { name: "HTML5", icon: "icons/html5.svg" },
       { name: "CSS3", icon: "icons/css3.svg" },
+      { name: "SCSS", icon: "icons/sass.svg" },
       { name: "JavaScript", icon: "icons/javascript.svg" },
       { name: "TypeScript", icon: "icons/typescript.svg" },
     ],
@@ -20,6 +21,7 @@ const skillCategories = [
       { name: "Vite", icon: "icons/vite.svg" },
       { name: "TailwindCSS", icon: "icons/tailwindcss.svg" },
       { name: "Bootstrap", icon: "icons/bootstrap.svg" },
+      { name: "Zustand", icon: "icons/zustand.svg" },
     ],
   },
   {
@@ -27,11 +29,45 @@ const skillCategories = [
     icon: "icons/programming.png",
     skills: [
       { name: "Node.js", icon: "icons/nodejs.svg" },
+      { name: "Firebase", icon: "icons/firebase.svg" },
       { name: "Git", icon: "icons/git.svg" },
+      { name: "GitHub", icon: "icons/github.svg" },
       { name: "NPM", icon: "icons/npm.svg" },
       { name: "VS Code", icon: "icons/vscode.svg" },
       { name: "Vercel", icon: "icons/vercel.svg" },
       { name: "PWA", icon: "icons/pwa.svg" },
+    ],
+  },
+  {
+    title: "Testes & Qualidade",
+    icon: "icons/testing.png",
+    skills: [
+      { name: "Jest", icon: "icons/jest.svg" },
+      { name: "Clean Code", icon: "icons/clean-code.svg" },
+      { name: "SOLID", icon: "icons/solid.svg" },
+      { name: "MVC", icon: "icons/mvc.svg" },
+    ],
+  },
+  {
+    title: "Inteligência Artificial",
+    icon: "icons/ai.png",
+    skills: [
+      { name: "ChatGPT", icon: "icons/chatgpt.svg" },
+      { name: "Claude", icon: "icons/claude.svg" },
+      { name: "Gemini", icon: "icons/gemini.svg" },
+      { name: "Cursor AI", icon: "icons/cursor.svg" },
+      { name: "GitHub Copilot", icon: "icons/github-copilot.svg" },
+      { name: "V0", icon: "icons/v0.svg" },
+    ],
+  },
+  {
+    title: "Habilidades Interpessoais",
+    icon: "icons/soft-skills.png",
+    skills: [
+      { name: "Trabalho em Equipe", icon: "icons/teamwork.svg" },
+      { name: "Comunicação", icon: "icons/communication.svg" },
+      { name: "Eficiência", icon: "icons/efficiency.svg" },
+      { name: "Marketing", icon: "icons/marketing.svg" },
     ],
   },
 ];
@@ -99,11 +135,12 @@ export default function Skills() {
               Stack Tecnológico
             </div>
             <h2 className="text-4xl font-extrabold leading-tight mt-6 mb-4 md:text-5xl" style={{color:"#fff", fontSize:"1.7em", paddingTop:"3dvh"}}>
-              Tecnologias que <span className="skills-highlight">Domino</span>
+              Tecnologias & <span className="skills-highlight">Habilidades</span>
             </h2>
             <p className="text-zinc-400 text-lg md:text-xl" style={{color:"#fff", fontSize:"1.1em", paddingBottom:"3dvh", paddingTop:"2dvh"}}>
-              Sempre atualizado com as mais modernas tecnologias do mercado para entregar
-              <strong className="text-white"> soluções de alta qualidade</strong>.
+              Combinando expertise técnica com <strong className="text-white">inteligência artificial</strong>,
+              <strong className="text-white"> habilidades interpessoais</strong> e conhecimento em
+              <strong className="text-white"> marketing </strong> para entregar soluções completas e eficazes.
             </p>
           </div>
 
@@ -170,11 +207,15 @@ export default function Skills() {
 
           {/* Learning Section */}
           <div className="learning-section shadow-lg" style={{boxShadow: '0 0.25rem 0.94rem #0a5ad3b0'}}>
-            <h3 className="learning-title">Sempre Aprendendo</h3>
+            <h3 className="learning-title">Sempre Aprendendo & Evoluindo</h3>
             <p className="learning-text">
-              O mundo da tecnologia evolui rapidamente, e eu mantenho-me sempre atualizado com as
-              últimas tendências, frameworks e melhores práticas do mercado para entregar soluções
-              modernas e eficientes.
+              Além das tecnologias tradicionais, estou constantemente explorando novas ferramentas como
+              <strong className="text-white"> Jest para testes</strong>, <strong className="text-white">Zustand para gerenciamento de estado</strong>,
+              <strong className="text-white"> SCSS para estilização avançada</strong> e aplicando conceitos de
+              <strong className="text-white"> Clean Code, SOLID e arquitetura MVC</strong>. Também utilizo
+              <strong className="text-white"> IA generativa</strong> como ChatGPT, Claude, Gemini e Cursor para otimizar
+              meu desenvolvimento, combinando com minhas habilidades em <strong className="text-white"> marketing </strong>
+              para criar soluções que realmente conectam com o usuário.
             </p>
           </div>
         </div>
