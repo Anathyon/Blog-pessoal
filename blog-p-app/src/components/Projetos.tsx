@@ -283,15 +283,16 @@ export default function Projetos() {
     },
     
     {
-      title: "Calculadora de IMC",
-      description: "Aplicação web que calcula o Índice de Massa Corporal (IMC) de forma prática, responsiva e com histórico de medições.",
-      image: "img-projetos/projeto-calc-imc.png", 
-      link: "https://calculadora-imc-liard-omega.vercel.app/", 
-      technologies: ["Next.js", "React", "TypeScript", "TailwindCSS", "Vercel"],
-      performance: "97%",
-      users: "1K+",
-      loadTime: "1.5s",
-    },
+    title: "Calculadora IMC | Acompanhe sua Saúde",
+    description: "Aplicação web moderna e responsiva para cálculo do Índice de Massa Corporal (IMC). Inclui histórico de cálculos, download de dados em CSV, notificação PWA para instalação, tema escuro/claro e design totalmente adaptável para todos os dispositivos.",
+    image: "img-projetos/calculadora-imc.png",
+    link: "https://calculadora-imc-health.vercel.app/",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Zustand", "PWA", "Framer Motion", "Jest"],
+    performance: "98%",
+    users: "1.5K+",
+    loadTime: "0.8s"
+  }
+  ,
     {
     title: "Lista de Tarefas Premium (PWA)",
     description: "Aplicação PWA completa para gerenciamento de tarefas (To-Do List), com design Neon Glassmorphism, painel de estatísticas, edição completa e persistência de dados local.",
