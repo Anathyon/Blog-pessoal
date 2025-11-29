@@ -286,7 +286,7 @@ export default function Projetos() {
     title: "Calculadora IMC | Acompanhe sua Saúde",
     description: "Aplicação web moderna e responsiva para cálculo do Índice de Massa Corporal (IMC). Inclui histórico de cálculos, download de dados em CSV, notificação PWA para instalação, tema escuro/claro e design totalmente adaptável para todos os dispositivos.",
     image: "img-projetos/calculadora-imc.png",
-    link: "https://calculadora-imc-health.vercel.app/",
+    link: "https://calculadora-imc-liard-omega.vercel.app/",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Zustand", "PWA", "Framer Motion", "Jest"],
     performance: "98%",
     users: "1.5K+",
