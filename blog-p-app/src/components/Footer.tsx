@@ -48,8 +48,8 @@ const Logo = styled.div`
 
 const LogoIcon = styled.div`
   background: linear-gradient(135deg, #7e22ce, #0a5ad3b0);
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -177,7 +177,7 @@ export default function Footer() {
       <FooterContent>
         <BrandInfo>
           <Logo>
-            <LogoIcon className="shadow-lg" style={{boxShadow: '0 0.25rem 0.94rem #0a5ad3b0'}}> <img src="/logo/Logotipo.png" alt="Logo" className="w-full h-full object-cover" /> </LogoIcon>
+            <LogoIcon className="shadow-lg" style={{boxShadow: '0 0.25rem 0.94rem #0a5ad3b0'}}> <img src="/logo/Logotipo.png" alt="Logo" className="w-full h-full object-cover" style={{borderRadius: '8px'}} /> </LogoIcon>
             <div>
               <LogoText>Desenvolvedor Web</LogoText>
               <Tagline>Transformando ideias em realidade</Tagline>

@@ -37,7 +37,7 @@ export default function Header() {
                     {/* Logo */}
                     <div className="header-logo flex items-center gap-3 text-white">
                         <div className="header-logo-img flex items-center justify-center rounded-[0.75rem] shadow-lg">
-                            <img src="/logo/Logotipo.png" alt="Logo" className="w-full h-full object-cover" />
+                            <img src="/logo/Logotipo.png" alt="Logo" className="w-full h-full object-cover rounded-[0.75rem]" />
                         </div>
                         <div className="logo-text">
                             <h1 className="text-xl font-bold">Portfólio</h1>
@@ -164,10 +164,10 @@ export default function Header() {
                 }
                 
                 .header-logo-img {
-                    width: clamp(2.1rem, 5vw, 2.8rem);
-                    height: clamp(2.1rem, 5vw, 2.8rem);
-                    padding: clamp(0.15rem, 0.5vw, 0.3rem);
-                    font-size: clamp(1rem, 2.5vw, 1.3rem);
+                    width: clamp(3.2rem, 7.5vw, 4.2rem);
+                    height: clamp(3.2rem, 7.5vw, 4.2rem);
+                    padding: 0;
+                    font-size: clamp(1.5rem, 3.75vw, 2rem);
                 }
                 
                 .logo-text h1 {
