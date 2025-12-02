@@ -1,12 +1,117 @@
+import { motion, AnimatePresence } from 'framer-motion';
+import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, floatingAnimation, pulseAnimation, glowEffect } from '../utils/animations';
+
 export default function Hero() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const titleVariants = {
+    hidden: { y: 100, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15,
+        duration: 0.8
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { scale: 0, rotate: -180, opacity: 0 },
+    visible: {
+      scale: 1,
+      rotate: 0,
+      opacity: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15,
+        delay: 0.5
+      }
+    }
+  };
+
+  const buttonVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 200,
+        damping: 20
+      }
+    },
+    hover: {
+      scale: 1.05,
+      y: -5,
+      boxShadow: "0 15px 30px rgba(59, 130, 246, 0.4)",
+      transition: {
+        type: "spring" as const,
+        stiffness: 400,
+        damping: 10
+      }
+    },
+    tap: {
+      scale: 0.95,
+      transition: {
+        type: "spring" as const,
+        stiffness: 400,
+        damping: 10
+      }
+    }
+  };
+
+  const statsVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 200,
+        damping: 15
+      }
+    },
+    hover: {
+      scale: 1.1,
+      y: -5,
+      transition: {
+        type: "spring" as const,
+        stiffness: 300,
+        damping: 10
+      }
+    }
+  };
+
   return (
-      <article id="home" className="hero-article relative flex min-h-screen items-center justify-center overflow-hidden py-12 md:py-24">
+      <motion.article 
+        id="home" 
+        className="hero-article relative flex min-h-screen items-center justify-center overflow-hidden py-12 md:py-24"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
         <div className="hero-container relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="hero-grid grid-cols-1 items-center gap-12 lg:grid lg:grid-cols-2">
             {/* Lado Esquerdo */}
-            <div className="hero-text flex flex-col items-center text-center lg:items-start lg:text-left">
+            <motion.div 
+              className="hero-text flex flex-col items-center text-center lg:items-start lg:text-left"
+              variants={staggerContainer}
+            >
               {/* Badge de Disponibilidade */}
-              <div
+              <motion.div
                 className="hero-badge flex justify-center items-center gap-[0.5em] mb-[1.5em] font-semibold w-auto text-sm sm:text-base"
                 style={{
                   background: "linear-gradient(135deg, #7e22ce, #0a5ad3b0)",
@@ -16,117 +121,375 @@ export default function Hero() {
                   border: "1px solid rgba(34, 197, 94, 0.2)",
                   boxShadow: "0 0.25em 0.9em #0a5ad3b0",
                 }}
+                variants={fadeInUp}
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotate: [0, -2, 2, 0],
+                  boxShadow: "0 0.5em 1.5em #0a5ad3b0"
+                }}
+                whileTap={{ scale: 0.95 }}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="hero-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <motion.svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="hero-badge-icon" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                  animate={pulseAnimation}
+                >
                   <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm5 10-5 5-5-5" />
                   <path d="M12 7v5h5" />
-                </svg>
+                </motion.svg>
                 <p className="inline-block whitespace-nowrap"> Disponível para novos projetos </p>
-              </div>
+              </motion.div>
 
-          <section className='hero-info w-full flex flex-row'>
+          <motion.section 
+            className='hero-info w-full flex flex-row'
+            variants={staggerContainer}
+          >
               
-            <div>
-                  <h1 className="hero-title mb-6 font-extrabold leading-tight text-white">
-                    Transformo
+            <motion.div variants={fadeInLeft}>
+                  <motion.h1 
+                    className="hero-title mb-6 font-extrabold leading-tight text-white"
+                    variants={titleVariants}
+                  >
+                    <motion.span
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2, duration: 0.8 }}
+                    >
+                      Transformo
+                    </motion.span>
                     <br />
-                    <span className="hero-highlight-1">Ideias</span>
-                    {' em '}
+                    <motion.span 
+                      className="hero-highlight-1"
+                      initial={{ opacity: 0, x: -50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.4, duration: 0.8 }}
+                      whileHover={{ 
+                        scale: 1.1,
+                        textShadow: "0 0 20px rgba(96, 165, 250, 0.8)"
+                      }}
+                    >
+                      Ideias
+                    </motion.span>
+                    <motion.span
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6, duration: 0.8 }}
+                    >
+                      {' em '}
+                    </motion.span>
                     <br className="sm:hidden" />
-                    <span className="hero-highlight-2">Experiências</span>
-                  </h1>
+                    <motion.span 
+                      className="hero-highlight-2"
+                      initial={{ opacity: 0, x: 50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.8, duration: 0.8 }}
+                      whileHover={{ 
+                        scale: 1.1,
+                        textShadow: "0 0 20px rgba(147, 51, 234, 0.8)"
+                      }}
+                    >
+                      Experiências
+                    </motion.span>
+                  </motion.h1>
 
-                  <div className="hero-subtitle mb-8 flex items-center gap-2 text-xl font-semibold text-zinc-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="hero-subtitle-icon text-zinc-500 pr-[1%]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <motion.div 
+                    className="hero-subtitle mb-8 flex items-center gap-2 text-xl font-semibold text-zinc-400"
+                    variants={fadeInUp}
+                    whileHover={{ scale: 1.05, color: "#ffffff" }}
+                  >
+                    <motion.svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      className="hero-subtitle-icon text-zinc-500 pr-[1%]" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                      animate={{
+                        rotate: [0, 5, -5, 0],
+                        transition: {
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }
+                      }}
+                    >
                       <path d="m18 16 4-4-4-4" />
                       <path d="m6 8-4 4 4 4" />
                       <path d="m14.5 4-5 16" />
-                    </svg>
+                    </motion.svg>
                     Desenvolvedor Front-End
-                  </div>
-            </div>
+                  </motion.div>
+            </motion.div>
 
-              <div className="hero-visual relative flex justify-center">
-              <div className="hero-image-container relative">
+              <motion.div 
+                className="hero-visual relative flex justify-center"
+                variants={fadeInRight}
+              >
+              <motion.div 
+                className="hero-image-container relative"
+                variants={imageVariants}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotate: 5,
+                  transition: {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20
+                  }
+                }}
+              >
                 {/* Círculo de fundo com gradiente e blur */}
-                <div className="hero-image-blur absolute inset-0"></div>
+                <motion.div 
+                  className="hero-image-blur absolute inset-0"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.5, 0.8, 0.5],
+                    transition: {
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }
+                  }}
+                ></motion.div>
                 {/* Imagem do perfil */}
-                <div className="hero-image-wrapper relative z-10">
-                  <img
+                <motion.div 
+                  className="hero-image-wrapper relative z-10"
+                  whileHover={{
+                    boxShadow: "0 0 30px rgba(126, 34, 206, 0.6)",
+                    transition: {
+                      duration: 0.3
+                    }
+                  }}
+                >
+                  <motion.img
                     src="profile_pic/perfil.jpg"
                     alt="Foto de perfil do desenvolvedor"
                     className="h-full w-full rounded-full object-cover"
+                    animate={floatingAnimation}
                   />
-                </div>
-              </div>
-             </div>
-          </section>
+                </motion.div>
+              </motion.div>
+             </motion.div>
+          </motion.section>
 
             
 
               {/* Parágrafo de descrição */}
-              <p className="hero-desc mb-8 text-lg text-zinc-400 md:max-w-md lg:max-w-full">
+              <motion.p 
+                className="hero-desc mb-8 text-lg text-zinc-400 md:max-w-md lg:max-w-full"
+                variants={fadeInUp}
+                whileHover={{ color: "#ffffff", scale: 1.02 }}
+              >
                 Especializado em criar aplicações web modernas, responsivas e de alta performance que geram
-                <strong className="text-white"> resultados reais </strong>
+                <motion.strong 
+                  className="text-white"
+                  whileHover={{ 
+                    color: "#7e22ce",
+                    textShadow: "0 0 10px rgba(126, 34, 206, 0.8)"
+                  }}
+                > 
+                  resultados reais 
+                </motion.strong>
                 para o seu negócio.
-              </p>
+              </motion.p>
 
               {/* Estatísticas */}
-              <div className="hero-stats mb-8 flex w-full flex-wrap justify-center gap-8 lg:justify-start">
-                <div className="hero-stat flex flex-col items-center lg:items-start">
-                  <span className="text-3xl font-bold text-white">2+</span>
+              <motion.div 
+                className="hero-stats mb-8 flex w-full flex-wrap justify-center gap-8 lg:justify-start"
+                variants={staggerContainer}
+              >
+                <motion.div 
+                  className="hero-stat flex flex-col items-center lg:items-start"
+                  variants={statsVariants}
+                  whileHover="hover"
+                >
+                  <motion.span 
+                    className="text-3xl font-bold text-white"
+                    animate={{
+                      color: ["#ffffff", "#7e22ce", "#ffffff"],
+                      transition: {
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }
+                    }}
+                  >
+                    2+
+                  </motion.span>
                   <span className="text-zinc-400">Anos Exp.</span>
-                </div>
-                <div className="hero-stat flex flex-col items-center lg:items-start">
-                  <span className="text-3xl font-bold text-white">99%</span>
+                </motion.div>
+                <motion.div 
+                  className="hero-stat flex flex-col items-center lg:items-start"
+                  variants={statsVariants}
+                  whileHover="hover"
+                >
+                  <motion.span 
+                    className="text-3xl font-bold text-white"
+                    animate={{
+                      color: ["#ffffff", "#0a5ad3", "#ffffff"],
+                      transition: {
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.5
+                      }
+                    }}
+                  >
+                    99%
+                  </motion.span>
                   <span className="text-zinc-400">Satisfação</span>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               {/* Botões de Ação */}
-              <div className="hero-buttons flex w-full flex-wrap justify-center gap-4 lg:justify-start">
-                <a
+              <motion.div 
+                className="hero-buttons flex w-full flex-wrap justify-center gap-4 lg:justify-start"
+                variants={staggerContainer}
+              >
+                <motion.a
                   href="#contato"
                   className="hero-btn hero-btn-primary"
+                  variants={buttonVariants}
+                  whileHover="hover"
+                  whileTap="tap"
                 >
                   Vamos Conversar
-                  <svg xmlns="http://www.w3.org/2000/svg" className="ic-bt-vams-conv" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <motion.svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="ic-bt-vams-conv" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                    animate={{
+                      x: [0, 5, 0],
+                      transition: {
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }
+                    }}
+                  >
                     <path d="M5 12h14" />
                     <path d="m12 5 7 7-7 7" />
-                  </svg>
-                </a>
-                <a
+                  </motion.svg>
+                </motion.a>
+                <motion.a
                   href="#projetos"
                   className="hero-btn hero-btn-secondary"
+                  variants={buttonVariants}
+                  whileHover={{
+                    scale: 1.05,
+                    y: -5,
+                    backgroundColor: "#262629",
+                    boxShadow: "0 10px 25px rgba(63, 63, 70, 0.4)"
+                  }}
+                  whileTap="tap"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="ic-bt-ver-projs" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <motion.svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="ic-bt-ver-projs" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                    animate={{
+                      rotate: [0, 360],
+                      transition: {
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }
+                    }}
+                  >
                     <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm5 10-5 5-5-5" />
                     <path d="M12 7v5h5" />
-                  </svg>
+                  </motion.svg>
                   Ver Projetos
-                </a>
-              </div>
+                </motion.a>
+              </motion.div>
               
-              <a
+              <motion.a
                 href="pdf-cv/Currículo.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero-cv-link mt-6 inline-flex items-center gap-2 text-sm font-medium text-zinc-400 transition-all duration-300 hover:text-white hover:underline"
+                variants={fadeInUp}
+                whileHover={{ 
+                  scale: 1.05,
+                  color: "#ffffff",
+                  y: -2
+                }}
+                whileTap={{ scale: 0.95 }}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="ic-bt-curric" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <motion.svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="ic-bt-curric" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                  animate={{
+                    y: [0, -3, 0],
+                    transition: {
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }
+                  }}
+                >
                   <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm5 10-5 5-5-5" />
                   <path d="M12 7v5h5" />
-                </svg>
+                </motion.svg>
                 Download Currículo
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
             
           </div>
         </div>
-        <div className="hero-bg-container absolute inset-0 -z-0">
-          <div className="hero-bg-overlay absolute inset-0"></div>
-          <div className="hero-bg-grid absolute inset-0"></div>
-        </div>
+        <motion.div 
+          className="hero-bg-container absolute inset-0 -z-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <motion.div 
+            className="hero-bg-overlay absolute inset-0"
+            animate={{
+              opacity: [0.9, 0.7, 0.9],
+              transition: {
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }
+            }}
+          ></motion.div>
+          <motion.div 
+            className="hero-bg-grid absolute inset-0"
+            animate={{
+              backgroundPosition: ["0% 0%", "100% 100%"],
+              transition: {
+                duration: 20,
+                repeat: Infinity,
+                ease: "linear"
+              }
+            }}
+          ></motion.div>
+        </motion.div>
       
 
       <style>{`
@@ -690,7 +1053,7 @@ export default function Hero() {
 
 
       `}</style>
-    </article>
+    </motion.article>
   );
 }
 

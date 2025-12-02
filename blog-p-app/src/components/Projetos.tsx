@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // 1. Defina a interface para o tipo de projeto (manter a tipagem para segurança)
 interface Project {
@@ -18,7 +19,7 @@ interface Project {
 }
 
 // 2. Estilos com styled-components
-const StyledProjetos = styled.section`
+const StyledProjetos = styled(motion.section)`
   padding: 4rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -30,7 +31,7 @@ const StyledProjetos = styled.section`
   }
 `;
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,19 +39,47 @@ const HeaderContainer = styled.div`
   margin-bottom: 2.5rem;
 `;
 
-const Tag = styled.span`
+const Tag = styled(motion.span)`
   background: linear-gradient(135deg, #7e22ce, #0a5ad3b0);
   color: #fff;
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
   font-size: 1rem;
   margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
 `;
 
-const MainTitle = styled.h2`
+const MainTitle = styled(motion.h2)`
   font-size: 2.25rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  background: linear-gradient(45deg, #fff, #7e22ce, #0a5ad3b0);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease-in-out infinite;
+
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
 
   @media (max-width: 768px) {
     font-size: 1.75rem;
@@ -68,7 +97,7 @@ const Subtitle = styled.p`
   }
 `;
 
-const ProjectGrid = styled.div`
+const ProjectGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
@@ -79,7 +108,7 @@ const ProjectGrid = styled.div`
   }
 `;
 
-const ProjectCard = styled.div`
+const ProjectCard = styled(motion.div)`
   background-color: rgba(30, 20, 48, 0.5);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(111, 66, 193, 0.2);
@@ -88,11 +117,23 @@ const ProjectCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(126, 34, 206, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover::before {
+    opacity: 1;
   }
 `;
 
@@ -146,7 +187,7 @@ const TechLabel = styled.h5`
   margin-bottom: 0.5rem;
 `;
 
-const TechBadge = styled.span`
+const TechBadge = styled(motion.span)`
   background-color: rgba(111, 66, 193, 0.2);
   color: #6f42c1;
   font-size: 0.75rem;
@@ -155,6 +196,14 @@ const TechBadge = styled.span`
   margin-right: 0.5rem;
   display: inline-block;
   margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: rgba(111, 66, 193, 0.4);
+    color: #fff;
+    transform: scale(1.05);
+  }
 `;
 
 const ResultsContainer = styled.div`
@@ -191,7 +240,7 @@ const ButtonGroup = styled.div`
   gap: 1rem;
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled(motion.button)`
   flex: 1;
   padding: 0.75rem 1.5rem;
   border: none;
@@ -199,10 +248,25 @@ const StyledButton = styled.button`
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  &:hover::before {
+    width: 300px;
+    height: 300px;
   }
 `;
 
@@ -222,7 +286,7 @@ const CodeButton = styled(StyledButton)`
   }
 `;
 
-const BottomCTA = styled.div`
+const BottomCTA = styled(motion.div)`
   background-color: rgba(30, 20, 48, 0.5);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(111, 66, 193, 0.2);
@@ -230,18 +294,32 @@ const BottomCTA = styled.div`
   padding: 2.5rem;
   margin-top: 4rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(126, 34, 206, 0.3), transparent);
+    animation: rotate 4s linear infinite;
+  }
+  
+  @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
 `;
 
-const CTATitle = styled.h3`
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-`;
 
-const CTAParagraph = styled.p`
-  color: #a0a0a0;
-  margin-bottom: 1.5rem;
-`;
 
 const CTAButton = styled(DemoButton)`
   padding: 1rem 3rem;
@@ -358,94 +436,490 @@ export default function Projetos() {
     document.body.style.overflow = 'unset';
   };
 
+  // Variantes de animação
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const headerVariants = {
+    hidden: { y: -50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { 
+      y: 50, 
+      opacity: 0,
+      scale: 0.9,
+      rotateX: -15
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      rotateX: 0,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15
+      }
+    },
+    hover: {
+      y: -10,
+      scale: 1.02,
+      rotateY: 5,
+      boxShadow: "0 25px 50px rgba(126, 34, 206, 0.3)",
+      transition: {
+        type: "spring" as const,
+        stiffness: 300,
+        damping: 20
+      }
+    }
+  };
+
+  const techBadgeVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 200,
+        damping: 15
+      }
+    },
+    hover: {
+      scale: 1.1,
+      y: -2,
+      transition: {
+        type: "spring" as const,
+        stiffness: 400,
+        damping: 10
+      }
+    }
+  };
+
+  const buttonVariants = {
+    hover: {
+      scale: 1.05,
+      y: -3,
+      boxShadow: "0 10px 25px rgba(126, 34, 206, 0.4)",
+      transition: {
+        type: "spring" as const,
+        stiffness: 400,
+        damping: 10
+      }
+    },
+    tap: {
+      scale: 0.95,
+      transition: {
+        type: "spring" as const,
+        stiffness: 400,
+        damping: 10
+      }
+    }
+  };
+
+  const modalVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.8,
+      y: 50
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        type: "spring" as const,
+        stiffness: 300,
+        damping: 25
+      }
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      y: 50,
+      transition: {
+        duration: 0.2
+      }
+    }
+  };
+
+  const ctaVariants = {
+    hidden: { y: 100, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15,
+        delay: 0.5
+      }
+    },
+    hover: {
+      scale: 1.02,
+      transition: {
+        type: "spring" as const,
+        stiffness: 300,
+        damping: 20
+      }
+    }
+  };
+
   return (
-    <StyledProjetos id='projetos'>
-      <HeaderContainer>
-        <Tag>Projetos em Destaque</Tag>
-        <MainTitle>
+    <StyledProjetos 
+      id='projetos'
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={containerVariants}
+    >
+      <HeaderContainer variants={headerVariants}>
+        <Tag
+          whileHover={{ scale: 1.05, rotate: [0, -1, 1, 0] }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Projetos em Destaque
+        </Tag>
+        <MainTitle
+          variants={headerVariants}
+          whileHover={{ 
+            scale: 1.02,
+            textShadow: "0 0 20px rgba(126, 34, 206, 0.5)"
+          }}
+        >
           Transformando <span className='skills-highlight'>Ideias</span> em Realidade
         </MainTitle>
-        <Subtitle>
-          Cada projeto é uma oportunidade de criar soluções inovadoras que geram resultados reais para nossos clientes.
-        </Subtitle>
+        <motion.div variants={headerVariants}>
+          <Subtitle>
+            Cada projeto é uma oportunidade de criar soluções inovadoras que geram resultados reais para nossos clientes.
+          </Subtitle>
+        </motion.div>
       </HeaderContainer>
 
-      <ProjectGrid>
+      <ProjectGrid variants={containerVariants}>
         {projectsData.map((project, index) => (
-          <ProjectCard key={index}>
+          <ProjectCard 
+            key={index}
+            variants={cardVariants}
+            whileHover="hover"
+            whileTap={{ scale: 0.98 }}
+            style={{ perspective: 1000 }}
+          >
             <div>
               <CardHeader>
-                <CardTitle>{project.title}</CardTitle>
-                <StatusTag>
-                  <StatusIcon /> Concluído
-                </StatusTag>
+                <motion.div
+                  initial={{ x: -20, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <CardTitle>{project.title}</CardTitle>
+                </motion.div>
+                <motion.div
+                  initial={{ x: 20, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.1 + 0.1 }}
+                >
+                  <StatusTag>
+                    <motion.span
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                    >
+                      <StatusIcon />
+                    </motion.span>
+                    Concluído
+                  </StatusTag>
+                </motion.div>
               </CardHeader>
-              <Description>{project.description}</Description>
+              
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: index * 0.1 + 0.2 }}
+              >
+                <Description>{project.description}</Description>
+              </motion.div>
 
               <TechList>
-                <TechLabel>Tecnologias</TechLabel>
-                {project.technologies.map((tech, i) => (
-                  <TechBadge key={i}>{tech}</TechBadge>
-                ))}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: index * 0.1 + 0.3 }}
+                >
+                  <TechLabel>Tecnologias</TechLabel>
+                </motion.div>
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  variants={{
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.05,
+                        delayChildren: index * 0.1 + 0.4
+                      }
+                    }
+                  }}
+                >
+                  {project.technologies.map((tech, i) => (
+                    <TechBadge 
+                      key={i}
+                      variants={techBadgeVariants}
+                      whileHover="hover"
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      {tech}
+                    </TechBadge>
+                  ))}
+                </motion.div>
               </TechList>
 
-              <ResultsContainer>
-                <ResultsGrid>
-                  <ResultItem>
-                    <ResultValue>{project.performance}</ResultValue>
-                    <ResultLabel>Performance</ResultLabel>
-                  </ResultItem>
-                  <ResultItem>
-                    <ResultValue>
-                      {project.users || project.downloads || project.dataPoints}
-                    </ResultValue>
-                    <ResultLabel>
-                      {project.users ? 'Usuários' : project.downloads ? 'Downloads' : 'Data Points'}
-                    </ResultLabel>
-                  </ResultItem>
-                  <ResultItem>
-                    <ResultValue>
-                      {project.revenue || project.rating || project.loadTime}
-                    </ResultValue>
-                    <ResultLabel>
-                      {project.revenue ? 'Revenue' : project.rating ? 'Rating' : 'Load Time'}
-                    </ResultLabel>
-                  </ResultItem>
-                </ResultsGrid>
-              </ResultsContainer>
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ delay: index * 0.1 + 0.5 }}
+              >
+                <ResultsContainer>
+                  <ResultsGrid>
+                    <ResultItem>
+                      <motion.div
+                        whileHover={{ scale: 1.1, color: "#7e22ce" }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <ResultValue>{project.performance}</ResultValue>
+                      </motion.div>
+                      <ResultLabel>Performance</ResultLabel>
+                    </ResultItem>
+                    <ResultItem>
+                      <motion.div
+                        whileHover={{ scale: 1.1, color: "#7e22ce" }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <ResultValue>
+                          {project.users || project.downloads || project.dataPoints}
+                        </ResultValue>
+                      </motion.div>
+                      <ResultLabel>
+                        {project.users ? 'Usuários' : project.downloads ? 'Downloads' : 'Data Points'}
+                      </ResultLabel>
+                    </ResultItem>
+                    <ResultItem>
+                      <motion.div
+                        whileHover={{ scale: 1.1, color: "#7e22ce" }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <ResultValue>
+                          {project.revenue || project.rating || project.loadTime}
+                        </ResultValue>
+                      </motion.div>
+                      <ResultLabel>
+                        {project.revenue ? 'Revenue' : project.rating ? 'Rating' : 'Load Time'}
+                      </ResultLabel>
+                    </ResultItem>
+                  </ResultsGrid>
+                </ResultsContainer>
+              </motion.div>
             </div>
 
-            <ButtonGroup>
-              <DemoButton onClick={() => openModal(project)}>Ver Demo</DemoButton>
-              <CodeButton as="a" href={project.link} className='text-center' target="_blank">Código</CodeButton>
-            </ButtonGroup>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: index * 0.1 + 0.6 }}
+            >
+              <ButtonGroup>
+                <DemoButton 
+                  variants={buttonVariants}
+                  whileHover="hover"
+                  whileTap="tap"
+                  onClick={() => openModal(project)}
+                >
+                  Ver Demo
+                </DemoButton>
+                <CodeButton 
+                  as={motion.a}
+                  variants={buttonVariants}
+                  whileHover="hover"
+                  whileTap="tap"
+                  href={project.link} 
+                  className='text-center' 
+                  target="_blank"
+                >
+                  Código
+                </CodeButton>
+              </ButtonGroup>
+            </motion.div>
           </ProjectCard>
         ))}
       </ProjectGrid>
 
-      {selectedProject && (
-        <ModalOverlay onClick={closeModal}>
-          <ModalContent onClick={e => e.stopPropagation()}>
-            <CloseButton onClick={closeModal}>×</CloseButton>
-            <ModalImage src={selectedProject.image} alt={selectedProject.title} />
-            <ModalTitle>{selectedProject.title}</ModalTitle>
-            <ModalDescription>{selectedProject.description}</ModalDescription>
-            <ModalLink href={selectedProject.link} target="_blank">Ver Projeto</ModalLink>
-          </ModalContent>
-        </ModalOverlay>
-      )}
+      <AnimatePresence>
+        {selectedProject && (
+          <ModalOverlay 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeModal}
+          >
+            <ModalContent 
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              onClick={e => e.stopPropagation()}
+            >
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={closeModal}
+                style={{
+                  position: 'absolute',
+                  top: '1rem',
+                  right: '1rem',
+                  background: 'none',
+                  border: 'none',
+                  color: '#a0a0a0',
+                  fontSize: '1.5rem',
+                  cursor: 'pointer'
+                }}
+              >
+                ×
+              </motion.button>
+              <motion.img 
+                src={selectedProject.image} 
+                alt={selectedProject.title}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: '8px',
+                  marginBottom: '1rem'
+                }}
+              />
+              <motion.h4
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                style={{
+                  fontSize: '1.5rem',
+                  fontWeight: 600,
+                  color: '#fff',
+                  marginBottom: '0.5rem'
+                }}
+              >
+                {selectedProject.title}
+              </motion.h4>
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                style={{
+                  color: '#a0a0a0',
+                  marginBottom: '1rem'
+                }}
+              >
+                {selectedProject.description}
+              </motion.p>
+              <motion.a
+                href={selectedProject.link} 
+                target="_blank"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  display: 'inline-block',
+                  background: 'linear-gradient(135deg, #7e22ce, #0a5ad3b0)',
+                  color: '#fff',
+                  padding: '0.75rem 2rem',
+                  borderRadius: '8px',
+                  textDecoration: 'none',
+                  fontWeight: 600
+                }}
+              >
+                Ver Projeto
+              </motion.a>
+            </ModalContent>
+          </ModalOverlay>
+        )}
+      </AnimatePresence>
 
-      <BottomCTA>
-        <CTATitle>Tem um projeto em mente?</CTATitle>
-        <CTAParagraph>Vamos transformar suas ideias em uma solução digital que gera resultados.</CTAParagraph>
-        <CTAButton> <a href="#contato">Iniciar Projeto</a> </CTAButton>
+      <BottomCTA
+        variants={ctaVariants}
+        initial="hidden"
+        whileInView="visible"
+        whileHover="hover"
+        viewport={{ once: true }}
+      >
+        <motion.h3
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.1 }}
+          style={{
+            fontSize: '1.5rem',
+            fontWeight: 600,
+            marginBottom: '1rem'
+          }}
+        >
+          Tem um projeto em mente?
+        </motion.h3>
+        <motion.p
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          style={{
+            color: '#a0a0a0',
+            marginBottom: '1.5rem'
+          }}
+        >
+          Vamos transformar suas ideias em uma solução digital que gera resultados.
+        </motion.p>
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          <CTAButton
+            as={motion.button}
+            whileHover={{ 
+              scale: 1.05, 
+              boxShadow: "0 15px 30px rgba(126, 34, 206, 0.4)",
+              y: -3
+            }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              padding: '1rem 3rem',
+              fontSize: '1rem'
+            }}
+          >
+            <a href="#contato">Iniciar Projeto</a>
+          </CTAButton>
+        </motion.div>
       </BottomCTA>
     </StyledProjetos>
   );
 }
 
 // Estilos do Modal
-const ModalOverlay = styled.div`
+const ModalOverlay = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
@@ -459,7 +933,7 @@ const ModalOverlay = styled.div`
   backdrop-filter: blur(5px);
 `;
 
-const ModalContent = styled.div`
+const ModalContent = styled(motion.div)`
   background: rgba(30, 20, 48, 0.9);
   padding: 2rem;
   border-radius: 12px;
@@ -467,54 +941,7 @@ const ModalContent = styled.div`
   width: 90%;
   text-align: center;
   position: relative;
+  border: 1px solid rgba(126, 34, 206, 0.3);
+  box-shadow: 0 20px 40px rgba(126, 34, 206, 0.2);
 `;
 
-const CloseButton = styled.button`
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  color: #a0a0a0;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: #fff;
-  }
-`;
-
-const ModalImage = styled.img`
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-`;
-
-const ModalTitle = styled.h4`
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 0.5rem;
-`;
-
-const ModalDescription = styled.p`
-  color: #a0a0a0;
-  margin-bottom: 1rem;
-`;
-
-const ModalLink = styled.a`
-  display: inline-block;
-  background: linear-gradient(135deg, #7e22ce, #0a5ad3b0);
-  color: #fff;
-  padding: 0.75rem 2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: transform 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-  }
-`;

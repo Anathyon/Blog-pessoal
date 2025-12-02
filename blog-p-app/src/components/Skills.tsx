@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from 'framer-motion';
+import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, scaleIn, pulseAnimation, floatingAnimation } from '../utils/animations';
 
 const skillCategories = [
   {
@@ -110,13 +112,86 @@ export default function Skills() {
     setActiveCategory(index);
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const skillItemVariants = {
+    hidden: { 
+      scale: 0,
+      opacity: 0,
+      y: 50
+    },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring" as const,
+        stiffness: 200,
+        damping: 15
+      }
+    },
+    hover: {
+      scale: 1.15,
+      y: -10,
+      rotate: [0, -5, 5, 0],
+      boxShadow: "0 15px 30px rgba(126, 34, 206, 0.4)",
+      transition: {
+        type: "spring" as const,
+        stiffness: 300,
+        damping: 10
+      }
+    }
+  };
+
+  const categoryPillVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 200,
+        damping: 15
+      }
+    },
+    hover: {
+      scale: 1.05,
+      y: -3,
+      boxShadow: "0 10px 20px rgba(126, 34, 206, 0.3)",
+      transition: {
+        type: "spring" as const,
+        stiffness: 400,
+        damping: 10
+      }
+    }
+  };
+
   return (
-    <section className="pb-[5%]">
+    <>
+    <motion.section 
+      className="pb-[5%]"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={containerVariants}
+    >
       <section id="habilidades" className="py-16 px-6 bg-[#0d0d1a] text-white">
         <div className="max-w-6xl mx-auto text-center">
           {/* Header */}
-          <div className="mb-12 flex flex-col justify-center">
-            <div
+          <motion.div 
+            className="mb-12 flex flex-col justify-center"
+            variants={staggerContainer}
+          >
+            <motion.div
                 className="skills-badge flex justify-center items-center gap-[0.5em] mb-[1.5em] font-semibold w-auto max-w-1/4 text-sm sm:text-base"
                 style={{
                   background: "linear-gradient(135deg, #7e22ce, #0a5ad3b0)",
@@ -126,102 +201,415 @@ export default function Skills() {
                   border: "1px solid rgba(34, 197, 94, 0.2)",
                   fontSize:"1.1em"
                 }}
+                variants={fadeInUp}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotate: [0, -2, 2, 0],
+                  boxShadow: "0 0 25px rgba(10, 90, 211, 0.6)"
+                }}
+                whileTap={{ scale: 0.95 }}
               >
-              <svg xmlns="http://www.w3.org/2000/svg" className="hero-badge-icon text-emerald-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <motion.svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="hero-badge-icon text-emerald-300" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                animate={pulseAnimation}
+              >
                 <path d="m18 16 4-4-4-4" />
                 <path d="m6 8-4 4 4 4" />
                 <path d="m14.5 4-5 16" />
-              </svg>
+              </motion.svg>
               Stack Tecnológico
-            </div>
-            <h2 className="text-4xl font-extrabold leading-tight mt-6 mb-4 md:text-5xl" style={{color:"#fff", fontSize:"1.7em", paddingTop:"3dvh"}}>
+            </motion.div>
+            <motion.h2 
+              className="text-4xl font-extrabold leading-tight mt-6 mb-4 md:text-5xl" 
+              style={{color:"#fff", fontSize:"1.7em", paddingTop:"3dvh"}}
+              variants={fadeInUp}
+              whileHover={{ 
+                scale: 1.02,
+                textShadow: "0 0 20px rgba(126, 34, 206, 0.8)"
+              }}
+            >
               Tecnologias & <span className="skills-highlight">Habilidades</span>
-            </h2>
-            <p className="text-zinc-400 text-lg md:text-xl" style={{color:"#fff", fontSize:"1.1em", paddingBottom:"3dvh", paddingTop:"2dvh"}}>
-              Combinando expertise técnica com <strong className="text-white">inteligência artificial</strong>,
-              <strong className="text-white"> habilidades interpessoais</strong> e conhecimento em
-              <strong className="text-white"> marketing </strong> para entregar soluções completas e eficazes.
-            </p>
-          </div>
+            </motion.h2>
+            <motion.p 
+              className="text-zinc-400 text-lg md:text-xl" 
+              style={{color:"#fff", fontSize:"1.1em", paddingBottom:"3dvh", paddingTop:"2dvh"}}
+              variants={fadeInUp}
+            >
+              Combinando expertise técnica com <motion.strong 
+                className="text-white"
+                whileHover={{ color: "#7e22ce", textShadow: "0 0 10px rgba(126, 34, 206, 0.8)" }}
+              >
+                inteligência artificial
+              </motion.strong>,
+              <motion.strong 
+                className="text-white"
+                whileHover={{ color: "#0a5ad3", textShadow: "0 0 10px rgba(10, 90, 211, 0.8)" }}
+              > 
+                habilidades interpessoais
+              </motion.strong> e conhecimento em
+              <motion.strong 
+                className="text-white"
+                whileHover={{ color: "#7e22ce", textShadow: "0 0 10px rgba(126, 34, 206, 0.8)" }}
+              > 
+                marketing 
+              </motion.strong> para entregar soluções completas e eficazes.
+            </motion.p>
+          </motion.div>
 
           {/* Category Pills */}
-          <div className="category-pills">
+          <motion.div 
+            className="category-pills"
+            variants={staggerContainer}
+          >
             {skillCategories.map((category, index) => (
-              <button
+              <motion.button
                 key={category.title}
                 onClick={() => handleCategoryClick(index)}
                 className={`category-pill ${index === activeCategory ? 'active' : ''}`}
+                variants={categoryPillVariants}
+                whileHover="hover"
+                whileTap={{ scale: 0.95 }}
+                animate={index === activeCategory ? {
+                  scale: [1, 1.05, 1],
+                  boxShadow: [
+                    "0 10px 15px -3px rgba(10, 90, 211, 0.5)",
+                    "0 15px 25px -3px rgba(10, 90, 211, 0.7)",
+                    "0 10px 15px -3px rgba(10, 90, 211, 0.5)"
+                  ]
+                } : {}}
+                transition={{
+                  duration: 2,
+                  repeat: index === activeCategory ? Infinity : 0,
+                  ease: "easeInOut"
+                }}
               >
-                <img src={category.icon} alt="" className="pill-icon" />
+                <motion.img 
+                  src={category.icon} 
+                  alt="" 
+                  className="pill-icon"
+                  animate={index === activeCategory ? {
+                    rotate: [0, 10, -10, 0],
+                    transition: {
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }
+                  } : {}}
+                />
                 <span>{category.title}</span>
-              </button>
+              </motion.button>
             ))}
-          </div>
+          </motion.div>
 
           {/* Skills Carousel */}
-          <div 
+          <motion.div 
             className="skills-carousel"
             onMouseEnter={stopAutoPlay}
             onMouseLeave={startAutoPlay}
+            variants={fadeInUp}
+            whileHover={{ 
+              boxShadow: "0 25px 50px rgba(126, 34, 206, 0.2)",
+              scale: 1.01
+            }}
           >
             {/* Navigation Buttons */}
-            <button onClick={handlePrev} className="nav-btn nav-btn-left">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <motion.button 
+              onClick={handlePrev} 
+              className="nav-btn nav-btn-left"
+              whileHover={{ 
+                scale: 1.1,
+                backgroundColor: "#3f3f46",
+                boxShadow: "0 10px 20px rgba(126, 34, 206, 0.3)"
+              }}
+              whileTap={{ scale: 0.9 }}
+              animate={floatingAnimation}
+            >
+              <motion.svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                animate={{
+                  x: [-2, 2, -2],
+                  transition: {
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }
+                }}
+              >
                 <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
+              </motion.svg>
+            </motion.button>
             
-            <button onClick={handleNext} className="nav-btn nav-btn-right">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <motion.button 
+              onClick={handleNext} 
+              className="nav-btn nav-btn-right"
+              whileHover={{ 
+                scale: 1.1,
+                backgroundColor: "#3f3f46",
+                boxShadow: "0 10px 20px rgba(126, 34, 206, 0.3)"
+              }}
+              whileTap={{ scale: 0.9 }}
+              animate={{
+                y: [-5, 5, -5],
+                transition: {
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }
+              }}
+            >
+              <motion.svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                animate={{
+                  x: [-2, 2, -2],
+                  transition: {
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }
+                }}
+              >
                 <path d="m9 18 6-6-6-6" />
-              </svg>
-            </button>
+              </motion.svg>
+            </motion.button>
 
             {/* Category Title */}
-            <div className="category-header">
-              <img src={skillCategories[activeCategory].icon} alt="" className="category-icon" />
-              <h3 className="category-title">{skillCategories[activeCategory].title}</h3>
-            </div>
+            <AnimatePresence mode="wait">
+              <motion.div 
+                key={activeCategory}
+                className="category-header"
+                initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.8 }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.img 
+                  src={skillCategories[activeCategory].icon} 
+                  alt="" 
+                  className="category-icon"
+                  animate={{
+                    rotate: [0, 360],
+                    transition: {
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }
+                  }}
+                />
+                <motion.h3 
+                  className="category-title"
+                  animate={{
+                    color: ["#ffffff", "#7e22ce", "#0a5ad3", "#ffffff"],
+                    transition: {
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }
+                  }}
+                >
+                  {skillCategories[activeCategory].title}
+                </motion.h3>
+              </motion.div>
+            </AnimatePresence>
 
             {/* Skills Display */}
-            <div className="skills-container">
-              {skillCategories[activeCategory].skills.map((skill) => (
-                <div key={skill.name} className="skill-item">
-                  <img src={skill.icon} alt={`${skill.name} icon`} className="skill-icon" />
-                  <span className="skill-name">{skill.name}</span>
-                </div>
-              ))}
-            </div>
+            <AnimatePresence mode="wait">
+              <motion.div 
+                key={activeCategory}
+                className="skills-container"
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.1,
+                      delayChildren: 0.1
+                    }
+                  }
+                }}
+              >
+                {skillCategories[activeCategory].skills.map((skill, index) => (
+                  <motion.div 
+                    key={skill.name} 
+                    className="skill-item"
+                    variants={skillItemVariants}
+                    whileHover="hover"
+                    whileTap={{ scale: 0.9 }}
+                    custom={index}
+                  >
+                    <motion.img 
+                      src={skill.icon} 
+                      alt={`${skill.name} icon`} 
+                      className="skill-icon"
+                      animate={{
+                        y: [0, -5, 0],
+                        transition: {
+                          duration: 2 + index * 0.2,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: index * 0.1
+                        }
+                      }}
+                    />
+                    <motion.span 
+                      className="skill-name"
+                      whileHover={{ 
+                        color: "#7e22ce",
+                        textShadow: "0 0 10px rgba(126, 34, 206, 0.8)"
+                      }}
+                    >
+                      {skill.name}
+                    </motion.span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
 
             {/* Indicators */}
-            <div className="indicators">
+            <motion.div 
+              className="indicators"
+              variants={staggerContainer}
+            >
               {skillCategories.map((_, index) => (
-                <button
+                <motion.button
                   key={index}
                   onClick={() => handleCategoryClick(index)}
                   className={`indicator ${index === activeCategory ? 'active' : ''}`}
+                  variants={scaleIn}
+                  whileHover={{ scale: 1.3 }}
+                  whileTap={{ scale: 0.8 }}
+                  animate={index === activeCategory ? {
+                    scale: [1.2, 1.4, 1.2],
+                    boxShadow: [
+                      "0 0 10px rgba(102, 49, 219, 0.6)",
+                      "0 0 20px rgba(102, 49, 219, 0.8)",
+                      "0 0 10px rgba(102, 49, 219, 0.6)"
+                    ]
+                  } : {}}
+                  transition={{
+                    duration: 1.5,
+                    repeat: index === activeCategory ? Infinity : 0,
+                    ease: "easeInOut"
+                  }}
                 />
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Learning Section */}
-          <div className="learning-section shadow-lg" style={{boxShadow: '0 0.25rem 0.94rem #0a5ad3b0'}}>
-            <h3 className="learning-title">Sempre Aprendendo & Evoluindo</h3>
-            <p className="learning-text">
+          <motion.div 
+            className="learning-section shadow-lg" 
+            style={{boxShadow: '0 0.25rem 0.94rem #0a5ad3b0'}}
+            variants={fadeInUp}
+            whileHover={{ 
+              scale: 1.02,
+              boxShadow: "0 0.5rem 1.5rem rgba(10, 90, 211, 0.4)",
+              transition: {
+                type: "spring",
+                stiffness: 300,
+                damping: 20
+              }
+            }}
+          >
+            <motion.h3 
+              className="learning-title"
+              animate={{
+                backgroundImage: [
+                  "linear-gradient(45deg, #ffffff, #7e22ce)",
+                  "linear-gradient(45deg, #7e22ce, #0a5ad3)",
+                  "linear-gradient(45deg, #0a5ad3, #ffffff)",
+                  "linear-gradient(45deg, #ffffff, #7e22ce)"
+                ],
+                transition: {
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }
+              }}
+              style={{
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent"
+              }}
+            >
+              Sempre Aprendendo & Evoluindo
+            </motion.h3>
+            <motion.p 
+              className="learning-text"
+              variants={fadeInUp}
+            >
               Além das tecnologias tradicionais, estou constantemente explorando novas ferramentas como
-              <strong className="text-white"> Jest para testes</strong>, <strong className="text-white">Zustand para gerenciamento de estado</strong>,
-              <strong className="text-white"> SCSS para estilização avançada</strong> e aplicando conceitos de
-              <strong className="text-white"> Clean Code, SOLID e arquitetura MVC</strong>. Também utilizo
-              <strong className="text-white"> IA generativa</strong> como ChatGPT, Claude, Gemini e Cursor para otimizar
-              meu desenvolvimento, combinando com minhas habilidades em <strong className="text-white"> marketing </strong>
+              <motion.strong 
+                className="text-white"
+                whileHover={{ color: "#7e22ce", textShadow: "0 0 10px rgba(126, 34, 206, 0.8)" }}
+              > 
+                Jest para testes
+              </motion.strong>, 
+              <motion.strong 
+                className="text-white"
+                whileHover={{ color: "#0a5ad3", textShadow: "0 0 10px rgba(10, 90, 211, 0.8)" }}
+              >
+                Zustand para gerenciamento de estado
+              </motion.strong>,
+              <motion.strong 
+                className="text-white"
+                whileHover={{ color: "#7e22ce", textShadow: "0 0 10px rgba(126, 34, 206, 0.8)" }}
+              > 
+                SCSS para estilização avançada
+              </motion.strong> e aplicando conceitos de
+              <motion.strong 
+                className="text-white"
+                whileHover={{ color: "#0a5ad3", textShadow: "0 0 10px rgba(10, 90, 211, 0.8)" }}
+              > 
+                Clean Code, SOLID e arquitetura MVC
+              </motion.strong>. Também utilizo
+              <motion.strong 
+                className="text-white"
+                whileHover={{ color: "#7e22ce", textShadow: "0 0 10px rgba(126, 34, 206, 0.8)" }}
+              > 
+                IA generativa
+              </motion.strong> como ChatGPT, Claude, Gemini e Cursor para otimizar
+              meu desenvolvimento, combinando com minhas habilidades em 
+              <motion.strong 
+                className="text-white"
+                whileHover={{ color: "#0a5ad3", textShadow: "0 0 10px rgba(10, 90, 211, 0.8)" }}
+              > 
+                marketing 
+              </motion.strong>
               para criar soluções que realmente conectam com o usuário.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
       </section>
+    </motion.section>
 
-      <style>{`
+    <style>{`
         .skills-highlight {
           background: linear-gradient(to right, #3b82f6, #9333ea);
           -webkit-background-clip: text;
@@ -755,6 +1143,6 @@ export default function Skills() {
           }
         }
       `}</style>
-    </section>
+    </>
   );
 }
