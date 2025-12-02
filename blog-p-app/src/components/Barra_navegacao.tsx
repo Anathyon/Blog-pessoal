@@ -107,9 +107,9 @@ export default function Header() {
                         ))}
                     </nav>
 
-                    <div className="sidebar-cta mt-auto p-4 rounded-lg text-center" style={{ background: '#1e1e2d', margin: '1rem', boxShadow: '0 0.25rem 0.94rem rgba(0,0,0,0.3)', borderRadius:"1rem", padding:"1%" }}>
+                    <div className="sidebar-cta mt-auto rounded-lg text-center" style={{ background: '#1e1e2d', margin: '1rem', boxShadow: '0 0.25rem 0.94rem rgba(0,0,0,0.3)', borderRadius:"1rem", padding:"1rem" }}>
                         <h3 className="text-white text-lg font-bold mb-2" style={{color: "#fff"}}>Pronto para começar?</h3>
-                        <p className="text-gray-400 text-sm mb-4" style={{color: "#fff"}}>Vamos transformar sua ideia em realidade.</p>
+                        <p className="text-gray-400 text-sm" style={{color: "#fff", marginBottom: "1rem"}}>Vamos transformar sua ideia em realidade.</p>
                         <a
                             href="#contato"
                             onClick={e => handleNavClick(e, "#contato")}

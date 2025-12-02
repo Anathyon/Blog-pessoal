@@ -564,43 +564,43 @@ export default function Skills() {
               className="learning-text"
               variants={fadeInUp}
             >
-              Além das tecnologias tradicionais, estou constantemente explorando novas ferramentas como
+              Além das tecnologias tradicionais, estou constantemente explorando novas ferramentas como 
               <motion.strong 
                 className="text-white"
                 whileHover={{ color: "#7e22ce", textShadow: "0 0 10px rgba(126, 34, 206, 0.8)" }}
               > 
-                Jest para testes
+                <span> Jest para testes</span>
               </motion.strong>, 
               <motion.strong 
                 className="text-white"
                 whileHover={{ color: "#0a5ad3", textShadow: "0 0 10px rgba(10, 90, 211, 0.8)" }}
               >
-                Zustand para gerenciamento de estado
+                <span> Zustand para gerenciamento de estado</span>
               </motion.strong>,
               <motion.strong 
                 className="text-white"
                 whileHover={{ color: "#7e22ce", textShadow: "0 0 10px rgba(126, 34, 206, 0.8)" }}
               > 
-                SCSS para estilização avançada
+                <span> SCSS para estilização avançada</span>
               </motion.strong> e aplicando conceitos de
               <motion.strong 
                 className="text-white"
                 whileHover={{ color: "#0a5ad3", textShadow: "0 0 10px rgba(10, 90, 211, 0.8)" }}
               > 
-                Clean Code, SOLID e arquitetura MVC
+                <span> Clean Code, SOLID e arquitetura MVC</span>
               </motion.strong>. Também utilizo
               <motion.strong 
                 className="text-white"
                 whileHover={{ color: "#7e22ce", textShadow: "0 0 10px rgba(126, 34, 206, 0.8)" }}
               > 
-                IA generativa
+                <span> IA generativa</span>
               </motion.strong> como ChatGPT, Claude, Gemini e Cursor para otimizar
               meu desenvolvimento, combinando com minhas habilidades em 
               <motion.strong 
                 className="text-white"
                 whileHover={{ color: "#0a5ad3", textShadow: "0 0 10px rgba(10, 90, 211, 0.8)" }}
               > 
-                marketing 
+                <span> marketing </span> 
               </motion.strong>
               para criar soluções que realmente conectam com o usuário.
             </motion.p>
