@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, floatingAnimation, pulseAnimation, glowEffect } from '../utils/animations';
+import { motion } from 'framer-motion';
+import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, floatingAnimation, pulseAnimation } from '../utils/animations';
 
 export default function Hero() {
   const containerVariants = {

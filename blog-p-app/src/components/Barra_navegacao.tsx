@@ -32,11 +32,11 @@ export default function Header() {
     return (
         <>
             {/* Main Header */}
-            <header className="header-main fixed top-0 w-full z-[1000]" style={{ background: '#13131F', backdropFilter: 'blur(0.625rem)', padding: '1rem 0' }}>
-                <div className="header-container flex justify-between items-center w-full mx-auto" style={{ maxWidth: '75rem', padding: '0 5%' }}>
+            <header className="header-main fixed top-0 w-full z-[1000]">
+                <div className="header-container flex justify-between items-center w-full mx-auto">
                     {/* Logo */}
                     <div className="header-logo flex items-center gap-3 text-white">
-                        <div className="header-logo-img flex items-center justify-center rounded-[0.75rem] shadow-lg" style={{ width: '2.8rem', height: '2.8rem', color: '#fff', fontSize: '1.3rem', boxShadow: '0 0.25rem 0.94rem #0a5ad3b0', padding: '0.3rem', overflow: 'hidden', background: "linear-gradient(135deg, #7e22ce, #0a5ad3b0)" }}>
+                        <div className="header-logo-img flex items-center justify-center rounded-[0.75rem] shadow-lg">
                             <img src="/logo/Logotipo.png" alt="Logo" className="w-full h-full object-cover" />
                         </div>
                         <div className="logo-text">
@@ -132,7 +132,25 @@ export default function Header() {
 
             <style>{`
                 .header-main {
+                    background: #13131F;
+                    backdrop-filter: blur(0.625rem);
                     padding: clamp(0.7rem, 2vw, 1.1rem) 0;
+                }
+                
+                .header-container {
+                    max-width: 75rem;
+                    padding: 0 5%;
+                }
+                
+                .header-logo-img {
+                    width: 2.8rem;
+                    height: 2.8rem;
+                    color: #fff;
+                    font-size: 1.3rem;
+                    box-shadow: 0 0.25rem 0.94rem #0a5ad3b0;
+                    padding: 0.3rem;
+                    overflow: hidden;
+                    background: linear-gradient(135deg, #7e22ce, #0a5ad3b0);
                 }
                 
                 .header-container {

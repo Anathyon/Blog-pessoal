@@ -698,19 +698,13 @@ export default function Projetos() {
                 <ResultsContainer>
                   <ResultsGrid>
                     <ResultItem>
-                      <motion.div
-                        whileHover={{ scale: 1.1, color: "#7e22ce" }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
+                      <motion.div whileHover={{ scale: 1.1, color: "#7e22ce" }}>
                         <ResultValue>{project.performance}</ResultValue>
                       </motion.div>
                       <ResultLabel>Performance</ResultLabel>
                     </ResultItem>
                     <ResultItem>
-                      <motion.div
-                        whileHover={{ scale: 1.1, color: "#7e22ce" }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
+                      <motion.div whileHover={{ scale: 1.1, color: "#7e22ce" }}>
                         <ResultValue>
                           {project.users || project.downloads || project.dataPoints}
                         </ResultValue>
@@ -720,10 +714,7 @@ export default function Projetos() {
                       </ResultLabel>
                     </ResultItem>
                     <ResultItem>
-                      <motion.div
-                        whileHover={{ scale: 1.1, color: "#7e22ce" }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
+                      <motion.div whileHover={{ scale: 1.1, color: "#7e22ce" }}>
                         <ResultValue>
                           {project.revenue || project.rating || project.loadTime}
                         </ResultValue>

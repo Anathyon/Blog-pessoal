@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from 'framer-motion';
-import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, scaleIn, pulseAnimation, floatingAnimation } from '../utils/animations';
+import { fadeInUp, staggerContainer, scaleIn, pulseAnimation, floatingAnimation } from '../utils/animations';
 
 const skillCategories = [
   {
@@ -610,13 +610,6 @@ export default function Skills() {
     </motion.section>
 
     <style>{`
-        .skills-highlight {
-          background: linear-gradient(to right, #3b82f6, #9333ea);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
         .category-pills {
           display: flex;
           justify-content: center;

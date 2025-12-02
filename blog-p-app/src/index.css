@@ -1,13 +1,6 @@
 @import "tailwindcss/preflight";
 @import "tailwindcss/utilities";
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body{
-   color: #ffffff;
-   background-color: #0d0d1a;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{color:#fff;background:#0d0d1a;font-family:system-ui,-apple-system,sans-serif}
+.skills-highlight{background:linear-gradient(45deg,#3b82f6,#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
