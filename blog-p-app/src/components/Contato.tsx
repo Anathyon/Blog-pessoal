@@ -395,12 +395,16 @@ const firebaseConfig = useMemo(() => ({
     setMessageColor('');
 
     try {
-      const contactCollection = collection(db, `artifacts/${firebaseConfig.projectId}/users/${userId}/contact_messages`);
+      console.log('Tentando enviar dados:', { ...formData, userId });
+      const contactCollection = collection(db, 'contact_messages');
       
-      await addDoc(contactCollection, {
+      const docRef = await addDoc(contactCollection, {
         ...formData,
+        userId: userId,
         timestamp: new Date()
       });
+      
+      console.log('Documento criado com ID:', docRef.id);
       
       setMessageColor('success');
       setMessage('Mensagem enviada com sucesso!');
