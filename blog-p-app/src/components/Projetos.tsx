@@ -329,14 +329,14 @@ const CTAButton = styled(DemoButton)`
 export default function Projetos() {
   const projectsData: Project[] = [
     {
-      title: "Portal Institucional de Aplicativos",
-      description: "Interface moderna e responsiva desenvolvida para apresentar e divulgar os aplicativos da empresa, destacando funcionalidades, benefícios e links de acesso para download.",
-      image: "img-projetos/projeto-mao-na-roda.png", 
-      link: "https://m-o-na-roda.vercel.app/",
-      technologies: ["React", "TypeScript", "TailwindCSS", "Vite"],
+      title: "Mão na Roda | Plataforma de Serviços Domésticos",
+      description: "Aplicação web moderna e responsiva que conecta clientes com profissionais qualificados para serviços domésticos. Inclui animações interativas com Framer Motion, design responsivo e integração com apps mobile para Android. Oferece soluções tanto para quem busca serviços quanto para profissionais.",
+      image: "img-projetos/mao-na-roda.png",
+      link: "https://mao-na-roda-site.vercel.app/",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vite", "CSS-in-JS"],
       performance: "98%",
-      users: "5K",
-      revenue: "+120%",
+      users: "30K+",
+      loadTime: "0.8s"
     },
     {
       title: "WeatherApp | Informações Meteorológicas",
