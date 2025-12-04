@@ -339,14 +339,14 @@ export default function Projetos() {
       revenue: "+120%",
     },
     {
-      title: "🌤 App de Previsão do Tempo",
-      description: "Aplicação moderna e responsiva em React + TypeScript que exibe clima atual, previsão e qualidade do ar, com temas dinâmicos e mapas interativos.",
-      image: "img-projetos/projeto-info-meteorologico.png",
+      title: "WeatherApp | Informações Meteorológicas",
+      description: "Aplicação web moderna e responsiva para consulta de informações meteorológicas em tempo real. Inclui geolocalização automática, mapas interativos, qualidade do ar, temas dinâmicos e design adaptável para todos os dispositivos.",
+      image: "img-projetos/projeto-clima.png",
       link: "https://informa-es-meteorol-gicas.vercel.app/",
-      technologies: ["React", "TypeScript", "Leaflet", "OpenWeather API", "Vercel", "Bootstrap"],
-      performance: "100%",
-      users: "2.5K",
-      loadTime: "1.8s",
+      technologies: ["React", "TypeScript", "Bootstrap", "React-Leaflet", "OpenWeatherMap API", "Unsplash API"],
+      performance: "95%",
+      users: "1K+",
+      loadTime: "1.1s"
     },
 
     {
