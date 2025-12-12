@@ -252,13 +252,13 @@ export default function Skills() {
                 className="text-white"
                 whileHover={{ color: "#0a5ad3", textShadow: "0 0 10px rgba(10, 90, 211, 0.8)" }}
               > 
-                habilidades interpessoais
+                <span> habilidades interpessoais</span>
               </motion.strong> e conhecimento em
               <motion.strong 
                 className="text-white"
                 whileHover={{ color: "#7e22ce", textShadow: "0 0 10px rgba(126, 34, 206, 0.8)" }}
               > 
-                marketing 
+                <span> marketing </span>
               </motion.strong> para entregar soluções completas e eficazes.
             </motion.p>
           </motion.div>
