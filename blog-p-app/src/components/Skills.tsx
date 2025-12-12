@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from 'framer-motion';
-import { fadeInUp, staggerContainer, scaleIn, pulseAnimation, floatingAnimation } from '../utils/animations';
+import { fadeInUp, staggerContainer, scaleIn, pulseAnimation } from '../utils/animations';
 
 const skillCategories = [
   {
@@ -125,52 +125,41 @@ export default function Skills() {
 
   const skillItemVariants = {
     hidden: { 
-      scale: 0,
       opacity: 0,
-      y: 50
+      y: 20
     },
     visible: {
-      scale: 1,
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring" as const,
-        stiffness: 200,
-        damping: 15
-      }
-    },
-    hover: {
-      scale: 1.15,
-      y: -10,
-      rotate: [0, -5, 5, 0],
-      boxShadow: "0 15px 30px rgba(126, 34, 206, 0.4)",
-      transition: {
-        type: "spring" as const,
-        stiffness: 300,
-        damping: 10
-      }
-    }
-  };
-
-  const categoryPillVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 200,
-        damping: 15
+        duration: 0.4,
+        ease: "easeOut" as const
       }
     },
     hover: {
       scale: 1.05,
       y: -3,
-      boxShadow: "0 10px 20px rgba(126, 34, 206, 0.3)",
       transition: {
-        type: "spring" as const,
-        stiffness: 400,
-        damping: 10
+        duration: 0.2,
+        ease: "easeOut" as const
+      }
+    }
+  };
+
+  const categoryPillVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut" as const
+      }
+    },
+    hover: {
+      scale: 1.02,
+      transition: {
+        duration: 0.2,
+        ease: "easeOut" as const
       }
     }
   };
@@ -203,9 +192,7 @@ export default function Skills() {
                 }}
                 variants={fadeInUp}
                 whileHover={{ 
-                  scale: 1.05,
-                  rotate: [0, -2, 2, 0],
-                  boxShadow: "0 0 25px rgba(10, 90, 211, 0.6)"
+                  scale: 1.02
                 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -231,8 +218,7 @@ export default function Skills() {
               style={{color:"#fff", fontSize:"1.7em", paddingTop:"3dvh"}}
               variants={fadeInUp}
               whileHover={{ 
-                scale: 1.02,
-                textShadow: "0 0 20px rgba(126, 34, 206, 0.8)"
+                scale: 1.01
               }}
             >
               Tecnologias & <span className="skills-highlight">Habilidades</span>
@@ -276,32 +262,13 @@ export default function Skills() {
                 variants={categoryPillVariants}
                 whileHover="hover"
                 whileTap={{ scale: 0.95 }}
-                animate={index === activeCategory ? {
-                  scale: [1, 1.05, 1],
-                  boxShadow: [
-                    "0 10px 15px -3px rgba(10, 90, 211, 0.5)",
-                    "0 15px 25px -3px rgba(10, 90, 211, 0.7)",
-                    "0 10px 15px -3px rgba(10, 90, 211, 0.5)"
-                  ]
-                } : {}}
-                transition={{
-                  duration: 2,
-                  repeat: index === activeCategory ? Infinity : 0,
-                  ease: "easeInOut"
-                }}
+
               >
                 <motion.img 
                   src={category.icon} 
                   alt="" 
                   className="pill-icon"
-                  animate={index === activeCategory ? {
-                    rotate: [0, 10, -10, 0],
-                    transition: {
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }
-                  } : {}}
+
                 />
                 <span>{category.title}</span>
               </motion.button>
@@ -314,24 +281,19 @@ export default function Skills() {
             onMouseEnter={stopAutoPlay}
             onMouseLeave={startAutoPlay}
             variants={fadeInUp}
-            whileHover={{ 
-              boxShadow: "0 25px 50px rgba(126, 34, 206, 0.2)",
-              scale: 1.01
-            }}
+
           >
             {/* Navigation Buttons */}
             <motion.button 
               onClick={handlePrev} 
               className="nav-btn nav-btn-left"
               whileHover={{ 
-                scale: 1.1,
-                backgroundColor: "#3f3f46",
-                boxShadow: "0 10px 20px rgba(126, 34, 206, 0.3)"
+                scale: 1.05,
+                backgroundColor: "#3f3f46"
               }}
-              whileTap={{ scale: 0.9 }}
-              animate={floatingAnimation}
+              whileTap={{ scale: 0.95 }}
             >
-              <motion.svg 
+              <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 width="24" 
                 height="24" 
@@ -341,39 +303,21 @@ export default function Skills() {
                 strokeWidth="2" 
                 strokeLinecap="round" 
                 strokeLinejoin="round"
-                animate={{
-                  x: [-2, 2, -2],
-                  transition: {
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }
-                }}
               >
                 <path d="M15 18l-6-6 6-6" />
-              </motion.svg>
+              </svg>
             </motion.button>
             
             <motion.button 
               onClick={handleNext} 
               className="nav-btn nav-btn-right"
               whileHover={{ 
-                scale: 1.1,
-                backgroundColor: "#3f3f46",
-                boxShadow: "0 10px 20px rgba(126, 34, 206, 0.3)"
+                scale: 1.05,
+                backgroundColor: "#3f3f46"
               }}
-              whileTap={{ scale: 0.9 }}
-              animate={{
-                y: [-5, 5, -5],
-                transition: {
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }
-              }}
+              whileTap={{ scale: 0.95 }}
             >
-              <motion.svg 
+              <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 width="24" 
                 height="24" 
@@ -383,17 +327,9 @@ export default function Skills() {
                 strokeWidth="2" 
                 strokeLinecap="round" 
                 strokeLinejoin="round"
-                animate={{
-                  x: [-2, 2, -2],
-                  transition: {
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }
-                }}
               >
                 <path d="m9 18 6-6-6-6" />
-              </motion.svg>
+              </svg>
             </motion.button>
 
             {/* Category Title */}
@@ -406,32 +342,14 @@ export default function Skills() {
                 exit={{ opacity: 0, y: -20, scale: 0.8 }}
                 transition={{ duration: 0.3 }}
               >
-                <motion.img 
+                <img 
                   src={skillCategories[activeCategory].icon} 
                   alt="" 
                   className="category-icon"
-                  animate={{
-                    rotate: [0, 360],
-                    transition: {
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }
-                  }}
                 />
-                <motion.h3 
-                  className="category-title"
-                  animate={{
-                    color: ["#ffffff", "#7e22ce", "#0a5ad3", "#ffffff"],
-                    transition: {
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }
-                  }}
-                >
+                <h3 className="category-title">
                   {skillCategories[activeCategory].title}
-                </motion.h3>
+                </h3>
               </motion.div>
             </AnimatePresence>
 
@@ -463,29 +381,14 @@ export default function Skills() {
                     whileTap={{ scale: 0.9 }}
                     custom={index}
                   >
-                    <motion.img 
+                    <img 
                       src={skill.icon} 
                       alt={`${skill.name} icon`} 
                       className="skill-icon"
-                      animate={{
-                        y: [0, -5, 0],
-                        transition: {
-                          duration: 2 + index * 0.2,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                          delay: index * 0.1
-                        }
-                      }}
                     />
-                    <motion.span 
-                      className="skill-name"
-                      whileHover={{ 
-                        color: "#7e22ce",
-                        textShadow: "0 0 10px rgba(126, 34, 206, 0.8)"
-                      }}
-                    >
+                    <span className="skill-name">
                       {skill.name}
-                    </motion.span>
+                    </span>
                   </motion.div>
                 ))}
               </motion.div>
@@ -502,21 +405,8 @@ export default function Skills() {
                   onClick={() => handleCategoryClick(index)}
                   className={`indicator ${index === activeCategory ? 'active' : ''}`}
                   variants={scaleIn}
-                  whileHover={{ scale: 1.3 }}
-                  whileTap={{ scale: 0.8 }}
-                  animate={index === activeCategory ? {
-                    scale: [1.2, 1.4, 1.2],
-                    boxShadow: [
-                      "0 0 10px rgba(102, 49, 219, 0.6)",
-                      "0 0 20px rgba(102, 49, 219, 0.8)",
-                      "0 0 10px rgba(102, 49, 219, 0.6)"
-                    ]
-                  } : {}}
-                  transition={{
-                    duration: 1.5,
-                    repeat: index === activeCategory ? Infinity : 0,
-                    ease: "easeInOut"
-                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                 />
               ))}
             </motion.div>
@@ -528,30 +418,12 @@ export default function Skills() {
             style={{boxShadow: '0 0.25rem 0.94rem #0a5ad3b0'}}
             variants={fadeInUp}
             whileHover={{ 
-              scale: 1.02,
-              boxShadow: "0 0.5rem 1.5rem rgba(10, 90, 211, 0.4)",
-              transition: {
-                type: "spring",
-                stiffness: 300,
-                damping: 20
-              }
+              scale: 1.01
             }}
           >
             <motion.h3 
               className="learning-title"
-              animate={{
-                backgroundImage: [
-                  "linear-gradient(45deg, #ffffff, #7e22ce)",
-                  "linear-gradient(45deg, #7e22ce, #0a5ad3)",
-                  "linear-gradient(45deg, #0a5ad3, #ffffff)",
-                  "linear-gradient(45deg, #ffffff, #7e22ce)"
-                ],
-                transition: {
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }
-              }}
+
               style={{
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",

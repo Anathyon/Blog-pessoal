@@ -449,88 +449,72 @@ export default function Projetos() {
   };
 
   const headerVariants = {
-    hidden: { y: -50, opacity: 0 },
+    hidden: { y: -20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 15
+        duration: 0.5,
+        ease: "easeOut" as const
       }
     }
   };
 
   const cardVariants = {
     hidden: { 
-      y: 50, 
-      opacity: 0,
-      scale: 0.9,
-      rotateX: -15
+      y: 20, 
+      opacity: 0
     },
     visible: {
       y: 0,
       opacity: 1,
-      scale: 1,
-      rotateX: 0,
       transition: {
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 15
+        duration: 0.4,
+        ease: "easeOut" as const
       }
     },
     hover: {
-      y: -10,
-      scale: 1.02,
-      rotateY: 5,
-      boxShadow: "0 25px 50px rgba(126, 34, 206, 0.3)",
+      y: -3,
+      scale: 1.01,
       transition: {
-        type: "spring" as const,
-        stiffness: 300,
-        damping: 20
+        duration: 0.2,
+        ease: "easeOut" as const
       }
     }
   };
 
   const techBadgeVariants = {
-    hidden: { scale: 0, opacity: 0 },
+    hidden: { opacity: 0 },
     visible: {
-      scale: 1,
       opacity: 1,
       transition: {
-        type: "spring" as const,
-        stiffness: 200,
-        damping: 15
+        duration: 0.3,
+        ease: "easeOut" as const
       }
     },
     hover: {
-      scale: 1.1,
-      y: -2,
+      scale: 1.05,
       transition: {
-        type: "spring" as const,
-        stiffness: 400,
-        damping: 10
+        duration: 0.2,
+        ease: "easeOut" as const
       }
     }
   };
 
   const buttonVariants = {
     hover: {
-      scale: 1.05,
-      y: -3,
-      boxShadow: "0 10px 25px rgba(126, 34, 206, 0.4)",
+      scale: 1.02,
+      y: -1,
       transition: {
-        type: "spring" as const,
-        stiffness: 400,
-        damping: 10
+        duration: 0.2,
+        ease: "easeOut" as const
       }
     },
     tap: {
-      scale: 0.95,
+      scale: 0.98,
       transition: {
-        type: "spring" as const,
-        stiffness: 400,
-        damping: 10
+        duration: 0.1,
+        ease: "easeOut" as const
       }
     }
   };
@@ -562,23 +546,21 @@ export default function Projetos() {
   };
 
   const ctaVariants = {
-    hidden: { y: 100, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 15,
-        delay: 0.5
+        duration: 0.5,
+        ease: "easeOut" as const,
+        delay: 0.3
       }
     },
     hover: {
-      scale: 1.02,
+      scale: 1.01,
       transition: {
-        type: "spring" as const,
-        stiffness: 300,
-        damping: 20
+        duration: 0.2,
+        ease: "easeOut" as const
       }
     }
   };
@@ -593,7 +575,7 @@ export default function Projetos() {
     >
       <HeaderContainer variants={headerVariants}>
         <Tag
-          whileHover={{ scale: 1.05, rotate: [0, -1, 1, 0] }}
+          whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.95 }}
         >
           Projetos em Destaque
@@ -601,8 +583,7 @@ export default function Projetos() {
         <MainTitle
           variants={headerVariants}
           whileHover={{ 
-            scale: 1.02,
-            textShadow: "0 0 20px rgba(126, 34, 206, 0.5)"
+            scale: 1.01
           }}
         >
           Transformando <span className='skills-highlight'>Ideias</span> em Realidade
@@ -639,8 +620,7 @@ export default function Projetos() {
                 >
                   <StatusTag>
                     <motion.span
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ repeat: Infinity, duration: 2 }}
+
                     >
                       <StatusIcon />
                     </motion.span>
@@ -698,13 +678,13 @@ export default function Projetos() {
                 <ResultsContainer>
                   <ResultsGrid>
                     <ResultItem>
-                      <motion.div whileHover={{ scale: 1.1, color: "#7e22ce" }}>
+                      <motion.div whileHover={{ scale: 1.05, color: "#7e22ce" }}>
                         <ResultValue>{project.performance}</ResultValue>
                       </motion.div>
                       <ResultLabel>Performance</ResultLabel>
                     </ResultItem>
                     <ResultItem>
-                      <motion.div whileHover={{ scale: 1.1, color: "#7e22ce" }}>
+                      <motion.div whileHover={{ scale: 1.05, color: "#7e22ce" }}>
                         <ResultValue>
                           {project.users || project.downloads || project.dataPoints}
                         </ResultValue>
@@ -714,7 +694,7 @@ export default function Projetos() {
                       </ResultLabel>
                     </ResultItem>
                     <ResultItem>
-                      <motion.div whileHover={{ scale: 1.1, color: "#7e22ce" }}>
+                      <motion.div whileHover={{ scale: 1.05, color: "#7e22ce" }}>
                         <ResultValue>
                           {project.revenue || project.rating || project.loadTime}
                         </ResultValue>
@@ -775,7 +755,7 @@ export default function Projetos() {
               onClick={e => e.stopPropagation()}
             >
               <motion.button
-                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileHover={{ scale: 1.05, rotate: 45 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={closeModal}
                 style={{
@@ -834,7 +814,7 @@ export default function Projetos() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.95 }}
                 style={{
                   display: 'inline-block',
@@ -891,9 +871,7 @@ export default function Projetos() {
           <CTAButton
             as={motion.button}
             whileHover={{ 
-              scale: 1.05, 
-              boxShadow: "0 15px 30px rgba(126, 34, 206, 0.4)",
-              y: -3
+              scale: 1.02
             }}
             whileTap={{ scale: 0.95 }}
             style={{

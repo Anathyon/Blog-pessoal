@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, floatingAnimation, pulseAnimation } from '../utils/animations';
+import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, pulseAnimation } from '../utils/animations';
 
 export default function Hero() {
   const containerVariants = {
@@ -14,83 +14,72 @@ export default function Hero() {
   };
 
   const titleVariants = {
-    hidden: { y: 100, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 15,
-        duration: 0.8
+        duration: 0.6,
+        ease: "easeOut" as const
       }
     }
   };
 
   const imageVariants = {
-    hidden: { scale: 0, rotate: -180, opacity: 0 },
+    hidden: { scale: 0.8, opacity: 0 },
     visible: {
       scale: 1,
-      rotate: 0,
       opacity: 1,
       transition: {
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 15,
-        delay: 0.5
+        duration: 0.5,
+        ease: "easeOut" as const,
+        delay: 0.3
       }
     }
   };
 
   const buttonVariants = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring" as const,
-        stiffness: 200,
-        damping: 20
+        duration: 0.4,
+        ease: "easeOut" as const
       }
     },
     hover: {
-      scale: 1.05,
-      y: -5,
-      boxShadow: "0 15px 30px rgba(59, 130, 246, 0.4)",
+      scale: 1.03,
+      y: -2,
       transition: {
-        type: "spring" as const,
-        stiffness: 400,
-        damping: 10
+        duration: 0.2,
+        ease: "easeOut" as const
       }
     },
     tap: {
-      scale: 0.95,
+      scale: 0.97,
       transition: {
-        type: "spring" as const,
-        stiffness: 400,
-        damping: 10
+        duration: 0.1,
+        ease: "easeOut" as const
       }
     }
   };
 
   const statsVariants = {
-    hidden: { scale: 0, opacity: 0 },
+    hidden: { opacity: 0 },
     visible: {
-      scale: 1,
       opacity: 1,
       transition: {
-        type: "spring" as const,
-        stiffness: 200,
-        damping: 15
+        duration: 0.4,
+        ease: "easeOut" as const
       }
     },
     hover: {
-      scale: 1.1,
-      y: -5,
+      scale: 1.05,
+      y: -2,
       transition: {
-        type: "spring" as const,
-        stiffness: 300,
-        damping: 10
+        duration: 0.2,
+        ease: "easeOut" as const
       }
     }
   };
@@ -123,9 +112,7 @@ export default function Hero() {
                 }}
                 variants={fadeInUp}
                 whileHover={{ 
-                  scale: 1.05, 
-                  rotate: [0, -2, 2, 0],
-                  boxShadow: "0 0.5em 1.5em #0a5ad3b0"
+                  scale: 1.02
                 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -170,8 +157,7 @@ export default function Hero() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4, duration: 0.8 }}
                       whileHover={{ 
-                        scale: 1.1,
-                        textShadow: "0 0 20px rgba(96, 165, 250, 0.8)"
+                        scale: 1.02
                       }}
                     >
                       Ideias
@@ -190,8 +176,7 @@ export default function Hero() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.8, duration: 0.8 }}
                       whileHover={{ 
-                        scale: 1.1,
-                        textShadow: "0 0 20px rgba(147, 51, 234, 0.8)"
+                        scale: 1.02
                       }}
                     >
                       Experiências
@@ -201,7 +186,7 @@ export default function Hero() {
                   <motion.div 
                     className="hero-subtitle mb-8 flex items-center gap-2 text-xl font-semibold text-zinc-400"
                     variants={fadeInUp}
-                    whileHover={{ scale: 1.05, color: "#ffffff" }}
+                    whileHover={{ scale: 1.01, color: "#ffffff" }}
                   >
                     <motion.svg 
                       xmlns="http://www.w3.org/2000/svg" 
@@ -213,12 +198,7 @@ export default function Hero() {
                       strokeLinecap="round" 
                       strokeLinejoin="round"
                       animate={{
-                        rotate: [0, 5, -5, 0],
-                        transition: {
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }
+
                       }}
                     >
                       <path d="m18 16 4-4-4-4" />
@@ -237,43 +217,26 @@ export default function Hero() {
                 className="hero-image-container relative"
                 variants={imageVariants}
                 whileHover={{ 
-                  scale: 1.05,
-                  rotate: 5,
-                  transition: {
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 20
-                  }
+                  scale: 1.02
                 }}
               >
                 {/* Círculo de fundo com gradiente e blur */}
                 <motion.div 
                   className="hero-image-blur absolute inset-0"
                   animate={{
-                    scale: [1, 1.1, 1],
-                    opacity: [0.5, 0.8, 0.5],
-                    transition: {
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }
+
                   }}
                 ></motion.div>
                 {/* Imagem do perfil */}
                 <motion.div 
                   className="hero-image-wrapper relative z-10"
-                  whileHover={{
-                    boxShadow: "0 0 30px rgba(126, 34, 206, 0.6)",
-                    transition: {
-                      duration: 0.3
-                    }
-                  }}
+
                 >
                   <motion.img
                     src="profile_pic/perfil.jpg"
                     alt="Foto de perfil do desenvolvedor"
                     className="h-full w-full rounded-full object-cover"
-                    animate={floatingAnimation}
+
                   />
                 </motion.div>
               </motion.div>
@@ -286,14 +249,13 @@ export default function Hero() {
               <motion.p 
                 className="hero-desc mb-8 text-lg text-zinc-400 md:max-w-md lg:max-w-full"
                 variants={fadeInUp}
-                whileHover={{ color: "#ffffff", scale: 1.02 }}
+                whileHover={{ color: "#ffffff", scale: 1.01 }}
               >
                 Especializado em criar aplicações web modernas, responsivas e de alta performance que geram
                 <motion.strong 
                   className="text-white"
                   whileHover={{ 
-                    color: "#7e22ce",
-                    textShadow: "0 0 10px rgba(126, 34, 206, 0.8)"
+                    color: "#7e22ce"
                   }}
                 > 
                   resultados reais 
@@ -313,14 +275,7 @@ export default function Hero() {
                 >
                   <motion.span 
                     className="text-3xl font-bold text-white"
-                    animate={{
-                      color: ["#ffffff", "#7e22ce", "#ffffff"],
-                      transition: {
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }
-                    }}
+
                   >
                     2+
                   </motion.span>
@@ -333,15 +288,7 @@ export default function Hero() {
                 >
                   <motion.span 
                     className="text-3xl font-bold text-white"
-                    animate={{
-                      color: ["#ffffff", "#0a5ad3", "#ffffff"],
-                      transition: {
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: 0.5
-                      }
-                    }}
+
                   >
                     99%
                   </motion.span>
@@ -371,14 +318,7 @@ export default function Hero() {
                     strokeWidth="2" 
                     strokeLinecap="round" 
                     strokeLinejoin="round"
-                    animate={{
-                      x: [0, 5, 0],
-                      transition: {
-                        duration: 1.5,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }
-                    }}
+
                   >
                     <path d="M5 12h14" />
                     <path d="m12 5 7 7-7 7" />
@@ -389,10 +329,8 @@ export default function Hero() {
                   className="hero-btn hero-btn-secondary"
                   variants={buttonVariants}
                   whileHover={{
-                    scale: 1.05,
-                    y: -5,
-                    backgroundColor: "#262629",
-                    boxShadow: "0 10px 25px rgba(63, 63, 70, 0.4)"
+                    scale: 1.02,
+                    backgroundColor: "#262629"
                   }}
                   whileTap="tap"
                 >
@@ -405,14 +343,7 @@ export default function Hero() {
                     strokeWidth="2" 
                     strokeLinecap="round" 
                     strokeLinejoin="round"
-                    animate={{
-                      rotate: [0, 360],
-                      transition: {
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "linear"
-                      }
-                    }}
+
                   >
                     <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm5 10-5 5-5-5" />
                     <path d="M12 7v5h5" />
@@ -428,9 +359,8 @@ export default function Hero() {
                 className="hero-cv-link mt-6 inline-flex items-center gap-2 text-sm font-medium text-zinc-400 transition-all duration-300 hover:text-white hover:underline"
                 variants={fadeInUp}
                 whileHover={{ 
-                  scale: 1.05,
-                  color: "#ffffff",
-                  y: -2
+                  scale: 1.02,
+                  color: "#ffffff"
                 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -443,14 +373,7 @@ export default function Hero() {
                   strokeWidth="2" 
                   strokeLinecap="round" 
                   strokeLinejoin="round"
-                  animate={{
-                    y: [0, -3, 0],
-                    transition: {
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }
-                  }}
+
                 >
                   <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm5 10-5 5-5-5" />
                   <path d="M12 7v5h5" />
@@ -469,25 +392,11 @@ export default function Hero() {
         >
           <motion.div 
             className="hero-bg-overlay absolute inset-0"
-            animate={{
-              opacity: [0.9, 0.7, 0.9],
-              transition: {
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }
-            }}
+
           ></motion.div>
           <motion.div 
             className="hero-bg-grid absolute inset-0"
-            animate={{
-              backgroundPosition: ["0% 0%", "100% 100%"],
-              transition: {
-                duration: 20,
-                repeat: Infinity,
-                ease: "linear"
-              }
-            }}
+
           ></motion.div>
         </motion.div>
       
