@@ -338,15 +338,25 @@ export default function Projetos() {
       users: "30K+",
       loadTime: "0.8s"
     },
+    
     {
       title: "WeatherApp | Informações Meteorológicas",
-      description: "Aplicação web moderna e responsiva para consulta de informações meteorológicas em tempo real. Inclui geolocalização automática, mapas interativos, qualidade do ar, temas dinâmicos e design adaptável para todos os dispositivos.",
+      description: "Dashboard meteorológico avançado com geolocalização, mapas interativos multiparamétricos (Temp, Chuva, Vento e Pressão), visualização fluida de ciclo solar e fases da lua, além de sincronização automática de fuso horário.",
       image: "img-projetos/projeto-clima.png",
       link: "https://informa-es-meteorol-gicas.vercel.app/",
-      technologies: ["React", "TypeScript", "Bootstrap", "React-Leaflet", "OpenWeatherMap API", "Unsplash API"],
-      performance: "95%",
+      technologies: [
+        "React", 
+        "TypeScript", 
+        "Zustand", 
+        "Framer Motion", 
+        "Bootstrap", 
+        "React-Leaflet", 
+        "OpenWeatherMap API", 
+        "Unsplash API"
+      ],
+      performance: "98%",
       users: "1K+",
-      loadTime: "1.1s"
+      loadTime: "0.9s"
     },
 
     {
