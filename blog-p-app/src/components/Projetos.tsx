@@ -331,8 +331,8 @@ export default function Projetos() {
     {
       title: "Mão na Roda | Plataforma de Serviços Domésticos",
       description: "Aplicação web moderna e responsiva que conecta clientes com profissionais qualificados para serviços domésticos. Inclui animações interativas com Framer Motion, design responsivo e integração com apps mobile para Android. Oferece soluções tanto para quem busca serviços quanto para profissionais.",
-      image: "img-projetos/mao-na-roda.png",
-      link: "https://projeto-mao-na-roda.vercel.app/",
+      image: "img-projetos/projeto-mao-na-roda.png",
+      link: "https://m-o-na-roda.vercel.app/",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vite", "CSS-in-JS"],
       performance: "98%",
       users: "30K+",
