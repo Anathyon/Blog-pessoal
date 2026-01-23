@@ -740,6 +740,7 @@ export default function Projetos() {
                   href={project.link} 
                   className='text-center' 
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Código
                 </CodeButton>

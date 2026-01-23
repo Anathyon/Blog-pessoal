@@ -464,16 +464,16 @@ const firebaseConfig = useMemo(() => ({
           <InfoCard>
             <InfoTitle>Redes Sociais</InfoTitle>
             <SocialsGrid>
-              <SocialButton href="https://github.com/Anathyon" target="_blank">
+              <SocialButton href="https://github.com/Anathyon" target="_blank" rel="noopener noreferrer">
                 <FaGithub /> GitHub
               </SocialButton>
-              <SocialButton href="https://www.linkedin.com/in/anathyonerysson/" target="_blank">
+              <SocialButton href="https://www.linkedin.com/in/anathyonerysson/" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin /> LinkedIn
               </SocialButton>
-              <SocialButton href="https://x.com/anathyon?t=PJC7lZPV48cmzzea0FvE9Q&s=09" target="_blank">
+              <SocialButton href="https://x.com/anathyon?t=PJC7lZPV48cmzzea0FvE9Q&s=09" target="_blank" rel="noopener noreferrer">
                 <FaTwitter /> Twitter
               </SocialButton>
-              <SocialButton href="https://www.instagram.com/anathyon/" target="_blank">
+              <SocialButton href="https://www.instagram.com/anathyon/" target="_blank" rel="noopener noreferrer">
                 <FaInstagram /> Instagram
               </SocialButton>
             </SocialsGrid>

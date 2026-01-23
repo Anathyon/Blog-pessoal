@@ -7,10 +7,14 @@
 RewriteEngine On
 
 # ========================================
-# COMPRESSÃO GZIP
+# COMPRESSÃO (BROTLI & GZIP)
 # ========================================
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/xml application/rss+xml application/atom+xml application/vnd.ms-fontobject application/x-font-ttf application/x-font-opentype application/x-font-truetype image/svg+xml image/x-icon
+</IfModule>
+
 <IfModule mod_deflate.c>
-    # Comprimir HTML, CSS, JavaScript, Text, XML e fontes
+    # Fallback para Gzip se Brotli não estiver disponível
     AddOutputFilterByType DEFLATE application/javascript
     AddOutputFilterByType DEFLATE application/rss+xml
     AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
@@ -83,7 +87,7 @@ RewriteEngine On
 # ========================================
 <IfModule mod_headers.c>
     # Cache para recursos estáticos
-    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$">
+    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|webp)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
     
@@ -104,6 +108,9 @@ RewriteEngine On
 # SEGURANÇA
 # ========================================
 <IfModule mod_headers.c>
+    # HSTS - Forçar HTTPS
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
     # Prevenir clickjacking
     Header always set X-Frame-Options "SAMEORIGIN"
     
@@ -116,8 +123,8 @@ RewriteEngine On
     # Política de referrer
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     
-    # Content Security Policy
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.themoviedb.org https://api.jikan.moe https://api.openweathermap.org https://firestore.googleapis.com; frame-src 'self' https://www.youtube.com;"
+    # Content Security Policy (Ajustado para Firebase e APIs externas)
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://apis.google.com https://*.firebaseio.com https://*.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.themoviedb.org https://api.jikan.moe https://api.openweathermap.org https://firestore.googleapis.com https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com; frame-src 'self' https://www.youtube.com https://*.firebaseapp.com;"
     
     # Permissions Policy
     Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
@@ -135,7 +142,7 @@ RewriteEngine On
 # PROTEÇÃO DE ARQUIVOS SENSÍVEIS
 # ========================================
 # Bloquear acesso a arquivos de configuração
-<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak|env|config)$">
     Order Allow,Deny
     Deny from all
 </FilesMatch>
@@ -188,6 +195,7 @@ Timeout 300
     AddType application/vnd.ms-fontobject .eot
     AddType font/opentype .otf
     AddType image/svg+xml .svg
+    AddType image/webp .webp
     
     # Manifesto PWA
     AddType application/manifest+json .webmanifest

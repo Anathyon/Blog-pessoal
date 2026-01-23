@@ -187,13 +187,13 @@ export default function Footer() {
             Especializado em criar experiências digitais modernas e eficientes que geram resultados reais para o seu negócio.
           </Description>
           <SocialLinks>
-            <SocialButton href="https://github.com/Anathyon" target="_blank">
+            <SocialButton href="https://github.com/Anathyon" target="_blank" rel="noopener noreferrer">
               <FaGithub size={20} />
             </SocialButton>
-            <SocialButton href="https://www.linkedin.com/in/anathyonerysson/" target="_blank">
+            <SocialButton href="https://www.linkedin.com/in/anathyonerysson/" target="_blank" rel="noopener noreferrer">
               <FaLinkedinIn size={20} />
             </SocialButton>
-            <SocialButton href="https://x.com/anathyon?t=PJC7lZPV48cmzzea0FvE9Q&s=09" target="_blank">
+            <SocialButton href="https://x.com/anathyon?t=PJC7lZPV48cmzzea0FvE9Q&s=09" target="_blank" rel="noopener noreferrer">
               <FaTwitter size={20} />
             </SocialButton>
             <SocialButton href="mailto:anathyon@protonmail.com" target="_blank">
