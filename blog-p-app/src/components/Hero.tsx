@@ -277,7 +277,7 @@ export default function Hero() {
                     className="text-3xl font-bold text-white"
 
                   >
-                    2+
+                    3+
                   </motion.span>
                   <span className="text-zinc-400">Anos Exp.</span>
                 </motion.div>
