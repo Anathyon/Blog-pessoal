@@ -1,134 +1,68 @@
-# 👋 Olá, eu sou Anathyon Erysson
+# Anathyon Erysson — Portfólio
 
-## 🚀 Desenvolvedor Front-End Especializado em Experiências Digitais Modernas
+Portfólio de **Anathyon Erysson**, desenvolvedor front-end na **Plugwin Sistemas**.
+Sites institucionais, portais e plataformas web com React, TypeScript e Tailwind CSS.
 
-Sou um desenvolvedor front-end apaixonado por criar interfaces modernas, responsivas e performáticas. Com expertise em **React**, **TypeScript** e **Next.js**, transformo ideias em soluções digitais que geram resultados reais para usuários e empresas.
+🔗 **https://anathyon-erysson-programador.web.app** · [LinkedIn](https://www.linkedin.com/in/anathyonerysson/) · [Currículo (PDF)](blog-p-app/public/pdf-cv/Anathyon-Erysson-Curriculo.pdf)
 
-### 💼 Minhas Habilidades Técnicas
+## Stack
 
-**Frontend Core:**
-- ⚛️ **React** & **Next.js** - Desenvolvimento de SPAs e aplicações full-stack
-- 🔷 **TypeScript** - Código tipado e mais seguro
-- 🎨 **Styled Components** & **TailwindCSS** - Estilização moderna e responsiva
-- 📱 **PWA** - Aplicações web progressivas com experiência nativa
+- **React 19 + TypeScript** (modo estrito) com **Vite**
+- **Tailwind CSS v4** (tokens de design em `src/index.css` via `@theme`)
+- **Framer Motion** com respeito a `prefers-reduced-motion`
+- **Firebase** (Auth anônima + Firestore) no formulário de contato, carregado sob demanda
+- Deploy na **Vercel** com cabeçalhos de segurança (CSP, HSTS etc.) em `vercel.json`
 
-**Ferramentas & Tecnologias:**
-- ⚡ **Vite** - Build tool moderna e performática
-- 🔥 **Firebase** - Backend-as-a-Service para autenticação e dados
-- 🎭 **Framer Motion** - Animações fluidas e interativas
-- 🌐 **APIs RESTful** - Integração com serviços externos
-- 📊 **Performance Optimization** - Aplicações com 95%+ de performance
-
-**Metodologias:**
-- 📐 **Design Responsivo** - Mobile-first approach
-- ♿ **Acessibilidade** - Interfaces inclusivas (WCAG)
-- 🧪 **Clean Code** - Código limpo e manutenível
-- 🔄 **CI/CD** - Deploy automatizado com Vercel
-
----
-
-## 🌟 Sobre Este Projeto - Portfólio Pessoal
-
-Este é meu portfólio pessoal desenvolvido para demonstrar minhas habilidades técnicas e projetos em destaque. Uma aplicação moderna que reflete minha expertise em desenvolvimento front-end.
-
-### 🛠️ Stack Tecnológica
-
-```json
-{
-  "frontend": ["React 19", "TypeScript", "Vite"],
-  "styling": ["Styled Components", "TailwindCSS", "Framer Motion"],
-  "backend": ["Firebase"],
-  "deployment": ["Vercel"],
-  "tools": ["ESLint", "PostCSS", "Autoprefixer"]
-}
-```
-
-### ⚡ Características Técnicas
-
-- **🎯 Performance:** 98% no Lighthouse
-- **📱 Responsivo:** Design adaptável para todos os dispositivos
-- **🔥 Moderno:** React 19 com as últimas funcionalidades
-- **⚡ Rápido:** Vite para desenvolvimento e build otimizado
-- **🎨 Animado:** Transições suaves com Framer Motion
-- **🔒 Tipado:** 100% TypeScript para maior segurança
-- **♿ Acessível:** Seguindo padrões WCAG
-
-### 🏗️ Arquitetura do Projeto
+## Estrutura
 
 ```
-src/
-├── components/          # Componentes reutilizáveis
-│   ├── Header.tsx      # Navegação principal
-│   ├── Hero.tsx        # Seção de apresentação
-│   ├── Sobre.tsx       # Sobre mim
-│   ├── Skills.tsx      # Habilidades técnicas
-│   ├── Projetos.tsx    # Portfólio de projetos
-│   └── Contato.tsx     # Formulário de contato
-├── App.tsx             # Componente principal
-└── main.tsx           # Entry point
+blog-p-app/
+├── cv/curriculo.html          # fonte do currículo (gera o PDF)
+├── public/
+│   ├── img-projetos/          # prints dos projetos (.webp)
+│   ├── logo/logo.svg          # logo / favicon
+│   └── pdf-cv/                # currículo em PDF
+└── src/
+    ├── data/                  # ✏️ conteúdo: perfil, projetos, experiência, skills
+    ├── lib/contact.ts         # envio do formulário (Firebase lazy)
+    └── components/            # Header, Hero, About, Experience, projects/, Skills, Contact, Footer
 ```
 
-### 🎨 Design System
+Quase toda atualização de conteúdo é feita só em `src/data/`.
 
-- **Paleta de Cores:** Tema escuro moderno com acentos em roxo/azul
-- **Tipografia:** Fontes otimizadas para legibilidade
-- **Componentes:** Sistema de design consistente
-- **Animações:** Micro-interações que melhoram UX
+### Adicionar ou atualizar um projeto
 
-### 📊 Métricas de Performance
+1. Salve o print em `public/img-projetos/<slug>.webp` (~1200 px de largura, proporção ~2:1).
+   Para converter: `cwebp -q 80 -resize 1200 0 print.png -o public/img-projetos/<slug>.webp`
+2. Em `src/data/projects.ts`, adicione/edite o objeto e preencha `image: '/img-projetos/<slug>.webp'`.
+   Sem `image`, o card mostra uma capa gerada com as cores de `accent`.
+3. `featured: true` coloca o projeto entre os primeiros da aba.
 
-- **First Contentful Paint:** < 1.2s
-- **Largest Contentful Paint:** < 2.5s
-- **Cumulative Layout Shift:** < 0.1
-- **Time to Interactive:** < 3.0s
+### Atualizar o currículo
 
-### 🚀 Como Executar
+Edite `blog-p-app/cv/curriculo.html` e gere o PDF:
 
 ```bash
-# Clone o repositório
-git clone [url-do-repositorio]
-
-# Instale as dependências
-npm install
-
-# Execute em modo desenvolvimento
-npm run dev
-
-# Build para produção
-npm run build
+pip install weasyprint
+weasyprint blog-p-app/cv/curriculo.html blog-p-app/public/pdf-cv/Anathyon-Erysson-Curriculo.pdf
 ```
 
-### 🌐 Deploy
+(Alternativa: abra o HTML no navegador → Imprimir → Salvar como PDF.)
 
-Aplicação hospedada na **Vercel** com deploy automático a cada push na branch main.
+## Rodando localmente
 
----
+```bash
+cd blog-p-app
+cp .env.example .env   # opcional: credenciais do Firebase para o formulário
+npm install
+npm run dev            # desenvolvimento
+npm run check          # typecheck + lint
+npm run build          # build de produção
+```
 
-## 📈 Projetos em Destaque
+Sem as variáveis do Firebase, o formulário abre o cliente de e-mail do visitante com a mensagem preenchida.
 
-Este portfólio apresenta mais de **8 projetos** desenvolvidos, incluindo:
+## Firestore
 
-- 🎬 **Cine Explorer** - Plataforma de recomendações cinematográficas (Next.js 15)
-- 🍽️ **RecipeApp** - Buscador de receitas com tradução IA (Google Gemini API)
-- 🌤️ **Weather App** - Previsão do tempo com mapas interativos
-- 📱 **PWA Apps** - Aplicações progressivas instaláveis
-- 🔐 **Gerador de Senhas** - Ferramenta de segurança moderna
-
-Cada projeto demonstra diferentes aspectos das minhas habilidades técnicas e capacidade de resolver problemas reais.
-
----
-
-## 🤝 Vamos Conversar?
-
-Estou sempre aberto a novas oportunidades e desafios. Se você está procurando um desenvolvedor front-end que combina habilidades técnicas sólidas com paixão por criar experiências digitais excepcionais, vamos conversar!
-
-<p align="center">
-  <a href="https://www.linkedin.com/in/anathyonerysson/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
-  <a href="mailto:anathyon@protonmail.com"><img src="https://img.shields.io/badge/ProtonMail-8B89CC?style=for-the-badge&logo=protonmail&logoColor=white" alt="Email"></a>
-  <a href="https://api.whatsapp.com/send/?phone=5588994147362&text&type=phone_number&app_absent=0" target="_blank"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp"></a>
-  <a href="https://blog-pessoal-ebon.vercel.app/"><img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"></a>
-</p>
-
----
-
-*"Transformando ideias em realidade através de código limpo e experiências digitais memoráveis."*
+As regras em `firestore.rules` permitem **apenas criar** mensagens válidas em `contact_messages`
+(ninguém lê pelo cliente). Para publicar: `firebase deploy --only firestore:rules`.

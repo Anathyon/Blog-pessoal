@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Anathyon Erysson Barros Iris — Currículo</title>
+<meta name="author" content="Anathyon Erysson Barros Iris">
+<meta name="description" content="Currículo — Desenvolvedor Front-end">
+<!--
+  Fonte do currículo em PDF. Para regenerar:
+    pip install weasyprint
+    weasyprint cv/curriculo.html public/pdf-cv/Anathyon-Erysson-Curriculo.pdf
+  (ou abra no navegador e use Imprimir → Salvar como PDF, margens "Padrão").
+-->
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap");
+
+  @page { size: A4; margin: 11mm 13mm 10mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Inter, "DejaVu Sans", sans-serif; font-size: 8.6pt; line-height: 1.38; color: #2b2b38; }
+  a { color: inherit; text-decoration: none; }
+
+  header { display: flex; gap: 12pt; justify-content: space-between; align-items: flex-end; padding-bottom: 9pt; border-bottom: 2pt solid #6d28d9; }
+  h1 { white-space: nowrap; font-family: "Space Grotesk", Inter, sans-serif; font-size: 19pt; line-height: 1.05; color: #12121f; letter-spacing: -0.3pt; }
+  .role { margin-top: 3pt; font-size: 10.5pt; font-weight: 600; color: #6d28d9; }
+  .contact { white-space: nowrap; text-align: right; font-size: 7.9pt; line-height: 1.55; color: #44445a; }
+  .contact b { color: #12121f; font-weight: 600; }
+
+  h2 { font-family: "Space Grotesk", Inter, sans-serif; font-size: 9.6pt; text-transform: uppercase; letter-spacing: 1pt; color: #6d28d9; margin: 9pt 0 4pt; padding-bottom: 2pt; border-bottom: 0.6pt solid #e4e1f0; }
+
+  .summary { font-size: 9.1pt; color: #33333f; }
+
+  .job { margin-bottom: 7pt; page-break-inside: avoid; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-title { font-weight: 700; font-size: 9.7pt; color: #12121f; }
+  .job-org { color: #6d28d9; font-weight: 600; }
+  .job-date { font-size: 8.3pt; color: #66667a; white-space: nowrap; font-weight: 500; }
+  .job-ctx { font-size: 8.3pt; color: #66667a; margin: 0.5pt 0 2.5pt; }
+  ul { padding-left: 11pt; }
+  li { margin-bottom: 1.6pt; }
+  li::marker { color: #8b5cf6; }
+
+  .skills { display: grid; grid-template-columns: 30mm 1fr; row-gap: 2.5pt; column-gap: 8pt; }
+  .skills dt { font-weight: 600; color: #12121f; }
+
+  .projects { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12pt; row-gap: 4pt; }
+  .proj b { color: #12121f; }
+  .proj span { color: #66667a; font-size: 8pt; white-space: nowrap; }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr 1.3fr; column-gap: 14pt; }
+  .muted { color: #66667a; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Anathyon Erysson Barros Iris</h1>
+    <p class="role">Desenvolvedor Front-end · React · TypeScript</p>
+  </div>
+  <div class="contact">
+    <p><b>anathyon@protonmail.com</b> · (88) 99414-7362</p>
+    <p>Meruoca – CE · Remoto, híbrido ou presencial</p>
+    <p><a href="https://anathyon-erysson-programador.web.app">anathyon-erysson-programador.web.app</a></p>
+    <p><a href="https://github.com/Anathyon">github.com/Anathyon</a> · <a href="https://www.linkedin.com/in/anathyonerysson/">linkedin.com/in/anathyonerysson</a></p>
+  </div>
+</header>
+
+<h2>Resumo</h2>
+<p class="summary">
+  Desenvolvedor Front-end na <b>Plugwin Sistemas</b>, responsável por sites institucionais, portais e plataformas web
+  para clientes públicos e privados — prefeitura, mandato legislativo, produtoras audiovisuais e eventos.
+  Trabalho com <b>React 19, TypeScript, Tailwind CSS v4, shadcn/ui e TanStack</b>, formulários validados com
+  React Hook Form + Zod, integração com Firebase e testes com Vitest. Formação em Marketing, o que me dá visão
+  de produto, comunicação e conversão.
+</p>
+
+<h2>Experiência</h2>
+
+<div class="job">
+  <div class="job-head">
+    <p class="job-title">Desenvolvedor Front-end — <span class="job-org">Plugwin Sistemas</span></p>
+    <p class="job-date">2026 – atual</p>
+  </div>
+  <p class="job-ctx">Empresa de software para gestão pública e privada</p>
+  <ul>
+    <li>Desenvolvimento de 11 sites e sistemas: sistema de votação do Vereador Mirim da Câmara de Martinópole (urna virtual e painel de apuração em
+      tempo real com React, Express e Firebase), portal da Prefeitura de Alcântaras, site institucional da Plugwin, mandato aberto do vereador de Martinópole,
+      plataforma de inscrições do Meruoca Off-Road e sites das produtoras Argumento, Narrativa e Promova, entre outros.</li>
+    <li>SPAs com React 19, TypeScript e Vite; UI com Tailwind CSS v4, shadcn/ui (Radix) e Framer Motion; roteamento e dados com
+      TanStack Router/Start, TanStack Query e React Router; estado global com Zustand.</li>
+    <li>Formulários com React Hook Form + Zod e proteção anti-spam (reCAPTCHA/hCaptcha); envio de e-mails por APIs serverless
+      (Vercel) e Express com Nodemailer.</li>
+    <li>Autenticação, banco de dados e hospedagem com Firebase (Auth, Firestore, Hosting); deploy contínuo na Vercel.</li>
+    <li>Testes de componentes com Vitest e Testing Library; portal municipal em JavaScript nativo (ES Modules) testado com node:test.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <p class="job-title">Desenvolvedor Front-end Freelancer — <span class="job-org">Mão na Roda</span></p>
+    <p class="job-date">2025</p>
+  </div>
+  <p class="job-ctx">Plataforma que conecta clientes a profissionais de serviços domésticos</p>
+  <ul>
+    <li>Site institucional desenvolvido em equipe multidisciplinar, responsivo e otimizado para SEO.</li>
+    <li>React, TypeScript, Vite, Tailwind CSS e Framer Motion; integração com os apps Android da plataforma.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <p class="job-title">Projetos autorais e estudos — <span class="job-org">github.com/Anathyon</span></p>
+    <p class="job-date">2022 – atual</p>
+  </div>
+  <ul>
+    <li>Mais de 20 projetos públicos: SPAs e aplicações SSR com React e Next.js, PWAs instaláveis, integrações com APIs
+      (TMDB, Jikan, OpenWeatherMap, Google Gemini) e testes com Jest.</li>
+  </ul>
+</div>
+
+<h2>Competências técnicas</h2>
+<dl class="skills">
+  <dt>Front-end</dt><dd>React, Next.js, TypeScript, JavaScript (ES6+), HTML5 semântico, CSS3, Sass, PWA, responsividade e acessibilidade</dd>
+  <dt>UI e ecossistema</dt><dd>Tailwind CSS, shadcn/ui, Radix UI, Headless UI, Framer Motion, Zustand, TanStack (Router, Start, Query), React Router, React Hook Form, Zod</dd>
+  <dt>Back-end e deploy</dt><dd>Firebase (Auth, Firestore, Hosting), Node.js, Express, APIs REST, funções serverless, Vercel, Vite, Git, GitHub e Bitbucket</dd>
+  <dt>Qualidade</dt><dd>Vitest, Testing Library, Jest, ESLint, Clean Code, SOLID</dd>
+  <dt>IA no fluxo</dt><dd>Claude, Gemini, ChatGPT, GitHub Copilot, Cursor, v0 — com revisão humana do código</dd>
+</dl>
+
+<h2>Projetos em destaque</h2>
+<div class="projects">
+  <p class="proj"><b>Plugwin Sistemas</b> — site institucional com API serverless de e-mail, Zod e hCaptcha. <span>site-plugwin.vercel.app</span></p>
+  <p class="proj"><b>Meruoca Off-Road</b> — plataforma de inscrições e gestão com Firebase e shadcn/ui. <span>meruoca-off-road.vercel.app</span></p>
+  <p class="proj"><b>Prefeitura de Alcântaras</b> — portal municipal em JavaScript nativo. <span>layout-executivo.vercel.app</span></p>
+  <p class="proj"><b>Eleição Vereador Mirim</b> — urna virtual e apuração em tempo real (React, Express, Firebase). <span>Câmara de Martinópole</span></p>
+  <p class="proj"><b>Cine Explorer</b> — Next.js 15, PWA, TMDB e Jikan APIs. <span>reco-cine.vercel.app</span></p>
+  <p class="proj"><b>RecipeApp</b> — receitas com tradução por IA (Gemini API). <span>buscador-receitas-theta.vercel.app</span></p>
+</div>
+
+<div class="cols">
+  <div>
+    <h2>Formação</h2>
+    <p><b>Tecnólogo em Marketing</b><br>Uninter, 2022</p>
+  </div>
+  <div>
+    <h2>Idiomas</h2>
+    <p>Português — nativo<br>Inglês — intermediário</p>
+  </div>
+  <div>
+    <h2>Cursos</h2>
+    <p>HTML Avançado e Criação de Sites — Fundação Bradesco<br>
+      Marketing Digital Essentials — Clube Share<br>
+      Fundamentos em Informática — IBSEC<br>
+      Inglês Básico — Uninter</p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -2,7 +2,7 @@
 # 🔧 Ambiente e Dependências
 # ----------------------------------------
 node_modules
-package-lock.json
+# package-lock.json deve ser versionado (builds reprodutíveis)
 pnpm-lock.yaml
 yarn.lock
 .env
@@ -51,3 +51,6 @@ temp
 tmp
 
 .env
+# Originais pesados (prints e arte da logo) — não publicar
+design/capturas-originais/
+design/*.jpeg

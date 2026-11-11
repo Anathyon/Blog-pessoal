@@ -1,14 +1,30 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Permite leitura e escrita para usuários autenticados (incluindo anônimos)
-    match /artifacts/{projectId}/users/{userId}/contact_messages/{document} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
+
+    // Formulário de contato do portfólio:
+    // visitantes (autenticação anônima) podem apenas CRIAR mensagens válidas.
+    // Ninguém lê, edita ou apaga pelo cliente — leia as mensagens pelo Console do Firebase.
+    match /contact_messages/{messageId} {
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['nome', 'email', 'assunto', 'mensagem', 'userId', 'createdAt'])
+        && request.resource.data.nome is string
+        && request.resource.data.nome.size() > 0 && request.resource.data.nome.size() <= 100
+        && request.resource.data.email is string
+        && request.resource.data.email.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+        && request.resource.data.email.size() <= 150
+        && request.resource.data.assunto is string
+        && request.resource.data.assunto.size() <= 150
+        && request.resource.data.mensagem is string
+        && request.resource.data.mensagem.size() > 0 && request.resource.data.mensagem.size() <= 3000
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if false;
     }
-    
-    // Regra mais permissiva para desenvolvimento (remova em produção)
+
+    // Todo o resto fica bloqueado por padrão.
     match /{document=**} {
-      allow read, write: if request.auth != null;
+      allow read, write: if false;
     }
   }
 }
