@@ -347,6 +347,7 @@ export const projects: Project[] = [
     stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Framer Motion', 'Unsplash API'],
     live: 'https://evento-moto.vercel.app',
     repo: gh('EVENTO-MOTO'),
+    image: '/img-projetos/trilhao-landing.webp',
     accent: ['#ca8a04', '#dc2626'],
   },
   {
