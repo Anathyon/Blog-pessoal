@@ -51,9 +51,8 @@ temp
 tmp
 
 .env
-# Originais pesados (prints e arte da logo) — não publicar
-design/capturas-originais/
-design/*.jpeg
+# Originais pesados (prints, fotos e arte da logo) — não publicar
+design/
 
 # Firebase
 .firebase/

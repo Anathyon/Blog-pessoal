@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { FiArrowUpRight, FiCheck, FiGithub, FiX } from 'react-icons/fi'
+import { FiArrowUpRight, FiCheck, FiCode, FiGithub, FiX } from 'react-icons/fi'
 import type { Project } from '../../data/projects'
 import { ProjectCover } from './ProjectCover'
 
@@ -29,7 +29,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[60] flex items-end justify-center bg-black/70 p-0 backdrop-blur-sm sm:items-center sm:p-6"
+      className="fixed inset-0 z-60 flex items-end justify-center bg-black/70 p-0 backdrop-blur-sm sm:items-center sm:p-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -67,11 +67,42 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           </h3>
           <p className="mt-4 leading-relaxed text-zinc-300">{project.summary}</p>
 
+          {(project.context || project.role) && (
+            <dl className="mt-6 grid gap-4 rounded-2xl border border-white/10 bg-white/3 p-5 sm:grid-cols-2">
+              {project.context && (
+                <div>
+                  <dt className="text-xs font-semibold tracking-wide text-brand-300 uppercase">Contexto</dt>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-zinc-400">{project.context}</dd>
+                </div>
+              )}
+              {project.role && (
+                <div>
+                  <dt className="text-xs font-semibold tracking-wide text-brand-300 uppercase">Minha atuação</dt>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-zinc-400">{project.role}</dd>
+                </div>
+              )}
+            </dl>
+          )}
+
+          {project.features && project.features.length > 0 && (
+            <>
+              <h4 className="mt-8 text-sm font-semibold tracking-wide text-zinc-200 uppercase">Principais funcionalidades</h4>
+              <ul className="mt-3 space-y-2.5">
+                {project.features.map((f) => (
+                  <li key={f} className="flex gap-3 text-sm leading-relaxed text-zinc-400">
+                    <FiCheck className="mt-0.5 shrink-0 text-brand-400" aria-hidden />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
           <h4 className="mt-8 text-sm font-semibold tracking-wide text-zinc-200 uppercase">Destaques técnicos</h4>
           <ul className="mt-3 space-y-2.5">
             {project.highlights.map((h) => (
               <li key={h} className="flex gap-3 text-sm leading-relaxed text-zinc-400">
-                <FiCheck className="mt-0.5 shrink-0 text-emerald-400" aria-hidden />
+                <FiCode className="mt-0.5 shrink-0 text-emerald-400" aria-hidden />
                 {h}
               </li>
             ))}

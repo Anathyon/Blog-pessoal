@@ -8,6 +8,13 @@ export interface Project {
   kind: ProjectKind
   year: number
   summary: string
+  /** Contexto / problema que o projeto resolve (exibido no modal) */
+  context?: string
+  /** O que eu fiz no projeto */
+  role?: string
+  /** Funcionalidades entregues, do ponto de vista de quem usa */
+  features?: string[]
+  /** Decisões e destaques técnicos */
   highlights: string[]
   stack: string[]
   live?: string
@@ -24,6 +31,8 @@ export interface Project {
 
 const gh = (repo: string) => `https://github.com/Anathyon/${repo}`
 
+const PLUGWIN_ROLE = 'Desenvolvedor front-end na Plugwin Sistemas'
+
 export const projects: Project[] = [
   // ───────────────────────── Profissionais (Plugwin Sistemas) ─────────────────────────
   {
@@ -34,13 +43,22 @@ export const projects: Project[] = [
     year: 2026,
     summary:
       'Site institucional da empresa de software para gestão pública e privada, apresentando soluções para saúde, educação, legislativo e outros segmentos.',
-    highlights: [
-      'Formulário de contato validado com Zod e protegido com hCaptcha',
-      'Função serverless (Vercel) para envio de e-mails com Nodemailer',
-      'Integração com Firebase, estado global com Zustand e animações com Framer Motion',
-      'Testes automatizados com Vitest e Testing Library',
+    context:
+      'A empresa precisava de uma vitrine única para 11 produtos distintos (saúde, educação, legislativo, GED, e-SIC, ouvidoria e outros), com um canal de contato confiável para gerar oportunidades comerciais.',
+    role: `${PLUGWIN_ROLE}: interface, páginas de produto, formulário de contato e função serverless de envio de e-mail.`,
+    features: [
+      'Página dedicada para cada um dos 11 produtos, gerada a partir de uma fonte de conteúdo centralizada',
+      'Blog com páginas individuais de publicação',
+      'Chatbot de atendimento que qualifica o interesse do visitante e encaminha a conversa para WhatsApp ou Instagram',
+      'Formulário de contato com validação e hCaptcha, e aviso de privacidade (LGPD)',
     ],
-    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Framer Motion', 'Zustand', 'Zod', 'Firebase', 'Serverless API', 'Vitest'],
+    highlights: [
+      'Função serverless que revalida os dados com Zod, confere o hCaptcha no servidor, escapa o HTML e envia o e-mail via Nodemailer/SMTP',
+      'Mesmo schema Zod no cliente e no servidor, com estado do formulário em Zustand',
+      'Code splitting manual de dependências (React e Framer Motion) e cabeçalhos de segurança/cache (CSP, X-Frame-Options, gzip)',
+      'Testes com Vitest e Testing Library cobrindo páginas, componentes de UI e a store do formulário',
+    ],
+    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'React Router', 'Framer Motion', 'Zustand', 'Zod', 'hCaptcha', 'Nodemailer', 'Vercel Functions', 'Vitest'],
     live: 'https://site-plugwin.vercel.app',
     repo: gh('SITE-PLUGWIN'),
     image: '/img-projetos/plugwin.webp',
@@ -54,13 +72,25 @@ export const projects: Project[] = [
     kind: 'profissional',
     year: 2026,
     summary:
-      'Plataforma oficial de inscrições e gestão do 1º Trilhão Meruoca Off-Road, com área administrativa e dados em tempo real.',
-    highlights: [
-      'Fluxo completo de inscrição de participantes',
-      'Autenticação e banco de dados com Firebase (Auth + Firestore) e deploy no Firebase Hosting',
-      'Interface construída com shadcn/ui (Radix) e cache de dados com TanStack Query',
+      'Plataforma oficial do 1º Trilhão Meruoca Off-Road: site do evento, lista de pilotos confirmados em tempo real e painel administrativo para a organização gerenciar as inscrições.',
+    context:
+      'As inscrições eram feitas em um sistema externo em PHP. A organização precisava acompanhar e validar os pilotos (status, comprovantes de pagamento) em um só lugar, e o público queria ver quem já estava confirmado.',
+    role: `${PLUGWIN_ROLE}: site do evento, integração com o sistema de inscrição, painel administrativo e autenticação.`,
+    features: [
+      'Site do evento com percurso, programação, o que está incluso, galeria e perguntas frequentes',
+      'Lista de pilotos confirmados e contador atualizados em tempo real',
+      'Painel administrativo com busca, alteração de status (pendente, confirmado, recusado), visualização de comprovante e foto do piloto',
+      'Exportação das inscrições em CSV (UTF-8 com BOM, abre corretamente no Excel)',
+      'Página de mapas das trilhas por nível de dificuldade',
     ],
-    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'shadcn/ui', 'TanStack Query', 'Firebase', 'Zustand', 'Vitest'],
+    highlights: [
+      'Sincronização dos pilotos da API PHP do sistema de inscrição para o Firestore, com trava contra execuções simultâneas',
+      'Dados em tempo real com listeners do Firestore (onSnapshot)',
+      'Login com Firebase Auth (e-mail/senha e Google) e rota administrativa protegida',
+      'Seções abaixo da dobra carregadas sob demanda (React.lazy) e mídias otimizadas com ffmpeg/ImageMagick',
+      'Interface com shadcn/ui (Radix) e testes com Vitest',
+    ],
+    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'shadcn/ui', 'React Router', 'TanStack Query', 'Firebase Auth', 'Firestore', 'Firebase Hosting', 'Vitest'],
     live: 'https://meruoca-off-road.vercel.app',
     repo: gh('MERUOCA-OFF-ROAD'),
     image: '/img-projetos/meruoca-off-road.webp',
@@ -75,14 +105,24 @@ export const projects: Project[] = [
     year: 2026,
     summary:
       'Sistema oficial de votação do Programa Vereador Mirim: urna virtual para os alunos das escolas do município e painel eleitoral administrativo com apuração em tempo real.',
-    highlights: [
-      'Urna virtual com fluxo guiado: acessar a urna, escolher o candidato e confirmar o voto',
-      'Painel do organizador com dashboard em tempo real: total de votos, participação, votos por escola e pico de votação por horário',
-      'Gestão de eleições, escolas, candidatos e votantes, apuração, segurança das urnas e auditoria/logs',
+    context:
+      'A Câmara Municipal precisava conduzir uma eleição escolar em várias escolas ao mesmo tempo, garantindo que só alunos aptos votassem, uma única vez, e com apuração transparente para a organização.',
+    role: 'Desenvolvimento da aplicação: fluxo de votação, painel administrativo e persistência no Firestore.',
+    features: [
+      'Urna virtual em etapas: identificação, escolha do candidato, confirmação e comprovante',
+      'Validação de CPF e conferência do aluno na lista de aptos por escola, série e turma, bloqueando voto duplicado',
+      'Painel com votos por escola e por horário, gestão de eleições, escolas, candidatos e eleitores',
+      'Importação da lista de alunos aptos, apuração com exportação em CSV e impressão, logs e backup/restauração em JSON',
       'Acessibilidade no portal público: alto contraste e ajuste de tamanho de fonte',
-      'React, TypeScript, Tailwind CSS e shadcn/ui no front; Node.js/Express e Firebase no back',
     ],
-    stack: ['React', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'Node.js', 'Express', 'Firebase'],
+    highlights: [
+      'Arquitetura offline-first: o voto é gravado localmente na hora e sincronizado com o Firestore em segundo plano',
+      'Sincronização em tempo real entre terminais com listeners do Firestore',
+      'Regras do Firestore com negação por padrão: votos e eleitores só podem ser lidos pela administração',
+      'Encadeamento dos votos com checksum para detectar alterações na sequência',
+      'Testes com Vitest cobrindo utilitários, camada de dados e fluxo de votação',
+    ],
+    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Motion', 'Firestore', 'Firebase Hosting', 'Vitest'],
     image: '/img-projetos/eleicao-mirim-martinopole.webp',
     accent: ['#16a34a', '#2563eb'],
     featured: true,
@@ -94,15 +134,25 @@ export const projects: Project[] = [
     kind: 'profissional',
     year: 2026,
     summary:
-      'Portal oficial do município com destinos turísticos, serviços ao cidadão, notícias, transparência, licitações e ouvidoria.',
-    highlights: [
-      'Arquitetura em HTML, CSS e JavaScript nativo com ES Modules — sem frameworks',
-      'Barra de acessibilidade com ajuste de fonte, alto contraste e mapa do site',
-      'Aviso de armazenamento local com consentimento do visitante (LGPD)',
-      'Busca de serviços com atalhos para os termos mais procurados',
-      'Configuração centralizada de conteúdo e testes com o test runner nativo do Node.js',
+      'Portal municipal com transparência, serviços ao cidadão, notícias, licitações e ouvidoria, construído inteiramente em JavaScript nativo.',
+    context:
+      'Portais de transparência precisam publicar um grande volume de dados públicos de forma acessível (padrão e-MAG) e exportável, mantendo o site leve e fácil de manter sem depender de frameworks.',
+    role: `${PLUGWIN_ROLE}: arquitetura em ES Modules, componentes de listagem, acessibilidade, scripts de build e testes.`,
+    features: [
+      'Mais de 400 rotas geradas a partir de definições de recursos: listagem, detalhe, impressão e exportação (CSV, JSON, TXT, DOC)',
+      'Tabelas com filtro, ordenação e paginação',
+      'Ouvidoria/e-SIC, mapa do site, busca e página 404',
+      'Barra de acessibilidade com ajuste de fonte, alto contraste e atalhos e-MAG (Alt+1 a Alt+4)',
+      'Consentimento de armazenamento local (LGPD)',
     ],
-    stack: ['HTML5', 'CSS3', 'JavaScript (ES Modules)', 'Node.js', 'node:test', 'Vercel'],
+    highlights: [
+      'Zero dependências de produção: HTML, CSS e JavaScript nativo com ES Modules',
+      'PWA com service worker; sitemap, robots e modulepreload gerados por scripts',
+      'Imagens em WebP com srcset, Open Graph e dados estruturados (JSON-LD)',
+      'Cabeçalhos de segurança (CSP, X-Frame-Options, Permissions-Policy) e escape de HTML contra XSS',
+      'Suíte de testes com o test runner nativo do Node.js e CI no GitHub Actions (lint, testes e verificação de arquivos gerados)',
+    ],
+    stack: ['HTML5', 'CSS3', 'JavaScript (ES Modules)', 'PWA', 'Node.js', 'node:test', 'GitHub Actions', 'Vercel'],
     live: 'https://layout-executivo.vercel.app',
     repo: gh('LAYOUT-EXECUTIVO'),
     image: '/img-projetos/prefeitura-alcantaras.webp',
@@ -116,14 +166,23 @@ export const projects: Project[] = [
     kind: 'profissional',
     year: 2026,
     summary:
-      'Site de mandato aberto e transparente para acompanhar projetos, agenda e votações do vereador na Câmara Municipal de Martinópole.',
-    highlights: [
-      'Roteamento tipado com TanStack Router / TanStack Start',
-      'Formulários com React Hook Form + Zod e proteção com reCAPTCHA',
-      'Componentes acessíveis com shadcn/ui (Radix UI)',
-      'Hospedagem e dados com Firebase',
+      'Site de mandato aberto e transparente para acompanhar matérias, realizações, transparência e o dia a dia do vereador na Câmara Municipal de Martinópole.',
+    context:
+      'O conteúdo do mandato (matérias, prestação de contas, realizações e posts do Instagram) é publicado por um painel administrativo; o site precisava consumir esses dados e manter o eleitor informado.',
+    role: `${PLUGWIN_ROLE}: front-end completo, integração com a API do painel e formulário de contato.`,
+    features: [
+      'Matérias com paginação e página individual para cada uma',
+      'Feed do Instagram paginado com visualização em modal',
+      'Seções de transparência, realizações e Câmara oficial',
+      'Contato por formulário, WhatsApp e redes sociais',
     ],
-    stack: ['React', 'TypeScript', 'TanStack Start', 'TanStack Query', 'Tailwind CSS', 'shadcn/ui', 'React Hook Form', 'Zod', 'Firebase'],
+    highlights: [
+      'Consumo de API REST headless com TanStack Query e roteamento tipado com TanStack Router',
+      'Formulário protegido com reCAPTCHA v3 invisível e envio via Formspark',
+      'Code splitting manual (React, Framer Motion, TanStack) e imagens com carregamento tardio',
+      'Componentes acessíveis com shadcn/ui (Radix) e testes com Vitest e Testing Library',
+    ],
+    stack: ['React 19', 'TypeScript', 'TanStack Router', 'TanStack Query', 'Tailwind CSS v4', 'shadcn/ui', 'Framer Motion', 'reCAPTCHA v3', 'Firebase Hosting', 'Vitest'],
     live: 'https://site-roberto-vereador.vercel.app',
     repo: gh('SITE-ROBERTO-VEREADOR'),
     image: '/img-projetos/vereador-robertinho.webp',
@@ -137,14 +196,24 @@ export const projects: Project[] = [
     kind: 'profissional',
     year: 2026,
     summary:
-      'Site da produtora brasileira de cinema e audiovisual: filmes, equipe e bastidores — “do sertão à tela”.',
-    highlights: [
-      'SPA com React Router e animações com Motion',
-      'Formulário com React Hook Form + Zod e reCAPTCHA',
-      'Estado com Zustand e testes com Vitest + cobertura V8',
-      'Deploy no Firebase Hosting',
+      'Site da produtora brasileira de cinema e audiovisual: filmes, equipe, portfólio e notícias — “do sertão à tela”.',
+    context:
+      'A produtora atualiza filmes, portfólio e notícias por um painel administrativo próprio; o site precisava exibir esse conteúdo dinâmico com a identidade cinematográfica da marca.',
+    role: `${PLUGWIN_ROLE}: front-end, integração com a API de conteúdo e formulário de contato.`,
+    features: [
+      'Páginas de trabalhos, portfólio e notícias com listagem paginada e páginas de detalhe',
+      'Ficha técnica e trailer de cada filme',
+      'Modal da equipe com carrossel automático e navegação por teclado',
+      'Seções institucionais (missão, visão e valores) e formulário de contato',
     ],
-    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Motion', 'React Router', 'React Hook Form', 'Zod', 'Zustand', 'Vitest'],
+    highlights: [
+      'Conteúdo vindo de API REST headless, com camada de dados tipada e estado em Zustand',
+      'Todas as páginas carregadas sob demanda (React.lazy) e imagem principal pré-carregada com alta prioridade',
+      'Formulário validado com Zod e protegido com reCAPTCHA, enviado via Web3Forms',
+      'SEO com canonical, Open Graph e Twitter Cards; cabeçalhos de segurança (CSP, Permissions-Policy)',
+      '44 testes com Vitest e Testing Library cobrindo a camada de API e os estados da página (carregamento, vazio, erro)',
+    ],
+    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Motion', 'React Router', 'Zustand', 'Zod', 'reCAPTCHA', 'Firebase Hosting', 'Vitest'],
     live: 'https://site-argumento-f4d69.web.app',
     repo: gh('ARGUMENTO-PRODUCOES'),
     image: '/img-projetos/argumento-producoes.webp',
@@ -158,13 +227,20 @@ export const projects: Project[] = [
     kind: 'profissional',
     year: 2026,
     summary:
-      'Página do estrategista em marketing político, focada em autoridade, gestão de crise e conversão de contatos.',
-    highlights: [
-      'Layout de alta conversão com animações sob medida (Framer Motion)',
-      'Estado com Zustand e integração com Firebase',
-      'Testes de componentes com Vitest e Testing Library',
+      'Landing page do estrategista em marketing político no Ceará, focada em autoridade, gestão de crise e conversão de contatos.',
+    context:
+      'O objetivo era transformar visitantes em contatos qualificados: a página precisava transmitir credibilidade rapidamente e levar a pessoa a falar com o estrategista.',
+    role: `${PLUGWIN_ROLE}: layout, animações e formulário de captação de leads.`,
+    features: [
+      'Seções de serviços, cases, depoimentos em carrossel e perguntas frequentes em acordeão',
+      'Formulário de leads que envia por e-mail e já abre uma conversa pré-preenchida no WhatsApp',
     ],
-    stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Framer Motion', 'Zustand', 'Firebase', 'Vitest'],
+    highlights: [
+      'Validação de nome, WhatsApp e e-mail no cliente, envio via Web3Forms com campo honeypot anti-spam',
+      'Animações sob medida com Framer Motion e hook de breakpoint para adaptar o layout',
+      'Testes com Vitest e Testing Library cobrindo cabeçalho, formulário, página e hooks',
+    ],
+    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Framer Motion', 'Zustand', 'Web3Forms', 'Firebase Hosting', 'Vitest'],
     live: 'https://site-edney.vercel.app',
     repo: gh('SITE-EDNEY'),
     image: '/img-projetos/edney-eslley.webp',
@@ -177,13 +253,23 @@ export const projects: Project[] = [
     kind: 'profissional',
     year: 2026,
     summary:
-      'Site institucional com formulário de orçamento integrado a uma API Node.js/Express para envio de e-mails.',
-    highlights: [
-      'API própria com Express + Nodemailer (serverless na Vercel)',
-      'Formulários com React Hook Form + Zod e componentes Headless UI',
-      'Estado com Zustand, testes com Vitest',
+      'Site da produtora de eventos e audiovisual do Ceará, com portfólio de eventos e formulário de orçamento integrado a uma API própria de envio de e-mails.',
+    context:
+      'A produtora queria mostrar os eventos que já realizou e receber pedidos de orçamento organizados por tipo de serviço, direto no e-mail da equipe.',
+    role: `${PLUGWIN_ROLE}: front-end, API de e-mail e deploy serverless.`,
+    features: [
+      'Hero com vídeo de fundo escolhido aleatoriamente',
+      'Portfólio de eventos com modal de detalhes e cards de serviços',
+      'Formulário de orçamento com seleção do serviço desejado',
+      'Termos de uso, política de privacidade, cookies e LGPD em modal',
     ],
-    stack: ['React', 'TypeScript', 'Tailwind CSS v4', 'Headless UI', 'React Hook Form', 'Zod', 'Express', 'Nodemailer', 'Firebase', 'Vitest'],
+    highlights: [
+      'API com Express e Nodemailer, rodando localmente e como função serverless na Vercel',
+      'Formulário com React Hook Form + Zod e componentes acessíveis do Headless UI',
+      'Vídeos em WebM/MP4 compactados e animações reduzidas em dispositivos móveis',
+      'Testes com Vitest cobrindo renderização, acessibilidade, validação do formulário e o modal do portfólio',
+    ],
+    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Headless UI', 'React Hook Form', 'Zod', 'Express', 'Nodemailer', 'Vercel Functions', 'Vitest'],
     live: 'https://site-promova.vercel.app',
     repo: gh('SITE-PROMOVA'),
     image: '/img-projetos/promova-producoes.webp',
@@ -197,12 +283,21 @@ export const projects: Project[] = [
     year: 2026,
     summary:
       'Site do estúdio brasileiro de animação focado em histórias que valorizam a cultura e a imaginação nacionais.',
-    highlights: [
-      'SPA com React Router, animações com Motion',
-      'Formulário de contato com React Hook Form, Zod e reCAPTCHA',
-      'Testes com Vitest e Testing Library',
+    context:
+      'O estúdio publica trabalhos, portfólio e notícias por um painel próprio e precisava que o site continuasse apresentável mesmo se a API ficasse fora do ar.',
+    role: `${PLUGWIN_ROLE}: front-end, integração com a API de conteúdo e formulário de contato.`,
+    features: [
+      'Trabalhos, portfólio e notícias com listagem paginada, páginas de detalhe e visualização rápida em modal',
+      'Cards da equipe de animadores com carrossel de trabalhos',
+      'Formulário de contato com captcha',
     ],
-    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Motion', 'React Router', 'Zod', 'Zustand', 'Vitest'],
+    highlights: [
+      'Fallback com dados locais quando a API está indisponível, mantendo o site funcional',
+      'Modal acessível (role="dialog", fechamento com Esc, bloqueio de rolagem) reutilizado em todas as listagens',
+      'Friendly Captcha (sem rastreamento) e validação com Zod, envio via Web3Forms',
+      'Páginas sob demanda, assets pré-comprimidos em gzip e 44 testes com Vitest',
+    ],
+    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Motion', 'React Router', 'Zustand', 'Zod', 'Friendly Captcha', 'Vitest'],
     repo: gh('NARRATIVA-PRODUCOES'),
     image: '/img-projetos/narrativa.webp',
     accent: ['#0891b2', '#a855f7'],
@@ -210,17 +305,27 @@ export const projects: Project[] = [
   {
     slug: 'scm',
     title: 'Sociedade Coração de Maria',
-    client: 'Terceiro setor · Site institucional',
+    client: 'Terceiro setor · Blog institucional',
     kind: 'profissional',
     year: 2026,
     summary:
-      'Site institucional da SCM construído com TanStack Start, com rotas tipadas e biblioteca de componentes acessíveis.',
-    highlights: [
-      'TanStack Start + TanStack Router com geração de rotas',
-      'Componentes acessíveis com shadcn/ui (Radix UI)',
-      'Formulários com React Hook Form + Zod',
+      'Blog e site institucional da Sociedade Coração de Maria / Sítio Santo Elias, sobre cultura, audiovisual e agroecologia na Serra da Meruoca.',
+    context:
+      'A organização publica notícias, galeria, prestação de contas e apoiadores por um painel próprio e precisava de um site para dar visibilidade ao trabalho e transparência aos recursos.',
+    role: `${PLUGWIN_ROLE}: front-end, integração com a API e testes.`,
+    features: [
+      'Busca de publicações e filtros por ano e por marcador',
+      'Página individual de cada post e página de marcadores',
+      'Carrossel de destaques e de apoiadores, galeria com lightbox',
+      'Seção de prestação de contas',
     ],
-    stack: ['React', 'TypeScript', 'TanStack Start', 'TanStack Query', 'Tailwind CSS v4', 'shadcn/ui', 'React Hook Form', 'Zod', 'Vitest'],
+    highlights: [
+      'Cache de 30 minutos com TanStack Query e paginação sequencial para respeitar o limite de requisições da API',
+      'Roteamento tipado com divisão automática de código por rota (TanStack Router)',
+      'Open Graph/Twitter Cards e cabeçalhos de segurança e cache no Firebase Hosting',
+      'Testes com Vitest cobrindo API, utilitários e componentes, com relatório de cobertura',
+    ],
+    stack: ['React 19', 'TypeScript', 'TanStack Router', 'TanStack Query', 'Tailwind CSS v4', 'Radix UI', 'Embla Carousel', 'Firebase Hosting', 'Vitest'],
     repo: gh('SOCIEDADE-CORACAO-DE-MARIA'),
     image: '/img-projetos/scm.webp',
     accent: ['#be123c', '#2563eb'],
@@ -231,9 +336,15 @@ export const projects: Project[] = [
     client: 'Evento esportivo · Landing page',
     kind: 'profissional',
     year: 2026,
-    summary: 'Landing page de divulgação do evento, com programação, percurso e chamada para inscrição.',
-    highlights: ['Página leve e responsiva com animações de entrada', 'Deploy no Firebase Hosting e Vercel'],
-    stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+    summary: 'Primeira landing page de divulgação do evento, com data, local, níveis de dificuldade, itens inclusos e chamada para inscrição.',
+    context: 'Página rápida para abrir a divulgação e as inscrições do evento, antes da plataforma completa.',
+    role: `${PLUGWIN_ROLE}: desenvolvimento e publicação.`,
+    features: ['Cards com data, local e dificuldade do percurso', 'Lista do que está incluso no kit do piloto', 'Chamada para inscrição e contato pelo Instagram'],
+    highlights: [
+      'Slideshow de fundo alimentado pela API do Unsplash, com imagens reserva se a API falhar',
+      'Animações de entrada com Framer Motion e deploy no Firebase Hosting',
+    ],
+    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Framer Motion', 'Unsplash API'],
     live: 'https://evento-moto.vercel.app',
     repo: gh('EVENTO-MOTO'),
     accent: ['#ca8a04', '#dc2626'],
@@ -246,9 +357,11 @@ export const projects: Project[] = [
     year: 2025,
     summary:
       'Site que conecta clientes a profissionais de serviços domésticos, com versões para quem contrata e para quem presta o serviço.',
+    context: 'A plataforma já tinha apps Android e precisava de um site para apresentar o serviço aos dois públicos e direcionar para os aplicativos.',
+    role: 'Freelance: desenvolvimento do site em equipe multidisciplinar para uma empresa real.',
     highlights: [
-      'Desenvolvido em equipe multidisciplinar para empresa real',
-      'Interface responsiva e otimizada para SEO',
+      'Interface responsiva com animações em Framer Motion',
+      'Otimizado para SEO e com cabeçalhos de segurança e cache no deploy',
       'Integração com os apps mobile Android da plataforma',
     ],
     stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion'],
@@ -267,7 +380,8 @@ export const projects: Project[] = [
     year: 2025,
     summary:
       'Descoberta de filmes, séries e animes com recomendações, favoritos e PWA instalável, integrando as APIs TMDB e Jikan.',
-    highlights: ['App Router do Next.js 15', 'PWA instalável', 'Testes com Jest'],
+    features: ['Páginas de filmes, séries, animes, favoritos e busca', 'Filtros por gênero e detalhes em modal', 'Favoritos salvos no dispositivo'],
+    highlights: ['App Router do Next.js 15 com next/image', 'Integração de duas APIs (TMDB e Jikan/MyAnimeList)', 'PWA instalável e Jest configurado para testes'],
     stack: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Framer Motion', 'TMDB API', 'Jikan API', 'PWA', 'Jest'],
     live: 'https://reco-cine.vercel.app',
     repo: gh('reco-cine'),
@@ -282,8 +396,13 @@ export const projects: Project[] = [
     kind: 'pessoal',
     year: 2026,
     summary:
-      'Dashboard meteorológico com geolocalização, mapas multiparamétricos (temperatura, chuva, vento, pressão), ciclo solar e fases da lua.',
-    highlights: ['Mapas interativos com React-Leaflet', 'Sincronização automática de fuso horário'],
+      'Dashboard meteorológico com geolocalização, mapas multiparamétricos (temperatura, chuva, vento, pressão), qualidade do ar, ciclo solar e fases da lua.',
+    features: [
+      'Condições atuais, previsão por hora e para 7 dias',
+      'Busca de cidades com histórico e geolocalização com consentimento',
+      'Qualidade do ar (IQA e poluentes) e tema que muda conforme o período do dia',
+    ],
+    highlights: ['Mapas interativos com React-Leaflet', 'Sincronização automática de fuso horário', 'Chave da API protegida por variável de ambiente'],
     stack: ['React', 'TypeScript', 'Zustand', 'Framer Motion', 'Bootstrap', 'React-Leaflet', 'OpenWeatherMap API'],
     live: 'https://informa-es-meteorol-gicas.vercel.app',
     repo: gh('informa--es-meteorol-gicas'),
@@ -298,8 +417,9 @@ export const projects: Project[] = [
     year: 2026,
     summary:
       'Buscador de receitas internacionais com tradução em tempo real de instruções, ingredientes e medidas via Google Gemini.',
-    highlights: ['Tradução com IA (Gemini API)', 'Internacionalização com React-Intl'],
-    stack: ['React', 'TypeScript', 'Tailwind CSS', 'React-Intl', 'TheMealDB API', 'Gemini API'],
+    features: ['Busca por nome, ingrediente ou categoria', 'Receita completa com vídeo, favoritos e exportação em PDF', 'Interface em português, inglês e espanhol'],
+    highlights: ['Tradução das receitas com IA (Gemini API)', 'Internacionalização da interface com React-Intl', 'Skeletons de carregamento'],
+    stack: ['React', 'TypeScript', 'Tailwind CSS', 'Zustand', 'React-Intl', 'TheMealDB API', 'Gemini API'],
     live: 'https://buscador-receitas-theta.vercel.app',
     repo: gh('Buscador-receitas'),
     image: '/img-projetos/recipes.webp',
@@ -313,8 +433,9 @@ export const projects: Project[] = [
     year: 2026,
     summary:
       'Conversão de moedas em tempo real com favoritos, histórico de conversões e gráficos de tendência do câmbio.',
-    highlights: ['Gráficos históricos de câmbio', 'Tema claro/escuro e PWA instalável'],
-    stack: ['React', 'TypeScript', 'Vite', 'PWA', 'localStorage'],
+    features: ['Conversão com cotações atualizadas', 'Favoritos e histórico com taxa e horário', 'Tema claro/escuro'],
+    highlights: ['Gráficos históricos de câmbio com Recharts', 'PWA instalável com service worker para uso offline'],
+    stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Zustand', 'Recharts', 'PWA', 'ExchangeRate-API'],
     live: 'https://conversor-de-moedas-orcin.vercel.app',
     repo: gh('Conversor-de-moedas'),
     accent: ['#16a34a', '#eab308'],
@@ -327,7 +448,7 @@ export const projects: Project[] = [
     year: 2026,
     summary:
       'Envio de e-mails estilizados direto do front-end usando templates dinâmicos do EmailJS, com configuração de credenciais pela interface.',
-    highlights: ['Templates com variáveis dinâmicas', 'Credenciais via .env ou localStorage'],
+    highlights: ['Templates com variáveis dinâmicas', 'Credenciais via .env ou pela aba de configurações (localStorage)'],
     stack: ['React', 'Vite', 'EmailJS', 'Lucide'],
     live: 'https://form-submmit.vercel.app',
     repo: gh('form-submmit'),
@@ -339,9 +460,9 @@ export const projects: Project[] = [
     client: 'Projeto pessoal · Next.js',
     kind: 'pessoal',
     year: 2025,
-    summary: 'Cálculo de IMC com histórico, exportação em CSV, tema claro/escuro e PWA.',
-    highlights: ['Exportação CSV', 'Testes com Jest'],
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'PWA', 'Jest'],
+    summary: 'Cálculo de IMC com classificação da OMS, histórico com data e hora e interface em glassmorphism, implementada a partir de um design no Figma.',
+    highlights: ['Validação de peso e altura', 'Histórico persistido com Zustand', 'Animações com Framer Motion'],
+    stack: ['Next.js 15', 'React 19', 'TypeScript', 'Zustand', 'Framer Motion'],
     live: 'https://calculadora-imc-liard-omega.vercel.app',
     repo: gh('calculadora_imc'),
     image: '/img-projetos/imc.webp',

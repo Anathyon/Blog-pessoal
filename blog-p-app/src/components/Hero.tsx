@@ -92,7 +92,7 @@ export default function Hero() {
               src={profile.photo}
               alt={`Foto de ${profile.name}`}
               width={640}
-              height={644}
+              height={672}
               fetchPriority="high"
               className="aspect-[4/4.2] w-full rounded-[1.6rem] object-cover"
             />
