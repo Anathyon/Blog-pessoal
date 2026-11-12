@@ -4,9 +4,9 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "blog-p-app/dist",
+    "public": "dist",
     "predeploy": [
-      "npm --prefix \"$PROJECT_DIR/blog-p-app\" run build"
+      "npm --prefix \"$PROJECT_DIR\" run build"
     ],
     "ignore": [
       "firebase.json",
